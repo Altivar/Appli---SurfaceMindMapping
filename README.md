@@ -1,4 +1,4 @@
-Appli---SurfaceMindMapping
-==========================
+ProjetTut
+=========
 
-Application de Mind Mapping sur Sur40 avec Surface 2.0
+Appli de Mind Mapping sur Table Tactile

@@ -142,7 +142,7 @@ namespace AppliProjetTut
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void OnRemoveSelection(object sender, RoutedEventArgs e)
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             Surface.RemoveNode(this, true);
         }

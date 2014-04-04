@@ -88,15 +88,10 @@ namespace AppliProjetTut
             MenuItem2.Click += new RoutedEventHandler(OnEditSelection);
             base.MainMenu.Items.Add(MenuItem2);
 
-            try
-            {
-                currentColor = ((NodeText)parent).GetColor();
-            }
-            catch
-            {
-                currentColor = new SolidColorBrush(Colors.Black);
-            }
+            currentColor = new SolidColorBrush(Colors.Black);
+            TypeScatter.Background = currentColor;
             STextBox.Background = currentColor;
+            STextBox.BorderBrush = new SolidColorBrush(Colors.Transparent);
 
         }
 

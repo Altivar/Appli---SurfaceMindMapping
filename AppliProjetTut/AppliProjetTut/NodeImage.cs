@@ -60,18 +60,11 @@ namespace AppliProjetTut
 
             imageChoice = new ListeImages(this);
 
-            try
-            {
-                currentImage = ((NodeImage)parent).GetImage();
-                currentSize = ((NodeImage)parent).GetSize();
-            }
-            catch
-            {
-                currentImage = new SolidColorBrush(Colors.Gray);
-                currentSize = new Point(300, 200);
-            }
+            currentImage = new SolidColorBrush(Colors.Gray);
+            currentSize = new Point(300, 200);
+
             mise_a_echelle();
-            base.MainGrid.Background = currentImage;
+            base.TypeScatter.Background = currentImage;
 
             base.CanScale = true;
             base.SizeChanged += new SizeChangedEventHandler(OnNodeImageSizeChanged);
@@ -82,7 +75,7 @@ namespace AppliProjetTut
             base.MainMenu.Items.Add(MenuItem1);
         }
 
-        
+
 
 
 
@@ -98,16 +91,15 @@ namespace AppliProjetTut
         {
             if (!isEditing)
             {
-                base.Height = 200;
-                base.Width = 300;
-                base.MainGrid.Width = (currentSize.X > 300) ? 300 : currentSize.X;
-                base.MainGrid.Height = (currentSize.Y > 200) ? 200 : currentSize.Y;
+                base.Height = 275;
+                base.Width = 375;
+                base.TypeScatter.Width = (currentSize.X > 300) ? 300 : currentSize.X;
+                base.TypeScatter.Height = (currentSize.Y > 200) ? 200 : currentSize.Y;
 
                 base.AddonGrid.Items.Add(imageChoice);
                 imageChoice.InitListView();
 
-                double borderHeight = (base.Height - base.MainGrid.Height) / 2;
-                base.AddonGrid.Margin = new Thickness(base.MainGrid.Width / 2, base.MainGrid.Height + borderHeight, base.MainGrid.Width / 2, -(borderHeight + 50));
+                base.AddonGrid.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
                 base.AddonGrid.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
 
                 CanScale = false;
@@ -135,6 +127,8 @@ namespace AppliProjetTut
             {
                 base.Width = previousSize.X;
                 base.Height = previousSize.Y;
+                this.TypeScatter.Width = currentSize.X;
+                this.TypeScatter.Height = currentSize.Y;
             }
             else if (currentSize.X > 300 && currentSize.Y > 200)
             {
@@ -149,8 +143,8 @@ namespace AppliProjetTut
                     base.Width = newWidth + 300;
                 }
                 else // si ecartX == ecartY
-                { 
-                
+                {
+
                 }
             }
             else if (currentSize.X <= 300 && currentSize.Y > 200)
@@ -162,53 +156,42 @@ namespace AppliProjetTut
                 base.Height = previousSize.Y;
             }
             else
-            { 
+            {
                 // pas normal !!! 
             }
 
 
 
             // si la dimensiondu Node est trop grande
-            if (base.Width > currentSize.X)
+            if (base.Width > currentSize.X+75)
             {
-                base.Width = currentSize.X;
+                base.Width = currentSize.X+75;
             }
-            if (base.Height > currentSize.Y)
+            if (base.Height > currentSize.Y+75)
             {
-                base.Height = currentSize.Y;
+                base.Height = currentSize.Y+75;
             }
 
             // si la dimension du Node est trop petite
-            if (base.Width <= 300)
+            if (base.Width <= 375)
             {
-                base.Width = 300;
+                base.Width = 375;
             }
-            if (base.Height <= 200)
+            if (base.Height <= 275)
             {
-                base.Height = 200;
-            }
-
-            // reglage de la Grid
-            if (currentSize.X <= 300)
-            {
-                base.MainGrid.Width = currentSize.X;
-            }
-            else
-            {
-                base.MainGrid.Width = base.Width;
-            }
-            if (currentSize.Y <= 200)
-            {
-                base.MainGrid.Height = currentSize.Y;
-            }
-            else
-            {
-                base.MainGrid.Height = base.Height;
+                base.Height = 275;
             }
 
-            double borderHeight = (base.Height - base.MainGrid.Height) / 2;
-            base.MainMenu.Margin = new Thickness(base.MainGrid.Width/2, base.MainGrid.Height + borderHeight, base.MainGrid.Width/2, -(borderHeight + 50));
+            this.MainGrid.Width = base.Width;
+            this.MainGrid.Height = base.Height;
+            if(currentSize.X > 300) this.TypeScatter.Width = base.Width - 75;
+            if(currentSize.Y > 200) this.TypeScatter.Height = base.Height - 75;
+
+            base.MainMenu.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             base.MainMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+
+            this.grdButtonH.Margin = new Thickness(0, base.Height-75, base.Width - 375, 0);
+            this.grdButtonV.Margin = new Thickness(base.Width-75, 0, 0, base.Height - 225);
 
             previousSize = new Point(base.Width, base.Height);
 
@@ -227,16 +210,17 @@ namespace AppliProjetTut
         {
             base.AddonGrid.Items.Remove(imageChoice);
             base.MainGrid.Background = currentImage;
-            base.MainGrid.Width = (currentSize.X > 300) ? 300 : currentSize.X;
-            base.MainGrid.Height = (currentSize.Y > 200) ? 200 : currentSize.Y;
+            base.MainGrid.Width = (currentSize.X > 375) ? 375 : currentSize.X;
+            base.MainGrid.Height = (currentSize.Y > 275) ? 275 : currentSize.Y;
+            base.TypeScatter.Width = (currentSize.X > 300) ? 300 : currentSize.X;
+            base.TypeScatter.Height = (currentSize.Y > 200) ? 200 : currentSize.Y;
 
             CanScale = true;
             isEditing = false;
-            
+
             tempSize = new Point(300, 200);
 
-            double borderHeight = (base.Height - base.MainGrid.Height) / 2;
-            base.MainMenu.Margin = new Thickness(base.MainGrid.Width / 2, base.MainGrid.Height + borderHeight, base.MainGrid.Width / 2, -(borderHeight + 50));
+            base.MainMenu.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             base.MainMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
         }
 
@@ -248,16 +232,15 @@ namespace AppliProjetTut
         /// <param name="path"></param>
         public void onChoice(Brush newPath, Point dimension, string path)
         {
-            base.MainGrid.Background = newPath;
+            base.TypeScatter.Background = newPath;
             tempSize = dimension;
-            base.MainGrid.Width = (tempSize.X > 300) ? 300 : tempSize.X;
-            base.MainGrid.Height = (tempSize.Y > 200) ? 200 : tempSize.Y;
+            base.TypeScatter.Width = (tempSize.X > 300) ? 300 : tempSize.X;
+            base.TypeScatter.Height = (tempSize.Y > 200) ? 200 : tempSize.Y;
 
-            double borderHeight = (base.Height - base.MainGrid.Height) / 2;
-            base.MainMenu.Margin = new Thickness(base.MainGrid.Width / 2, base.MainGrid.Height + borderHeight, base.MainGrid.Width / 2, -(borderHeight + 50));
+            base.MainMenu.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             base.MainMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
 
-            base.AddonGrid.Margin = new Thickness(base.MainGrid.Width / 2, base.MainGrid.Height + borderHeight, base.MainGrid.Width / 2, -(borderHeight + 50));
+            base.AddonGrid.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             base.AddonGrid.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
 
             tempPath = path;

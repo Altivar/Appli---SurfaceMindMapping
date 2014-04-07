@@ -59,10 +59,6 @@ namespace AppliProjetTut
             backSpaceTimer.Interval = 100;
             backSpaceTimer.Start();
 
-
-            
-            this.Cadenas.PreviewTouchDown += new EventHandler<TouchEventArgs>(Cadenas_PreviewTouchDown);
-
             this.Carré.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
             this.et.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
             this.é.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
@@ -195,37 +191,10 @@ namespace AppliProjetTut
             //ne ferme la fenêtre que si on utilise le doigt
             if (e.TouchDevice.GetIsFingerRecognized())
             {
-                this.Cadenas.Foreground = new SolidColorBrush(Colors.Black);
-                this.Cadenas.Background = new SolidColorBrush(Colors.LightBlue);
-                isMovementEnabled = true;
-                NodeParent.isMoveEnable(isMovementEnabled);
                 NodeParent.AjoutTexte("Close");
             }
         }
-        /// <summary>
-        /// Bloque tout mouvement du clavier virtuel
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void Cadenas_PreviewTouchDown(object sender, TouchEventArgs e)
-        {
-            //ne bloque la fenêtre que si on utilise le doigt
-            if (e.TouchDevice.GetIsFingerRecognized())
-            {
-                isMovementEnabled = !isMovementEnabled;
-                NodeParent.isMoveEnable(isMovementEnabled);
-                if (isMovementEnabled)
-                {
-                    this.Cadenas.Foreground = new SolidColorBrush(Colors.Black);
-                    this.Cadenas.Background = new SolidColorBrush(Colors.LightBlue);
-                }
-                else
-                {
-                    this.Cadenas.Foreground = new SolidColorBrush(Colors.White);
-                    this.Cadenas.Background = new SolidColorBrush(Colors.Teal);
-                }
-            }
-        }
+        
 
         
         /// <summary>
@@ -356,8 +325,6 @@ namespace AppliProjetTut
 
             Enter.IsEnabled = false;
             Entrer.IsEnabled = false;
-
-            KeyGrid.Children.Remove(Cadenas);
         }
         public void EnableEnterKeys(bool enable)
         {

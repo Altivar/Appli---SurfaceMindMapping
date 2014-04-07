@@ -193,7 +193,6 @@ namespace AppliProjetTut
                 STextBox.Clear();
                 STextBox.AppendText(test);
 
-                isMoveEnable(true);
                 isEditing = false;
             }
             else if (str.ToLower().Equals("backspace"))
@@ -322,46 +321,6 @@ namespace AppliProjetTut
             SetBackGroundColor(color);
         }
 
-        /// <summary>
-        /// Autorise le mouvement(true) ou le désactive(false)
-        /// </summary>
-        /// <param name="enable"></param>
-        public void isMoveEnable(bool enable)
-        {
-            CanMove = enable;
-            CanRotate = enable;
-            isLocked = !enable;
-
-            if (STextBox.LineCount > 8 && isLocked)
-            {
-                STextBox.Width = 250;
-                SScrollViewer.ScrollToBottom();
-            }
-            else
-            {
-                STextBox.Width = 300;
-            }
-
-
-            if (!enable)
-            {
-                //si le node est locké on peut utiliser la scrollbar sur le textbox
-                base.TypeScatter.Children.Remove(STextBox);
-                SScrollViewer.Content = STextBox;
-                base.TypeScatter.Children.Add(SScrollViewer);
-            }
-            else
-            {
-                try
-                {
-                    //si le node n'est pas locké pas de scrollbar
-                    SScrollViewer.Content = null;
-                    base.TypeScatter.Children.Remove(SScrollViewer);
-                    base.TypeScatter.Children.Add(STextBox);
-                }
-                catch { }
-            }
-        }
 
         /// <summary>
         /// Retourne le clavier

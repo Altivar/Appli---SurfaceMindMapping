@@ -32,13 +32,13 @@ namespace AppliProjetTut
 
 
         // TextBox du TextNode
-        SurfaceTextBox STextBox;
+        public SurfaceTextBox STextBox;
         // Nombre maximal de caractères
         int MaxLength = -1;
         // Si le cadenas est activé
         bool isLocked = false;
 
-        SurfaceScrollViewer SScrollViewer;
+        public SurfaceScrollViewer SScrollViewer;
 
         // clavier virtuel
         private ClavierVirtuel clavier;
@@ -47,6 +47,10 @@ namespace AppliProjetTut
 
         // couleur actuelle
         private Brush currentColor;
+
+        // boutons du menu
+        public SurfaceButton btnColorChoice;
+        public SurfaceButton btnEdition;
 
         /// <summary>
         /// Default Constructor
@@ -96,7 +100,7 @@ namespace AppliProjetTut
 
 
             // modification de la barre des taches
-            SurfaceButton btnColorChoice = new SurfaceButton();
+            btnColorChoice = new SurfaceButton();
             btnColorChoice.Width = 75;
             btnColorChoice.Height = 75;
             btnColorChoice.Background = new SolidColorBrush(Colors.Gray);
@@ -106,7 +110,7 @@ namespace AppliProjetTut
             btnColorChoice.Margin = new Thickness(-37, 0, 37, 0);
             btnColorChoice.Click += new RoutedEventHandler(OnColorSelection);
 
-            SurfaceButton btnEdition = new SurfaceButton();
+            btnEdition = new SurfaceButton();
             btnEdition.Width = 75;
             btnEdition.Height = 75;
             ImageBrush imgBckg = new ImageBrush();

@@ -229,7 +229,6 @@ namespace AppliProjetTut
             base.MainGrid.Height = 275;
             base.TypeScatter.Width = (currentSize.X > 300) ? 300 : currentSize.X;
             base.TypeScatter.Height = (currentSize.Y > 200) ? 200 : currentSize.Y;
-            base.MainGrid.Background = new SolidColorBrush(Colors.Transparent);
             base.TypeScatter.Background = currentImage;
             
             CanScale = true;

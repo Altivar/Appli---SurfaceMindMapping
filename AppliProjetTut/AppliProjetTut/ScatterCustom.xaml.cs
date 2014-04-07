@@ -9,6 +9,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Surface.Presentation.Controls;
@@ -29,6 +30,12 @@ namespace AppliProjetTut
         // type du node
         string thisType;
 
+        // etat de l'annotation (ouverte ou fermée)
+        bool isTextAnnotationOpened;
+        bool isAnimated;
+
+        
+
         /// <summary>
         /// Default Constructor
         /// </summary>
@@ -41,7 +48,11 @@ namespace AppliProjetTut
             parent = parentNode;
             Surface = parentSurface;
 
+            
+
             CanScale = false;
+            isTextAnnotationOpened = false;
+            isAnimated = false;
         }
 
 
@@ -163,7 +174,61 @@ namespace AppliProjetTut
         /// <param name="e"></param>
         private void btnText_Click(object sender, RoutedEventArgs e)
         {
+            if(isAnimated)
+                return;
 
+            Storyboard sb = new Storyboard();
+
+            Thickness borderTextIn = new Thickness(0, 0, 75, 100);
+            Thickness borderTextOut = new Thickness(0, 275, 75, -175);
+
+            ThicknessAnimation AnimText = new ThicknessAnimation
+            {
+                From = (isTextAnnotationOpened) ? borderTextOut : borderTextIn,
+
+                To = (isTextAnnotationOpened) ? borderTextIn : borderTextOut, 
+
+                AccelerationRatio = 0.5,
+
+                FillBehavior = FillBehavior.Stop,
+
+                DecelerationRatio = 0.5,
+
+                Duration = System.Windows.Duration.Automatic
+
+            };
+
+            Storyboard.SetTarget(AnimText, TextGrid);
+            Storyboard.SetTargetProperty(AnimText, new PropertyPath(MarginProperty));
+
+            sb.Children.Add(AnimText);
+
+            sb.Completed += new EventHandler(sb_Completed);
+            isAnimated = true;
+
+            sb.Begin();
+
+            isTextAnnotationOpened = !isTextAnnotationOpened;
+
+        }
+
+        void sb_Completed(object sender, EventArgs e)
+        {
+
+            Thickness borderText;
+
+            if (isTextAnnotationOpened)
+            {
+                borderText = new Thickness(0, 275, 75, -175);
+            }
+            else
+            { 
+                borderText = new Thickness(0, 0, 75, 100);
+            }
+
+            this.TextGrid.Margin = borderText;
+
+            isAnimated = false;
         }
         /// <summary>
         /// Lorsque le bouton de Séparation est sélectionné

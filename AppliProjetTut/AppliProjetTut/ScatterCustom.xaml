@@ -8,7 +8,7 @@
              Loaded="OnNodeLoaded" CanScale="False" Background="Transparent">
     <Grid Name="MainGrid" Width="375" Height="275">
         
-        <Grid Name="TextGrid" Width="300" Height="175" Margin="0, 0, 75, 100" Background="Pink"/>
+        <Grid Name="TextGrid" Width="300" Height="175" Margin="0, 0, 75, 100"/>
         
         <Grid Background="Gray" Width="300" Height="200" Margin="0,0,75,75"/>
         <Grid Name="TypeScatter" Width="300" Height="200" Margin="0,0,75,75"/>

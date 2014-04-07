@@ -42,6 +42,12 @@ namespace AppliProjetTut
         string tempPath = "NONE";
         string currentPath = "NONE";
 
+
+        // annotation
+        NodeText textAnnotation;
+
+
+
         /// <summary>
         /// Defalut Constructor
         /// </summary>
@@ -73,6 +79,38 @@ namespace AppliProjetTut
             MenuItem1.Header = "Image choice";
             MenuItem1.Click += new RoutedEventHandler(OnImageChoiceSelection);
             base.MainMenu.Items.Add(MenuItem1);
+
+
+
+            // initialisation de la box d'annotaion
+            textAnnotation = new NodeText(parentSurface, null);
+            // reglage de la taille generale du node
+            textAnnotation.MinHeight = 175;
+            textAnnotation.MinWidth = 300;
+            textAnnotation.MaxHeight = 175;
+            textAnnotation.MaxWidth = 300;
+            //
+            textAnnotation.MainGrid.Children.Remove(textAnnotation.grdButtonV);
+            textAnnotation.MainGrid.Height = 175;
+            textAnnotation.MainGrid.Width = 300;
+            textAnnotation.MainGrid.Margin = new Thickness(0, 0, 0, 0);
+            // reglage de la dimension du texte
+            textAnnotation.TypeScatter.Width = 300;
+            textAnnotation.TypeScatter.Height = 100;
+            textAnnotation.TypeScatter.Margin = new Thickness(0, 0, 0, 75);
+            textAnnotation.STextBox.Height = 100;
+            textAnnotation.STextBox.Width = 300;
+            textAnnotation.SScrollViewer.Height = 100;
+            textAnnotation.SScrollViewer.Width = 300;
+            // positionnement de la barre des taches horizontale
+            textAnnotation.grdButtonH.Margin = new Thickness(0, 100, 0, 0);
+            textAnnotation.btnColorChoice.Margin = new Thickness(-75, 0, 75, 0);
+            textAnnotation.btnEdition.Margin = new Thickness(0, 0, 0, 0);
+
+            base.TextGrid.Children.Add(textAnnotation);
+            textAnnotation.Margin = new Thickness(0, 0, 0, 0);
+
+
 
 
             // modification de la barre des taches

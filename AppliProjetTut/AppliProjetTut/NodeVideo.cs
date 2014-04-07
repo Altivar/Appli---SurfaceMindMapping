@@ -103,7 +103,6 @@ namespace AppliProjetTut
             textAnnotation.MainGrid.Children.Remove(textAnnotation.grdButtonV);
             textAnnotation.MainGrid.Height = 175;
             textAnnotation.MainGrid.Width = 300;
-            textAnnotation.MainGrid.Background = new SolidColorBrush(Colors.Green);
             textAnnotation.MainGrid.Margin = new Thickness(0, 0, 0, 0);
             // reglage de la dimension du texte
             textAnnotation.TypeScatter.Width = 300;

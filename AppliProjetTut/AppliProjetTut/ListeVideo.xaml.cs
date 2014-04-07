@@ -124,7 +124,7 @@ namespace AppliProjetTut
             string newPath = (string)btnClicked.Content;
             if (newPath == null)
                 return;
-            nodeParent.GetVideoPath(newPath);
+            nodeParent.SetVideoPath(newPath);
 
         }
 

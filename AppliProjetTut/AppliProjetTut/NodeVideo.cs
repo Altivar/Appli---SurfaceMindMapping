@@ -80,6 +80,15 @@ namespace AppliProjetTut
             this.TypeScatter.Children.Add(videoElement);
 
 
+            base.CanScale = true;
+            base.SizeChanged += new SizeChangedEventHandler(OnNodeVideoSizeChanged);
+            base.Width = 375;
+            base.Height = 275;
+            base.MaxHeight = 275;
+            base.MaxWidth = 375;
+            base.MinHeight = 275;
+            base.MinWidth = 375;
+
             // modification de la barre des taches
             SurfaceButton btnVideoChoice = new SurfaceButton();
             btnVideoChoice.Width = 75;
@@ -126,8 +135,14 @@ namespace AppliProjetTut
                 base.AddonGrid.Items.Add(listeVideo);
                 listeVideo.InitListView();
 
-                double borderHeight = (base.Height - base.MainGrid.Height) / 2;
-                base.AddonGrid.Margin = new Thickness(base.MainGrid.Width / 2, base.MainGrid.Height + borderHeight, base.MainGrid.Width / 2, -(borderHeight + 50));
+                base.Width = 375;
+                base.Height = 275;
+                base.MainGrid.Width = 375;
+                base.MainGrid.Height = 275;
+                base.TypeScatter.Width = 300;
+                base.TypeScatter.Height = 200;
+
+                base.AddonGrid.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
                 base.AddonGrid.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
 
                 isEditing = true;
@@ -142,6 +157,25 @@ namespace AppliProjetTut
                 }
             }
 
+        }
+
+
+        void OnNodeVideoSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            
+            if (base.Width < 375 || base.Height < 275)
+            {
+                base.Width = 375;
+                base.Height = 275;
+            }
+
+            base.MainGrid.Width = base.Width;
+            base.MainGrid.Height = base.Height;
+            base.TypeScatter.Height = base.Height - 75;
+            base.TypeScatter.Width = base.Width - 75;
+
+            this.grdButtonH.Margin = new Thickness(0, base.TypeScatter.Height, base.Width - this.grdButtonH.Width, 0);
+            this.grdButtonV.Margin = new Thickness(base.TypeScatter.Width, 0, 0, base.Height - this.grdButtonV.Height);
         }
 
 
@@ -195,7 +229,7 @@ namespace AppliProjetTut
         }
         // END EVENTS
 
-        public void GetVideoPath(string path)
+        public void SetVideoPath(string path)
         {
 
             if (path == "NONE")
@@ -207,9 +241,12 @@ namespace AppliProjetTut
 
             currentPath = path;
 
+            base.MaxWidth = 800;
+            base.MaxHeight = 700;
+
             base.AddonGrid.Items.Remove(listeVideo);
             isEditing = false;
-
+            
         }
 
         

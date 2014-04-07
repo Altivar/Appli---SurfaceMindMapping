@@ -35,6 +35,8 @@ namespace AppliProjetTut
         bool isOnPlay = false;
         string currentPath = "NONE";
 
+        SurfaceButton btnPlayPause;
+
         // Liste de videos
         ListeVideo listeVideo;
 
@@ -65,17 +67,50 @@ namespace AppliProjetTut
 
             ElementMenuItem MenuItem2 = new ElementMenuItem();
             MenuItem2.Header = "Play/Pause";
-            MenuItem2.Click += new RoutedEventHandler(OnPlayPausePreviewTouchUp);
+            MenuItem2.Click += new RoutedEventHandler(OnPlayPauseClick);
             base.MainMenu.Items.Add(MenuItem2);
 
             listeVideo = new ListeVideo(this);
             CanScale = false;
             isEditing = false;
-            base.MainGrid.Background = new SolidColorBrush(Colors.DarkRed);
+            base.TypeScatter.Background = new SolidColorBrush(Colors.DarkRed);
 
             videoElement = new MediaElement();
             videoElement.LoadedBehavior = MediaState.Manual;
             this.TypeScatter.Children.Add(videoElement);
+
+
+            // modification de la barre des taches
+            SurfaceButton btnVideoChoice = new SurfaceButton();
+            btnVideoChoice.Width = 75;
+            btnVideoChoice.Height = 75;
+            ImageBrush imgBckg = new ImageBrush();
+            imgBckg.ImageSource = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_videos.gif", UriKind.Relative));
+            btnVideoChoice.Background = imgBckg;
+            base.grdButtonH.Children.Add(btnVideoChoice);
+            btnVideoChoice.Margin = new Thickness(-75, 0, 75, 0);
+            btnVideoChoice.Click += new RoutedEventHandler(OnVideoChoiceSelection);
+
+            btnPlayPause = new SurfaceButton();
+            btnPlayPause.Width = 75;
+            btnPlayPause.Height = 75;
+            ImageBrush imgBckg1 = new ImageBrush();
+            imgBckg1.ImageSource = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_play.gif", UriKind.Relative));
+            btnPlayPause.Background = imgBckg1;
+            base.grdButtonH.Children.Add(btnPlayPause);
+            btnPlayPause.Margin = new Thickness(0, 0, 0, 0);
+            btnPlayPause.Click += new RoutedEventHandler(OnPlayPauseClick);
+
+            SurfaceButton btnStop = new SurfaceButton();
+            btnStop.Width = 75;
+            btnStop.Height = 75;
+            ImageBrush imgBckg2 = new ImageBrush();
+            imgBckg2.ImageSource = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_stop.gif", UriKind.Relative));
+            btnStop.Background = imgBckg2;
+            base.grdButtonH.Children.Add(btnStop);
+            btnStop.Margin = new Thickness(75, 0, -75, 0);
+            btnStop.Click += new RoutedEventHandler(OnStopClick);
+
 
         }
 
@@ -96,31 +131,60 @@ namespace AppliProjetTut
                 base.AddonGrid.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
 
                 isEditing = true;
-                videoElement.Pause();
-                isOnPlay = false;
-                base.MainGrid.Background = new SolidColorBrush(Colors.DarkRed);
+
+                if (isOnPlay)
+                {
+                    videoElement.Pause();
+                    ImageBrush imgBckg = new ImageBrush();
+                    imgBckg.ImageSource = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_play.gif", UriKind.Relative));
+                    btnPlayPause.Background = imgBckg;
+                    isOnPlay = false;
+                }
             }
 
         }
 
 
-        void OnPlayPausePreviewTouchUp(object sender, RoutedEventArgs e)
+        void OnPlayPauseClick(object sender, RoutedEventArgs e)
         {
             if (currentPath == "NONE")
+                return;
+
+            if (isEditing)
                 return;
 
             if (isOnPlay)
             {
                 videoElement.Pause();
-                base.MainGrid.Background = new SolidColorBrush(Colors.DarkRed);
+                ImageBrush imgBckg = new ImageBrush();
+                imgBckg.ImageSource = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_play.gif", UriKind.Relative));
+                btnPlayPause.Background = imgBckg;
                 isOnPlay = false;
             }
             else
             {
                 videoElement.Play();
-                base.MainGrid.Background = new SolidColorBrush(Colors.DarkGreen);
+                ImageBrush imgBckg = new ImageBrush();
+                imgBckg.ImageSource = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_pause.png", UriKind.Relative));
+                btnPlayPause.Background = imgBckg;
                 isOnPlay = true;
             }
+        }
+
+        void OnStopClick(object sender, RoutedEventArgs e)
+        {
+            if (currentPath == "NONE")
+                return;
+            
+            if (isOnPlay)
+            {
+                videoElement.Pause();
+                ImageBrush imgBckg = new ImageBrush();
+                imgBckg.ImageSource = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_play.gif", UriKind.Relative));
+                btnPlayPause.Background = imgBckg;
+                isOnPlay = false;
+            }
+            videoElement.Stop();
         }
 
         public void onCloseVideosList()

@@ -147,6 +147,37 @@ namespace AppliProjetTut
             Surface.RemoveNode(this, true);
         }
         /// <summary>
+        /// Lorsque le menu de Cadenas est activé
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCadenas_Click(object sender, RoutedEventArgs e)
+        {
+            CanMove = !CanMove;
+            CanRotate = CanMove;
+        }
+        /// <summary>
+        /// Lorsque le menu de Texte est activé
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnText_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// Lorsque le bouton de Séparation est sélectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSeparate_Click(object sender, RoutedEventArgs e)
+        {
+            parent = null;
+
+            // le fichier a été modifié
+            Surface.Modification(true);
+        }
+        /// <summary>
         /// Lorsque le Menu de séparation du parent est activé
         /// </summary>
         /// <param name="sender"></param>
@@ -220,5 +251,8 @@ namespace AppliProjetTut
             return thisType;
         }
 
+        
+
+      
     }
 }

@@ -93,6 +93,31 @@ namespace AppliProjetTut
             STextBox.Background = currentColor;
             STextBox.BorderBrush = new SolidColorBrush(Colors.Transparent);
 
+
+
+            // modification de la barre des taches
+            SurfaceButton btnColorChoice = new SurfaceButton();
+            btnColorChoice.Width = 75;
+            btnColorChoice.Height = 75;
+            btnColorChoice.Background = new SolidColorBrush(Colors.Gray);
+            btnColorChoice.Content = "Clr";
+            btnColorChoice.Foreground = new SolidColorBrush(Colors.White);
+            base.grdButtonH.Children.Add(btnColorChoice);
+            btnColorChoice.Margin = new Thickness(-37, 0, 37, 0);
+            btnColorChoice.Click += new RoutedEventHandler(OnColorSelection);
+
+            SurfaceButton btnEdition = new SurfaceButton();
+            btnEdition.Width = 75;
+            btnEdition.Height = 75;
+            ImageBrush imgBckg = new ImageBrush();
+            imgBckg.ImageSource = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_edit.png", UriKind.Relative));
+            btnEdition.Background = imgBckg;
+            base.grdButtonH.Children.Add(btnEdition);
+            btnEdition.Margin = new Thickness(37, 0, -37, 0);
+            btnEdition.Click += new RoutedEventHandler(OnEditSelection);
+
+            base.grdButtonH.Children.Remove(this.btnText);
+
         }
 
 

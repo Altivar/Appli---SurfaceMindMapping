@@ -73,6 +73,19 @@ namespace AppliProjetTut
             MenuItem1.Header = "Image choice";
             MenuItem1.Click += new RoutedEventHandler(OnImageChoiceSelection);
             base.MainMenu.Items.Add(MenuItem1);
+
+
+            // modification de la barre des taches
+            SurfaceButton btnImageChoice = new SurfaceButton();
+            btnImageChoice.Width = 75;
+            btnImageChoice.Height = 75;
+            ImageBrush imgBckg = new ImageBrush();
+            imgBckg.ImageSource = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_images.png", UriKind.Relative));
+            btnImageChoice.Background = imgBckg;
+            base.grdButtonH.Children.Add(btnImageChoice);
+            btnImageChoice.Margin = new Thickness(-75, 0, 75, 0);
+            btnImageChoice.Click += new RoutedEventHandler(OnImageChoiceSelection);
+
         }
 
 
@@ -209,12 +222,16 @@ namespace AppliProjetTut
         public void onCloseImagesList()
         {
             base.AddonGrid.Items.Remove(imageChoice);
-            base.MainGrid.Background = currentImage;
-            base.MainGrid.Width = (currentSize.X > 375) ? 375 : currentSize.X;
-            base.MainGrid.Height = (currentSize.Y > 275) ? 275 : currentSize.Y;
+
+            base.Width = 375;
+            base.Height = 275;
+            base.MainGrid.Width = 375;
+            base.MainGrid.Height = 275;
             base.TypeScatter.Width = (currentSize.X > 300) ? 300 : currentSize.X;
             base.TypeScatter.Height = (currentSize.Y > 200) ? 200 : currentSize.Y;
-
+            base.MainGrid.Background = new SolidColorBrush(Colors.Transparent);
+            base.TypeScatter.Background = currentImage;
+            
             CanScale = true;
             isEditing = false;
 
@@ -251,7 +268,7 @@ namespace AppliProjetTut
         /// </summary>
         public void onValidateChoice()
         {
-            currentImage = base.MainGrid.Background;
+            currentImage = base.TypeScatter.Background;
             currentSize = tempSize;
             mise_a_echelle();
 
@@ -260,6 +277,8 @@ namespace AppliProjetTut
 
             // le fichier a été modifié
             Surface.Modification(true);
+
+            onCloseImagesList();
         }
 
 

@@ -199,7 +199,6 @@ namespace AppliProjetTut
         private void Valider_Click(object sender, RoutedEventArgs e)
         {
             nodeParent.onValidateChoice();
-            nodeParent.onCloseImagesList();
         }
         /// <summary>
         /// Annule le choix de l'image

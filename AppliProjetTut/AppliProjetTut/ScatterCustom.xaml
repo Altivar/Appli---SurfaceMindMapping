@@ -5,16 +5,35 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:s="http://schemas.microsoft.com/surface/2008"
              mc:Ignorable="d" 
-             Loaded="OnNodeLoaded" CanScale="False">
+             Loaded="OnNodeLoaded" CanScale="False" Background="Transparent">
     <Grid Name="MainGrid" Width="375" Height="275">
 
 
         <Grid Name="TypeScatter" Width="300" Height="200" Margin="0,0,75,75"/>
         
-        <Grid Name="grdButtonH" Width="375" Height="75" Margin="0, 200, 0, 0" Background="AntiqueWhite">
+        <Grid Name="grdButtonH" Width="375" Height="75" Margin="0, 200, 0, 0" Background="Transparent">
+            <s:SurfaceButton Name="btnText" Width="75" Height="75" Margin="0,0,300,0" Click="btnText_Click" >
+                <Button.Background>
+                    <ImageBrush ImageSource ="Resources/icon_text.gif" />
+                </Button.Background>
+            </s:SurfaceButton>
         </Grid>
-        <Grid Name="grdButtonV" Width="75" Height="225" Margin="300, 0, 0, 50" Background="AntiqueWhite">
-            <s:SurfaceButton Name="btnRemove" Width="75" Height="75" Margin="0, 0, 0, 150" Background="Red" Content="X" Foreground="White" Click="btnRemove_Click"/>
+        <Grid Name="grdButtonV" Width="75" Height="225" Margin="300, 0, 0, 50" Background="Transparent">
+            <s:SurfaceButton Name="btnRemove" Width="75" Height="75" Margin="0, 0, 0, 150"  Click="btnRemove_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource ="Resources/icon_cross.gif" />
+                </Button.Background>
+            </s:SurfaceButton>
+            <s:SurfaceButton Name="btnCadenas" Width="75" Height="75" Margin="0, 75, 0, 75" Click="btnCadenas_Click" >
+                <Button.Background>
+                    <ImageBrush ImageSource ="Resources/icon_lock.gif" />
+                </Button.Background>
+            </s:SurfaceButton>
+            <s:SurfaceButton Name="btnSeparate" Width="75" Height="75" Margin="0, 150, 0, 0" Background="DarkGreen" Content="S" Foreground="White" Click="btnSeparate_Click" >
+                <!--<Button.Background>
+                    <ImageBrush ImageSource ="Resources/icon_lock.gif" />
+                </Button.Background>-->
+            </s:SurfaceButton>
         </Grid>
         
         <s:ElementMenu 

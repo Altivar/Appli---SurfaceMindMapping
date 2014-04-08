@@ -163,6 +163,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\icon_unlock.png" />
     <Resource Include="Resources\icon_chain.gif" />
     <Resource Include="Resources\icon_edit.png" />
     <Resource Include="Resources\icon_text.gif" />
@@ -175,6 +176,7 @@
     </Content>
     <Content Include="AppliProjetTut.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

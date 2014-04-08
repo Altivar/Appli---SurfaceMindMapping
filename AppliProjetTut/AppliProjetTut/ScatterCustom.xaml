@@ -28,7 +28,7 @@
             </s:SurfaceButton>
             <s:SurfaceButton Name="btnCadenas" Width="75" Height="75" Margin="0, 75, 0, 75" Click="btnCadenas_Click" >
                 <Button.Background>
-                    <ImageBrush ImageSource ="Resources/icon_lock.gif" />
+                    <ImageBrush ImageSource ="Resources/icon_unlock.png" />
                 </Button.Background>
             </s:SurfaceButton>
         </Grid>

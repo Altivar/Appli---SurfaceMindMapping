@@ -94,9 +94,9 @@ namespace AppliProjetTut
             btnColorChoice = new SurfaceButton();
             btnColorChoice.Width = 75;
             btnColorChoice.Height = 75;
-            btnColorChoice.Background = new SolidColorBrush(Colors.Gray);
-            btnColorChoice.Content = "Clr";
-            btnColorChoice.Foreground = new SolidColorBrush(Colors.White);
+            ImageBrush imgBckg3 = new ImageBrush();
+            imgBckg3.ImageSource = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_color.png", UriKind.Relative));
+            btnColorChoice.Background = imgBckg3;
             base.grdButtonH.Children.Add(btnColorChoice);
             btnColorChoice.Margin = new Thickness(-75, 0, 75, 0);
             btnColorChoice.Click += new RoutedEventHandler(OnColorSelection);

@@ -6,12 +6,12 @@ instructions.
 -->
 <ss:ApplicationInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ss="http://schemas.microsoft.com/Surface/2007/ApplicationMetadata">
   <Application>
-    <Title>AppliProjetTut</Title>
-    <Description>AppliProjetTut</Description>
+    <Title>Surface Mind Mapping</Title>
+    <Description>Mind Mapping application</Description>
     <ExecutableFile>AppliProjetTut.exe</ExecutableFile>
     <Arguments>
     </Arguments>
-    <IconImageFile>Resources\Icone.png</IconImageFile>
+    <IconImageFile>Resources\Icons\Icone.png</IconImageFile>
     <Tags>
       <!--
       If your application uses tagged objects, please uncomment this section to register the tags with the Shell. 

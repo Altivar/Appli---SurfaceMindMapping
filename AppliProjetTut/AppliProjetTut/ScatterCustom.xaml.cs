@@ -166,6 +166,20 @@ namespace AppliProjetTut
         {
             CanMove = !CanMove;
             CanRotate = CanMove;
+
+            if (CanMove)
+            {
+                ImageBrush img = new ImageBrush();
+                img.ImageSource = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_unlock.png", UriKind.Relative));
+                btnCadenas.Background = img;
+            }
+            else
+            {
+                ImageBrush img = new ImageBrush();
+                img.ImageSource = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_lock.gif", UriKind.Relative));
+                btnCadenas.Background = img;
+            }
+
         }
         /// <summary>
         /// Lorsque le menu de Texte est activé

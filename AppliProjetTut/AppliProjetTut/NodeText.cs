@@ -82,15 +82,6 @@ namespace AppliProjetTut
             SScrollViewer.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
             SScrollViewer.ScrollToEnd();
 
-            ElementMenuItem MenuItem1 = new ElementMenuItem();
-            MenuItem1.Header = "Color choice";
-            MenuItem1.Click += new RoutedEventHandler(OnColorSelection);
-            base.MainMenu.Items.Add(MenuItem1);
-
-            ElementMenuItem MenuItem2 = new ElementMenuItem();
-            MenuItem2.Header = "Edit";
-            MenuItem2.Click += new RoutedEventHandler(OnEditSelection);
-            base.MainMenu.Items.Add(MenuItem2);
 
             currentColor = new SolidColorBrush(Colors.Black);
             TypeScatter.Background = currentColor;
@@ -107,7 +98,7 @@ namespace AppliProjetTut
             btnColorChoice.Content = "Clr";
             btnColorChoice.Foreground = new SolidColorBrush(Colors.White);
             base.grdButtonH.Children.Add(btnColorChoice);
-            btnColorChoice.Margin = new Thickness(-37, 0, 37, 0);
+            btnColorChoice.Margin = new Thickness(-75, 0, 75, 0);
             btnColorChoice.Click += new RoutedEventHandler(OnColorSelection);
 
             btnEdition = new SurfaceButton();
@@ -117,7 +108,7 @@ namespace AppliProjetTut
             imgBckg.ImageSource = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_edit.png", UriKind.Relative));
             btnEdition.Background = imgBckg;
             base.grdButtonH.Children.Add(btnEdition);
-            btnEdition.Margin = new Thickness(37, 0, -37, 0);
+            btnEdition.Margin = new Thickness(0, 0, 0, 0);
             btnEdition.Click += new RoutedEventHandler(OnEditSelection);
 
             base.grdButtonH.Children.Remove(this.btnText);
@@ -363,9 +354,6 @@ namespace AppliProjetTut
             clavier.DisableSpecialCarac();
 
             base.AddonGrid.Margin = new Thickness(150, 100, 150, -100);
-
-            // on cache le menu
-            base.MainMenu.Visibility = System.Windows.Visibility.Hidden;
 
             // on active le clavier
             base.AddonGrid.Items.Add(clavier);

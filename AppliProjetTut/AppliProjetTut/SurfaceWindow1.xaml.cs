@@ -1301,31 +1301,28 @@ namespace AppliProjetTut
 
                     this.LineGrid.Children.Add(triangle);
                 }
-                else
-                {
 
-                    Ellipse ell = new Ellipse();
+                Ellipse ell = new Ellipse();
 
-                    ell.Width = 150;
-                    ell.Height = 150;
-                    ell.Fill = new SolidColorBrush(Colors.Green);
-                    ell.Stroke = new SolidColorBrush(Colors.DarkGreen);
-                    ell.StrokeThickness = 3;
+                ell.Width = 50;
+                ell.Height = 50;
+                BitmapImage img = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_chain.gif", UriKind.Relative));
+                ell.Fill = new ImageBrush(img);
+                ell.StrokeThickness = 3;
 
-                    this.LinkParentGrid.Children.Add(ell);
+                this.LinkParentGrid.Children.Add(ell);
                     
-                    Point ellPointUL = listNode.ElementAt(i).PointFromScreen(listNode.ElementAt(i).ActualCenter);
-                    ellPointUL.Y -= listNode.ElementAt(i).Height / 3;
-                    ellPointUL = listNode.ElementAt(i).PointToScreen(ellPointUL);
+                Point ellPoint = listNode.ElementAt(i).PointFromScreen(listNode.ElementAt(i).ActualCenter);
+                ellPoint.X -= listNode.ElementAt(i).Width / 2 - 25;
+                ellPoint.Y -= listNode.ElementAt(i).Height / 2 + 25;
+                ellPoint = listNode.ElementAt(i).PointToScreen(ellPoint);
 
-                    Canvas.SetLeft(ell, ellPointUL.X - ell.Width / 2);
-                    Canvas.SetTop(ell, ellPointUL.Y - ell.Height / 2);
-                    
-                    ell.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnGreenCirclePreviewTouchDown);
-                    KeyValuePair<Ellipse, ScatterCustom> myPair = new KeyValuePair<Ellipse,ScatterCustom>(ell, listNode.ElementAt(i));
-                    listRattache.Add(myPair);
+                Canvas.SetLeft(ell, ellPoint.X - 25);
+                Canvas.SetTop(ell, ellPoint.Y - 25);
+                ell.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnGreenCirclePreviewTouchDown);
+                KeyValuePair<Ellipse, ScatterCustom> myPair = new KeyValuePair<Ellipse,ScatterCustom>(ell, listNode.ElementAt(i));
+                listRattache.Add(myPair);
 
-                }
             }
 
 
@@ -1346,22 +1343,23 @@ namespace AppliProjetTut
             if (!e.TouchDevice.GetIsFingerRecognized())
                 return;
 
-            ScatterCustom text = null;
+            ScatterCustom node = null;
             for (int i = 0; i < listRattache.Count; i++)
             {
                 if (listRattache.ElementAt(i).Key == (Ellipse)sender)
                 {
-                    text = listRattache.ElementAt(i).Value;
+                    node = listRattache.ElementAt(i).Value;
+                    node.SetParent(null);
                 }
             }
 
-            if (text != null)
+            if (node != null)
             {
                 
                 bool isSet = false;
                 for (int i = 0; i < listLigneRattache.Count && !isSet; i++)
                 {
-                    if (listLigneRattache.ElementAt(i).Key == text)
+                    if (listLigneRattache.ElementAt(i).Key == node)
                     {
                         isSet = true;
                     }
@@ -1370,8 +1368,8 @@ namespace AppliProjetTut
                 if (!isSet)
                 {
                     Line ligne = new Line();
-                    ligne.X1 = text.GetOrigin().X;
-                    ligne.Y1 = text.GetOrigin().Y;
+                    ligne.X1 = node.GetOrigin().X;
+                    ligne.Y1 = node.GetOrigin().Y;
                     ligne.X2 = e.TouchDevice.GetPosition(this).X;
                     ligne.Y2 = e.TouchDevice.GetPosition(this).Y;
 
@@ -1379,7 +1377,7 @@ namespace AppliProjetTut
                     ligne.StrokeThickness = 6;
 
                     KeyValuePair<int, Line> myFirstPair = new KeyValuePair<int, Line>(e.TouchDevice.Id, ligne);
-                    KeyValuePair<ScatterCustom, KeyValuePair<int, Line>> myPair = new KeyValuePair<ScatterCustom, KeyValuePair<int, Line>>(text, myFirstPair);
+                    KeyValuePair<ScatterCustom, KeyValuePair<int, Line>> myPair = new KeyValuePair<ScatterCustom, KeyValuePair<int, Line>>(node, myFirstPair);
 
                     listLigneRattache.Add(myPair);
                 }

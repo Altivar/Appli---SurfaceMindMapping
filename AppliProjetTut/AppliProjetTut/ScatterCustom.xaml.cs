@@ -295,7 +295,8 @@ namespace AppliProjetTut
         public Point GetOrigin()
         {
             Point pt = this.PointFromScreen(this.ActualCenter);
-            pt.Y -= this.Height / 2;
+            pt.X -= this.Width / 2 - 25;
+            pt.Y -= this.Height / 2 + 25;
             return this.PointToScreen(pt);
         }
 

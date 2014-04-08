@@ -75,11 +75,7 @@ namespace AppliProjetTut
             base.CanScale = true;
             base.SizeChanged += new SizeChangedEventHandler(OnNodeImageSizeChanged);
 
-            ElementMenuItem MenuItem1 = new ElementMenuItem();
-            MenuItem1.Header = "Image choice";
-            MenuItem1.Click += new RoutedEventHandler(OnImageChoiceSelection);
-            base.MainMenu.Items.Add(MenuItem1);
-
+            
 
 
             // initialisation de la box d'annotaion
@@ -238,9 +234,6 @@ namespace AppliProjetTut
             if(currentSize.X > 300) this.TypeScatter.Width = base.Width - 75;
             if(currentSize.Y > 200) this.TypeScatter.Height = base.Height - 75;
 
-            base.MainMenu.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
-            base.MainMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
-
             this.grdButtonH.Margin = new Thickness(0, base.Height-75, base.Width - 375, 0);
             this.grdButtonV.Margin = new Thickness(base.Width-75, 0, 0, base.Height - 225);
 
@@ -273,9 +266,6 @@ namespace AppliProjetTut
             isEditing = false;
 
             tempSize = new Point(300, 200);
-
-            base.MainMenu.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
-            base.MainMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
         }
 
         /// <summary>
@@ -290,9 +280,6 @@ namespace AppliProjetTut
             tempSize = dimension;
             base.TypeScatter.Width = (tempSize.X > 300) ? 300 : tempSize.X;
             base.TypeScatter.Height = (tempSize.Y > 200) ? 200 : tempSize.Y;
-
-            base.MainMenu.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
-            base.MainMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
 
             base.AddonGrid.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
             base.AddonGrid.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
@@ -352,9 +339,7 @@ namespace AppliProjetTut
             }
 
             double borderHeight = (base.Height - base.MainGrid.Height) / 2;
-            base.MainMenu.Margin = new Thickness(base.MainGrid.Width / 2, base.MainGrid.Height + borderHeight, base.MainGrid.Width / 2, -(borderHeight + 50));
-            base.MainMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
-
+            
             previousSize = new Point(base.Width, base.Height);
 
 
@@ -380,12 +365,7 @@ namespace AppliProjetTut
             base.MainGrid.Height = (tempSize.Y > 200) ? 200 : tempSize.Y;
 
             double borderHeight = (base.Height - base.MainGrid.Height) / 2;
-            base.MainMenu.Margin = new Thickness(base.MainGrid.Width / 2, base.MainGrid.Height + borderHeight, base.MainGrid.Width / 2, -(borderHeight + 50));
-            base.MainMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
-
-            base.AddonGrid.Margin = new Thickness(base.MainGrid.Width / 2, base.MainGrid.Height + borderHeight, base.MainGrid.Width / 2, -(borderHeight + 50));
-            base.AddonGrid.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
-
+            
             currentPath = path;
 
             currentImage = base.MainGrid.Background;

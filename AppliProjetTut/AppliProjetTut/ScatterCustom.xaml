@@ -31,21 +31,16 @@
                     <ImageBrush ImageSource ="Resources/icon_lock.gif" />
                 </Button.Background>
             </s:SurfaceButton>
-            <s:SurfaceButton Name="btnSeparate" Width="75" Height="75" Margin="0, 150, 0, 0" Background="DarkGreen" Content="S" Foreground="White" Click="btnSeparate_Click" >
-                <!--<Button.Background>
-                    <ImageBrush ImageSource ="Resources/icon_lock.gif" />
-                </Button.Background>-->
-            </s:SurfaceButton>
         </Grid>
         
-        <s:ElementMenu 
+        <!--<s:ElementMenu 
         Name="MainMenu"
         ActivationMode="AlwaysActive"
         ActivationHost="{Binding ElementName=MenuGrid}" VerticalAlignment="Bottom" Margin="100,0,100,-50">
             <s:ElementMenuItem Header="Add NodeText" Click="OnAddNodeTextSelection" />
             <s:ElementMenuItem Header="Add NodeImage" Click="OnAddNodeImageSelection" />
             <s:ElementMenuItem Header="Separate from Parent" Click="OnSeparateSelection" />
-        </s:ElementMenu>
+        </s:ElementMenu>-->
 
 
         <s:ScatterView Margin="150, 250, 150, 0" Name="AddonGrid" />

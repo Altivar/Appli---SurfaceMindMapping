@@ -163,6 +163,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\icon_chain.gif" />
     <Resource Include="Resources\icon_edit.png" />
     <Resource Include="Resources\icon_text.gif" />
     <Resource Include="Resources\icon_lock.gif" />

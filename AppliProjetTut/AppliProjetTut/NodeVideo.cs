@@ -61,17 +61,6 @@ namespace AppliProjetTut
 
             base.SetTypeOfNode("Video");
 
-
-            ElementMenuItem MenuItem1 = new ElementMenuItem();
-            MenuItem1.Header = "Video choice";
-            MenuItem1.Click += new RoutedEventHandler(OnVideoChoiceSelection);
-            base.MainMenu.Items.Add(MenuItem1);
-
-            ElementMenuItem MenuItem2 = new ElementMenuItem();
-            MenuItem2.Header = "Play/Pause";
-            MenuItem2.Click += new RoutedEventHandler(OnPlayPauseClick);
-            base.MainMenu.Items.Add(MenuItem2);
-
             listeVideo = new ListeVideo(this);
             CanScale = false;
             isEditing = false;

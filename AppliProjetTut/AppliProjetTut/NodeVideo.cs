@@ -254,7 +254,6 @@ namespace AppliProjetTut
 
         public void onCloseVideosList()
         {
-            base.MainGrid.Background = new SolidColorBrush(Colors.DarkRed);
             base.AddonGrid.Items.Remove(listeVideo);
             isEditing = false;
         }

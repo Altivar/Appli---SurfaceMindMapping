@@ -1301,27 +1301,29 @@ namespace AppliProjetTut
 
                     this.LineGrid.Children.Add(triangle);
                 }
+                if (listNode.ElementAt(i).isActive())
+                {
+                    Ellipse ell = new Ellipse();
 
-                Ellipse ell = new Ellipse();
+                    ell.Width = 50;
+                    ell.Height = 50;
+                    BitmapImage img = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_chain.gif", UriKind.Relative));
+                    ell.Fill = new ImageBrush(img);
+                    ell.StrokeThickness = 3;
 
-                ell.Width = 50;
-                ell.Height = 50;
-                BitmapImage img = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_chain.gif", UriKind.Relative));
-                ell.Fill = new ImageBrush(img);
-                ell.StrokeThickness = 3;
+                    this.LinkParentGrid.Children.Add(ell);
 
-                this.LinkParentGrid.Children.Add(ell);
-                    
-                Point ellPoint = listNode.ElementAt(i).PointFromScreen(listNode.ElementAt(i).ActualCenter);
-                ellPoint.X -= listNode.ElementAt(i).Width / 2 - 25;
-                ellPoint.Y -= listNode.ElementAt(i).Height / 2 + 25;
-                ellPoint = listNode.ElementAt(i).PointToScreen(ellPoint);
+                    Point ellPoint = listNode.ElementAt(i).PointFromScreen(listNode.ElementAt(i).ActualCenter);
+                    ellPoint.X -= listNode.ElementAt(i).Width / 2 - 25;
+                    ellPoint.Y -= listNode.ElementAt(i).Height / 2 + 25;
+                    ellPoint = listNode.ElementAt(i).PointToScreen(ellPoint);
 
-                Canvas.SetLeft(ell, ellPoint.X - 25);
-                Canvas.SetTop(ell, ellPoint.Y - 25);
-                ell.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnGreenCirclePreviewTouchDown);
-                KeyValuePair<Ellipse, ScatterCustom> myPair = new KeyValuePair<Ellipse,ScatterCustom>(ell, listNode.ElementAt(i));
-                listRattache.Add(myPair);
+                    Canvas.SetLeft(ell, ellPoint.X - 25);
+                    Canvas.SetTop(ell, ellPoint.Y - 25);
+                    ell.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnGreenCirclePreviewTouchDown);
+                    KeyValuePair<Ellipse, ScatterCustom> myPair = new KeyValuePair<Ellipse, ScatterCustom>(ell, listNode.ElementAt(i));
+                    listRattache.Add(myPair);
+                }
 
             }
 

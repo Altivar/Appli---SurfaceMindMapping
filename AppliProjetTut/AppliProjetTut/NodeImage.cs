@@ -103,6 +103,8 @@ namespace AppliProjetTut
             textAnnotation.btnColorChoice.Margin = new Thickness(-75, 0, 75, 0);
             textAnnotation.btnEdition.Margin = new Thickness(0, 0, 0, 0);
 
+            textAnnotation.ActivityTimer.Stop();
+
             base.TextGrid.Children.Add(textAnnotation);
             textAnnotation.Margin = new Thickness(0, 0, 0, 0);
 
@@ -165,79 +167,83 @@ namespace AppliProjetTut
         /// <param name="e"></param>
         void OnNodeImageSizeChanged(object sender, SizeChangedEventArgs e)
         {
-
-            double ecartX = currentSize.X - 300;
-            double ecartY = currentSize.Y - 200;
-            double ecartXparY = ecartX / ecartY;
-
-            if (currentSize.X <= 300 && currentSize.Y <= 200)
+            if (isActive())
             {
-                base.Width = previousSize.X;
-                base.Height = previousSize.Y;
-                this.TypeScatter.Width = currentSize.X;
-                this.TypeScatter.Height = currentSize.Y;
-            }
-            else if (currentSize.X > 300 && currentSize.Y > 200)
-            {
-                if (ecartX > ecartY)
+                
+                double ecartX = currentSize.X - 300;
+                double ecartY = currentSize.Y - 200;
+                double ecartXparY = ecartX / ecartY;
+
+                if (currentSize.X <= 300 && currentSize.Y <= 200)
                 {
-                    double newHeight = (base.Width - 300) / ecartX * ecartY;
-                    base.Height = newHeight + 200;
+                    base.Width = previousSize.X;
+                    base.Height = previousSize.Y;
+                    this.TypeScatter.Width = currentSize.X;
+                    this.TypeScatter.Height = currentSize.Y;
                 }
-                else if (ecartY > ecartX)
+                else if (currentSize.X > 300 && currentSize.Y > 200)
                 {
-                    double newWidth = (base.Height - 200) / ecartY * ecartX;
-                    base.Width = newWidth + 300;
+                    if (ecartX > ecartY)
+                    {
+                        double newHeight = (base.Width - 300) / ecartX * ecartY;
+                        base.Height = newHeight + 200;
+                    }
+                    else if (ecartY > ecartX)
+                    {
+                        double newWidth = (base.Height - 200) / ecartY * ecartX;
+                        base.Width = newWidth + 300;
+                    }
+                    else // si ecartX == ecartY
+                    {
+
+                    }
                 }
-                else // si ecartX == ecartY
+                else if (currentSize.X <= 300 && currentSize.Y > 200)
                 {
-
+                    base.Width = previousSize.X;
                 }
-            }
-            else if (currentSize.X <= 300 && currentSize.Y > 200)
-            {
-                base.Width = previousSize.X;
-            }
-            else if (currentSize.X > 300 && currentSize.Y <= 200)
-            {
-                base.Height = previousSize.Y;
-            }
-            else
-            {
-                // pas normal !!! 
-            }
+                else if (currentSize.X > 300 && currentSize.Y <= 200)
+                {
+                    base.Height = previousSize.Y;
+                }
+                else
+                {
+                    // pas normal !!! 
+                }
 
 
 
-            // si la dimensiondu Node est trop grande
-            if (base.Width > currentSize.X+75)
-            {
-                base.Width = currentSize.X+75;
-            }
-            if (base.Height > currentSize.Y+75)
-            {
-                base.Height = currentSize.Y+75;
-            }
+                // si la dimensiondu Node est trop grande
+                if (base.Width > currentSize.X + 75)
+                {
+                    base.Width = currentSize.X + 75;
+                }
+                if (base.Height > currentSize.Y + 75)
+                {
+                    base.Height = currentSize.Y + 75;
+                }
 
-            // si la dimension du Node est trop petite
-            if (base.Width <= 375)
-            {
-                base.Width = 375;
+                // si la dimension du Node est trop petite
+                if (base.Width <= 375)
+                {
+                    base.Width = 375;
+                }
+                if (base.Height <= 275)
+                {
+                    base.Height = 275;
+                }
+
+                this.MainGrid.Width = base.Width;
+                this.MainGrid.Height = base.Height;
+                if (currentSize.X > 300) this.TypeScatter.Width = base.Width - 75;
+                if (currentSize.Y > 200) this.TypeScatter.Height = base.Height - 75;
+
+                this.grdButtonH.Margin = new Thickness(0, base.Height - 75, base.Width - 375, 0);
+                this.grdButtonV.Margin = new Thickness(base.Width - 75, 0, 0, base.Height - 225);
+
+                previousSize = new Point(base.Width, base.Height);
+            
             }
-            if (base.Height <= 275)
-            {
-                base.Height = 275;
-            }
-
-            this.MainGrid.Width = base.Width;
-            this.MainGrid.Height = base.Height;
-            if(currentSize.X > 300) this.TypeScatter.Width = base.Width - 75;
-            if(currentSize.Y > 200) this.TypeScatter.Height = base.Height - 75;
-
-            this.grdButtonH.Margin = new Thickness(0, base.Height-75, base.Width - 375, 0);
-            this.grdButtonV.Margin = new Thickness(base.Width-75, 0, 0, base.Height - 225);
-
-            previousSize = new Point(base.Width, base.Height);
 
         }
 

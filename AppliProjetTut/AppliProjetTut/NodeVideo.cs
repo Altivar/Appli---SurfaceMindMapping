@@ -77,8 +77,6 @@ namespace AppliProjetTut
             base.Height = 275;
             base.MaxHeight = 275;
             base.MaxWidth = 375;
-            base.MinHeight = 275;
-            base.MinWidth = 375;
 
 
             // initialisation de la box d'annotaion
@@ -105,7 +103,9 @@ namespace AppliProjetTut
             textAnnotation.grdButtonH.Margin = new Thickness(0, 100, 0, 0);
             textAnnotation.btnColorChoice.Margin = new Thickness(-75, 0, 75, 0);
             textAnnotation.btnEdition.Margin = new Thickness(0, 0, 0, 0);
-            
+
+            textAnnotation.ActivityTimer.Stop();
+
             base.TextGrid.Children.Add(textAnnotation);
             textAnnotation.Margin = new Thickness(0, 0, 0, 0);
 
@@ -182,20 +182,25 @@ namespace AppliProjetTut
 
         void OnNodeVideoSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            
-            if (base.Width < 375 || base.Height < 275)
+            if (isActive())
             {
-                base.Width = 375;
-                base.Height = 275;
+
+                if (base.Width < 375 || base.Height < 275)
+                {
+                    base.Width = 375;
+                    base.Height = 275;
+                }
+
+                base.MainGrid.Width = base.Width;
+                base.MainGrid.Height = base.Height;
+                base.TypeScatter.Height = base.Height - 75;
+                base.TypeScatter.Width = base.Width - 75;
+
+                this.grdButtonH.Margin = new Thickness(0, base.TypeScatter.Height, base.Width - this.grdButtonH.Width, 0);
+                this.grdButtonV.Margin = new Thickness(base.TypeScatter.Width, 0, 0, base.Height - this.grdButtonV.Height);
+
             }
 
-            base.MainGrid.Width = base.Width;
-            base.MainGrid.Height = base.Height;
-            base.TypeScatter.Height = base.Height - 75;
-            base.TypeScatter.Width = base.Width - 75;
-
-            this.grdButtonH.Margin = new Thickness(0, base.TypeScatter.Height, base.Width - this.grdButtonH.Width, 0);
-            this.grdButtonV.Margin = new Thickness(base.TypeScatter.Width, 0, 0, base.Height - this.grdButtonV.Height);
         }
 
 

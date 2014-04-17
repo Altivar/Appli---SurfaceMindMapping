@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Surface.Presentation.Controls;
 
+using System.Windows.Forms;
+
 namespace AppliProjetTut
 {
     /// <summary>
@@ -34,7 +36,11 @@ namespace AppliProjetTut
         bool isTextAnnotationOpened;
         bool isAnimated;
 
-        
+        // Gestion de l'inactivité du Node
+        public Timer ActivityTimer;
+        bool m_bIsActive;
+        int nbSec;
+        int ActivityDuration = 5;
 
         /// <summary>
         /// Default Constructor
@@ -53,6 +59,20 @@ namespace AppliProjetTut
             CanScale = false;
             isTextAnnotationOpened = false;
             isAnimated = false;
+
+            // création du timer
+            ActivityTimer = new Timer();
+            nbSec = ActivityDuration;
+            ActivityTimer.Interval = 1000;
+            ActivityTimer.Tick += new EventHandler(InactiveEvent);
+            ActivityTimer.Start();
+            // initialisation du booleen d'activation
+            m_bIsActive = true;
+            // gestion des events d'activation
+            PreviewTouchDown += new EventHandler<TouchEventArgs>(ScatterCustom_PreviewTouchDown);
+            PreviewTouchUp += new EventHandler<TouchEventArgs>(ScatterCustom_PreviewTouchUp);
+            PreviewTouchMove += new EventHandler<TouchEventArgs>(ScatterCustom_PreviewTouchMove);
+
         }
 
 
@@ -63,6 +83,100 @@ namespace AppliProjetTut
         }
 
 
+
+        /// <summary>
+        /// Timer : gère l'inactivité du Node
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void InactiveEvent(object sender, EventArgs e)
+        {
+            if(nbSec > 0)
+                nbSec--;
+
+            if (nbSec == 0)
+            {
+                m_bIsActive = false;
+                
+                this.TypeScatter.Width = 100;
+                this.TypeScatter.Height = 100;
+                this.TypeScatter.Margin = new Thickness(0, 0, 0, 0);
+
+                this.MainGrid.Width = 100;
+                this.MainGrid.Height = 100;
+
+                this.Width = 100;
+                this.Height = 100;
+
+            }
+        }
+        /// <summary>
+        /// Réactive le Node
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void ScatterCustom_PreviewTouchMove(object sender, TouchEventArgs e)
+        {
+            if (!m_bIsActive)
+            {
+                ReactivationNode();
+            }
+            m_bIsActive = true;
+            nbSec = ActivityDuration;
+        }
+        /// <summary>
+        /// Réactive le Node
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void ScatterCustom_PreviewTouchUp(object sender, TouchEventArgs e)
+        {
+            if (!m_bIsActive)
+            {
+                ReactivationNode();
+            }
+            m_bIsActive = true;
+            nbSec = ActivityDuration;
+        }
+        /// <summary>
+        /// Réactive le Node
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void ScatterCustom_PreviewTouchDown(object sender, TouchEventArgs e)
+        {
+            if (!m_bIsActive)
+            {
+                ReactivationNode();
+            }
+            m_bIsActive = true;
+            nbSec = ActivityDuration;
+        }
+        /// <summary>
+        /// Anime le Node lors de la réactivation
+        /// </summary>
+        void ReactivationNode()
+        { 
+            // animation
+            this.Width = 375;
+            this.Height = 275;
+
+            this.MainGrid.Width = 375;
+            this.MainGrid.Height = 275;
+            
+            this.TypeScatter.Width = 300;
+            this.TypeScatter.Height = 200;
+            this.TypeScatter.Margin = new Thickness(0, 0, 75, 75);
+            
+        }
+        /// <summary>
+        /// Renvoie l'état actuel du Node
+        /// </summary>
+        /// <returns></returns>
+        public bool isActive()
+        {
+            return m_bIsActive;
+        }
 
 
 
@@ -172,12 +286,17 @@ namespace AppliProjetTut
                 ImageBrush img = new ImageBrush();
                 img.ImageSource = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_unlock.png", UriKind.Relative));
                 btnCadenas.Background = img;
+                // on reactive le timer d'inactivité
+                ActivityTimer.Start();
+                nbSec = ActivityDuration;
             }
             else
             {
                 ImageBrush img = new ImageBrush();
                 img.ImageSource = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_lock.gif", UriKind.Relative));
                 btnCadenas.Background = img;
+                // on désactive le timer
+                ActivityTimer.Stop();
             }
 
         }

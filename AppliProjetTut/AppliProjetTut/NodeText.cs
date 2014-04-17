@@ -35,8 +35,9 @@ namespace AppliProjetTut
         public SurfaceTextBox STextBox;
         // Nombre maximal de caractères
         int MaxLength = -1;
+        // Nombre maximal de lignes
+        public int MaxNbLines = 8;
         // Si le cadenas est activé
-        bool isLocked = false;
 
         public SurfaceScrollViewer SScrollViewer;
 
@@ -253,7 +254,7 @@ namespace AppliProjetTut
 
             }
 
-            if (STextBox.LineCount > 8 && isLocked)
+            if (STextBox.LineCount > MaxNbLines && isLocked())
             {
                 STextBox.Width = 250;
                 SScrollViewer.ScrollToBottom();
@@ -288,6 +289,41 @@ namespace AppliProjetTut
             this.AddonGrid.Items.Remove(palette);
             isEditing = false;
         }
+
+
+
+
+
+        //
+        public void isLockChanged(bool locked)
+        { 
+            
+            // true : unlocked
+            // false : locked
+
+            if (locked)
+            {
+                base.TypeScatter.Children.Remove(STextBox);
+                SScrollViewer.Content = STextBox;
+                base.TypeScatter.Children.Add(SScrollViewer);
+                SScrollViewer.ScrollToEnd();
+                if(STextBox.LineCount > MaxNbLines)
+                    STextBox.Width = 250;
+            }
+            else
+            {
+                base.TypeScatter.Children.Remove(SScrollViewer);
+                SScrollViewer.Content = null;
+                base.TypeScatter.Children.Add(STextBox);
+                STextBox.Width = 300;
+            }
+
+
+        }
+
+
+
+
 
 
 

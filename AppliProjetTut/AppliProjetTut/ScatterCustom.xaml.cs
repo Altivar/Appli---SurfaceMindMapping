@@ -446,6 +446,14 @@ namespace AppliProjetTut
                 // on reactive le timer d'inactivité
                 ActivityTimer.Start();
                 nbSec = ActivityDuration;
+                if (thisType == "Text")
+                {
+                    NodeText txt = (NodeText)this;
+                    if (txt != null)
+                    {
+                        txt.isLockChanged(false);
+                    }
+                }
             }
             else
             {
@@ -454,6 +462,14 @@ namespace AppliProjetTut
                 btnCadenas.Background = img;
                 // on désactive le timer
                 ActivityTimer.Stop();
+                if (thisType == "Text")
+                {
+                    NodeText txt = (NodeText)this;
+                    if (txt != null)
+                    {
+                        txt.isLockChanged(true);
+                    }
+                }
             }
 
         }
@@ -609,6 +625,14 @@ namespace AppliProjetTut
         public string GetTypeOfNode()
         {
             return thisType;
+        }
+        /// <summary>
+        /// Renvoie l'etat du Node
+        /// </summary>
+        /// <returns></returns>
+        public bool isLocked()
+        {
+            return !this.CanMove;
         }
 
         

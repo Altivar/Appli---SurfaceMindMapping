@@ -41,6 +41,8 @@ namespace AppliProjetTut
         bool m_bIsActive;
         int nbSec;
         int ActivityDuration = 5;
+        Storyboard AnimStoryboard;
+
 
         /// <summary>
         /// Default Constructor
@@ -94,21 +96,97 @@ namespace AppliProjetTut
             if(nbSec > 0)
                 nbSec--;
 
-            if (nbSec == 0)
+            if (nbSec == 0 && m_bIsActive)
             {
                 m_bIsActive = false;
-                
-                this.TypeScatter.Width = 100;
-                this.TypeScatter.Height = 100;
-                this.TypeScatter.Margin = new Thickness(0, 0, 0, 0);
+                double durationAnimation = 0.25;
+                DoubleAnimation widthTSAnimation = new DoubleAnimation
+                {
+                    From = this.TypeScatter.Width,
+                    To = 100,
+                    Duration = TimeSpan.FromSeconds(durationAnimation)
+                };
+                DoubleAnimation heightTSAnimation = new DoubleAnimation
+                {
+                    From = this.TypeScatter.Height,
+                    To = 100,
+                    Duration = TimeSpan.FromSeconds(durationAnimation)
+                };
+                ThicknessAnimation marginTSAnimation = new ThicknessAnimation
+                {
+                    From = this.TypeScatter.Margin,
+                    To = new Thickness(0,0,0,0),
+                    Duration = TimeSpan.FromSeconds(durationAnimation)
+                };
+                DoubleAnimation widthMGAnimation = new DoubleAnimation
+                {
+                    From = this.MainGrid.Width,
+                    To = 100,
+                    Duration = TimeSpan.FromSeconds(durationAnimation)
+                };
+                DoubleAnimation heightMGAnimation = new DoubleAnimation
+                {
+                    From = this.MainGrid.Height,
+                    To = 100,
+                    Duration = TimeSpan.FromSeconds(durationAnimation)
+                };
+                DoubleAnimation widthBAAnimation = new DoubleAnimation
+                {
+                    From = this.ActualWidth,
+                    To = 100,
+                    Duration = TimeSpan.FromSeconds(durationAnimation)
+                };
+                DoubleAnimation heightBAAnimation = new DoubleAnimation
+                {
+                    From = this.ActualHeight,
+                    To = 100,
+                    Duration = TimeSpan.FromSeconds(durationAnimation)
+                };
 
-                this.MainGrid.Width = 100;
-                this.MainGrid.Height = 100;
+                Storyboard.SetTargetProperty(widthTSAnimation, new PropertyPath(Grid.WidthProperty));
+                Storyboard.SetTarget(widthTSAnimation, this.TypeScatter);
+                Storyboard.SetTargetProperty(heightTSAnimation, new PropertyPath(Grid.HeightProperty));
+                Storyboard.SetTarget(heightTSAnimation, this.TypeScatter);
+                Storyboard.SetTargetProperty(marginTSAnimation, new PropertyPath(Grid.MarginProperty));
+                Storyboard.SetTarget(marginTSAnimation, this.TypeScatter);
 
-                this.Width = 100;
-                this.Height = 100;
+                Storyboard.SetTargetProperty(widthMGAnimation, new PropertyPath(Grid.WidthProperty));
+                Storyboard.SetTarget(widthMGAnimation, this.MainGrid);
+                Storyboard.SetTargetProperty(heightMGAnimation, new PropertyPath(Grid.HeightProperty));
+                Storyboard.SetTarget(heightMGAnimation, this.MainGrid);
+
+                Storyboard.SetTargetProperty(widthBAAnimation, new PropertyPath(ScatterViewItem.WidthProperty));
+                Storyboard.SetTarget(widthBAAnimation, this);
+                Storyboard.SetTargetProperty(heightBAAnimation, new PropertyPath(ScatterViewItem.HeightProperty));
+                Storyboard.SetTarget(heightBAAnimation, this);
+
+                AnimStoryboard = new Storyboard();
+                AnimStoryboard.Children.Add(widthTSAnimation);
+                AnimStoryboard.Children.Add(heightTSAnimation);
+                AnimStoryboard.Children.Add(marginTSAnimation);
+
+                AnimStoryboard.Children.Add(widthMGAnimation);
+                AnimStoryboard.Children.Add(heightMGAnimation);
+
+                AnimStoryboard.Children.Add(widthBAAnimation);
+                AnimStoryboard.Children.Add(heightBAAnimation);
+
+                AnimStoryboard.Completed += new EventHandler(AnimStoryboardCloseCompleted);
+                AnimStoryboard.Begin();
+
 
             }
+        }
+        void AnimStoryboardCloseCompleted(object sender, EventArgs e)
+        {
+            AnimStoryboard.Stop();
+            this.TypeScatter.Width = 100;
+            this.TypeScatter.Height = 100;
+            this.TypeScatter.Margin = new Thickness(0, 0, 0, 0);
+            this.MainGrid.Width = 100;
+            this.MainGrid.Height = 100;
+            this.Width = 100;
+            this.Height = 100;
         }
         /// <summary>
         /// Réactive le Node
@@ -158,16 +236,95 @@ namespace AppliProjetTut
         void ReactivationNode()
         { 
             // animation
-            this.Width = 375;
-            this.Height = 275;
+            double durationAnimation = 0.25;
+            DoubleAnimation widthTSAnimation = new DoubleAnimation
+            {
+                From = this.TypeScatter.Width,
+                To = 300,
+                Duration = TimeSpan.FromSeconds(durationAnimation)
+            };
+            DoubleAnimation heightTSAnimation = new DoubleAnimation
+            {
+                From = this.TypeScatter.Height,
+                To = 200,
+                Duration = TimeSpan.FromSeconds(durationAnimation)
+            };
+            ThicknessAnimation marginTSAnimation = new ThicknessAnimation
+            {
+                From = this.TypeScatter.Margin,
+                To = new Thickness(0, 0, 75, 75),
+                Duration = TimeSpan.FromSeconds(durationAnimation)
+            };
+            DoubleAnimation widthMGAnimation = new DoubleAnimation
+            {
+                From = this.MainGrid.Width,
+                To = 375,
+                Duration = TimeSpan.FromSeconds(durationAnimation)
+            };
+            DoubleAnimation heightMGAnimation = new DoubleAnimation
+            {
+                From = this.MainGrid.Height,
+                To = 275,
+                Duration = TimeSpan.FromSeconds(durationAnimation)
+            };
+            DoubleAnimation widthBAAnimation = new DoubleAnimation
+            {
+                From = this.ActualWidth,
+                To = 375,
+                Duration = TimeSpan.FromSeconds(durationAnimation)
+            };
+            DoubleAnimation heightBAAnimation = new DoubleAnimation
+            {
+                From = this.ActualHeight,
+                To = 275,
+                Duration = TimeSpan.FromSeconds(durationAnimation)
+            };
 
-            this.MainGrid.Width = 375;
-            this.MainGrid.Height = 275;
+            Storyboard.SetTargetProperty(widthTSAnimation, new PropertyPath(Grid.WidthProperty));
+            Storyboard.SetTarget(widthTSAnimation, this.TypeScatter);
+            Storyboard.SetTargetProperty(heightTSAnimation, new PropertyPath(Grid.HeightProperty));
+            Storyboard.SetTarget(heightTSAnimation, this.TypeScatter);
+            Storyboard.SetTargetProperty(marginTSAnimation, new PropertyPath(Grid.MarginProperty));
+            Storyboard.SetTarget(marginTSAnimation, this.TypeScatter);
+
+            Storyboard.SetTargetProperty(widthMGAnimation, new PropertyPath(Grid.WidthProperty));
+            Storyboard.SetTarget(widthMGAnimation, this.MainGrid);
+            Storyboard.SetTargetProperty(heightMGAnimation, new PropertyPath(Grid.HeightProperty));
+            Storyboard.SetTarget(heightMGAnimation, this.MainGrid);
+
+            Storyboard.SetTargetProperty(widthBAAnimation, new PropertyPath(ScatterViewItem.WidthProperty));
+            Storyboard.SetTarget(widthBAAnimation, this);
+            Storyboard.SetTargetProperty(heightBAAnimation, new PropertyPath(ScatterViewItem.HeightProperty));
+            Storyboard.SetTarget(heightBAAnimation, this);
+
+            AnimStoryboard = new Storyboard();
+            AnimStoryboard.Children.Add(widthTSAnimation);
+            AnimStoryboard.Children.Add(heightTSAnimation);
+            AnimStoryboard.Children.Add(marginTSAnimation);
+
+            AnimStoryboard.Children.Add(widthMGAnimation);
+            AnimStoryboard.Children.Add(heightMGAnimation);
+
+            AnimStoryboard.Children.Add(widthBAAnimation);
+            AnimStoryboard.Children.Add(heightBAAnimation);
+
+            AnimStoryboard.Completed += new EventHandler(AnimStoryboardOpenCompleted);
+            AnimStoryboard.Begin();
+
+
+
             
+        }
+        void AnimStoryboardOpenCompleted(object sender, EventArgs e)
+        {
+            AnimStoryboard.Stop();
             this.TypeScatter.Width = 300;
             this.TypeScatter.Height = 200;
             this.TypeScatter.Margin = new Thickness(0, 0, 75, 75);
-            
+            this.MainGrid.Width = 375;
+            this.MainGrid.Height = 275;
+            this.Width = 375;
+            this.Height = 275;
         }
         /// <summary>
         /// Renvoie l'état actuel du Node
@@ -344,7 +501,11 @@ namespace AppliProjetTut
             isTextAnnotationOpened = !isTextAnnotationOpened;
 
         }
-
+        /// <summary>
+        /// Lorsque l'animation est terminée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void sb_Completed(object sender, EventArgs e)
         {
 

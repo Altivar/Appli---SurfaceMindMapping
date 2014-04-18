@@ -93,8 +93,8 @@ namespace AppliProjetTut
 
             // ajout de Nodes
             AddNode(null, initP, "Text");
-            AddNode(null, initP, "Image");
-            AddNode(null, initP, "Video");
+            //AddNode(null, initP, "Image");
+            //AddNode(null, initP, "Video");
             Modification(false);
 
             PreviewTouchMove += new EventHandler<TouchEventArgs>(OnPreviewTouchMove);
@@ -545,7 +545,6 @@ namespace AppliProjetTut
             SaveFileNameEntrance.TransformToFileSaver();
             SaveFileNameEntrance.SetParent(SaveFileNameEntrance);
             SaveFileNameEntrance.GetClavier().Enter.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnValidateFileName);
-            SaveFileNameEntrance.GetClavier().Entrer.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnValidateFileName);
             SaveFileNameEntrance.GetClavier().close.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnClosePreviewTouchDown);
 
             menuPrincipal.FormGrid.Children.Clear();
@@ -568,7 +567,6 @@ namespace AppliProjetTut
                 SaveFileNameEntrance.TransformToFileSaver();
                 SaveFileNameEntrance.SetParent(SaveFileNameEntrance);
                 SaveFileNameEntrance.GetClavier().Enter.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnValidateFileName);
-                SaveFileNameEntrance.GetClavier().Entrer.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnValidateFileName);
                 SaveFileNameEntrance.GetClavier().close.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnClosePreviewTouchDown);
 
                 menuPrincipal.FormGrid.Children.Clear();

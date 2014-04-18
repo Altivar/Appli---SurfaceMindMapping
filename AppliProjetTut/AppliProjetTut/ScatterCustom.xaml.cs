@@ -40,7 +40,7 @@ namespace AppliProjetTut
         public Timer ActivityTimer;
         bool m_bIsActive;
         int nbSec;
-        int ActivityDuration = 5;
+        int ActivityDuration = 15;
         Storyboard AnimStoryboard;
 
 

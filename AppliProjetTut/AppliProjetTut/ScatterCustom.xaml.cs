@@ -127,6 +127,7 @@ namespace AppliProjetTut
 
                 m_bIsActive = false;
                 double durationAnimation = 0.25;
+                // typescatter
                 DoubleAnimation widthTSAnimation = new DoubleAnimation
                 {
                     From = this.TypeScatter.Width,
@@ -145,6 +146,9 @@ namespace AppliProjetTut
                     To = new Thickness(0,0,0,0),
                     Duration = TimeSpan.FromSeconds(durationAnimation)
                 };
+
+
+                // maingrid
                 DoubleAnimation widthMGAnimation = new DoubleAnimation
                 {
                     From = this.MainGrid.Width,
@@ -157,6 +161,18 @@ namespace AppliProjetTut
                     To = 100,
                     Duration = TimeSpan.FromSeconds(durationAnimation)
                 };
+
+
+                // background color grid
+                ThicknessAnimation marginBGAnimation = new ThicknessAnimation
+                {
+                    From = this.grdBGColor.Margin,
+                    To = new Thickness(0, 0, 0, 0),
+                    Duration = TimeSpan.FromSeconds(durationAnimation)
+                };
+
+
+                // base
                 DoubleAnimation widthBAAnimation = new DoubleAnimation
                 {
                     From = this.ActualWidth,
@@ -170,6 +186,7 @@ namespace AppliProjetTut
                     Duration = TimeSpan.FromSeconds(durationAnimation)
                 };
 
+
                 Storyboard.SetTargetProperty(widthTSAnimation, new PropertyPath(Grid.WidthProperty));
                 Storyboard.SetTarget(widthTSAnimation, this.TypeScatter);
                 Storyboard.SetTargetProperty(heightTSAnimation, new PropertyPath(Grid.HeightProperty));
@@ -181,6 +198,9 @@ namespace AppliProjetTut
                 Storyboard.SetTarget(widthMGAnimation, this.MainGrid);
                 Storyboard.SetTargetProperty(heightMGAnimation, new PropertyPath(Grid.HeightProperty));
                 Storyboard.SetTarget(heightMGAnimation, this.MainGrid);
+
+                Storyboard.SetTargetProperty(marginBGAnimation, new PropertyPath(Grid.MarginProperty));
+                Storyboard.SetTarget(marginBGAnimation, this.grdBGColor);
 
                 Storyboard.SetTargetProperty(widthBAAnimation, new PropertyPath(ScatterViewItem.WidthProperty));
                 Storyboard.SetTarget(widthBAAnimation, this);
@@ -195,8 +215,13 @@ namespace AppliProjetTut
                 AnimStoryboard.Children.Add(widthMGAnimation);
                 AnimStoryboard.Children.Add(heightMGAnimation);
 
+                AnimStoryboard.Children.Add(marginBGAnimation);
+
                 AnimStoryboard.Children.Add(widthBAAnimation);
                 AnimStoryboard.Children.Add(heightBAAnimation);
+
+
+                
 
                 AnimStoryboard.Completed += new EventHandler(AnimStoryboardCloseCompleted);
                 AnimStoryboard.Begin();
@@ -206,12 +231,34 @@ namespace AppliProjetTut
         }
         void AnimStoryboardCloseCompleted(object sender, EventArgs e)
         {
+            double Xpos = this.ActualCenter.X;
+            double Ypos = this.ActualCenter.Y;
+            if (this.ActualCenter.X < 25)
+            {
+                Xpos = 25;
+            }
+            else if (this.ActualCenter.X > this.Surface.ActualWidth - 25)
+            {
+                Xpos = this.Surface.ActualWidth - 25;
+            }
+
+            if (this.ActualCenter.Y < 25)
+            {
+                Ypos = 25;
+            }
+            else if (this.ActualCenter.Y > this.Surface.ActualHeight - 25)
+            {
+                Ypos = this.Surface.ActualHeight - 25;
+            }
+            this.Center = new Point(Xpos, Ypos);
+
             AnimStoryboard.Stop();
             this.TypeScatter.Width = 100;
             this.TypeScatter.Height = 100;
             this.TypeScatter.Margin = new Thickness(0, 0, 0, 0);
             this.MainGrid.Width = 100;
             this.MainGrid.Height = 100;
+            this.grdBGColor.Margin = new Thickness(0, 0, 0, 0);
             this.Width = 100;
             this.Height = 100;
         }
@@ -264,6 +311,7 @@ namespace AppliProjetTut
         { 
             // animation
             double durationAnimation = 0.25;
+            // typescatter
             DoubleAnimation widthTSAnimation = new DoubleAnimation
             {
                 From = this.TypeScatter.Width,
@@ -282,6 +330,7 @@ namespace AppliProjetTut
                 To = new Thickness(0, 0, 75, 75),
                 Duration = TimeSpan.FromSeconds(durationAnimation)
             };
+            // maingrid
             DoubleAnimation widthMGAnimation = new DoubleAnimation
             {
                 From = this.MainGrid.Width,
@@ -294,6 +343,17 @@ namespace AppliProjetTut
                 To = 275,
                 Duration = TimeSpan.FromSeconds(durationAnimation)
             };
+
+            // background color grid
+            ThicknessAnimation marginBGAnimation = new ThicknessAnimation
+            {
+                From = this.grdBGColor.Margin,
+                To = new Thickness(0, 0, 75, 75),
+                Duration = TimeSpan.FromSeconds(durationAnimation)
+            };
+
+
+            // base
             DoubleAnimation widthBAAnimation = new DoubleAnimation
             {
                 From = this.ActualWidth,
@@ -318,6 +378,9 @@ namespace AppliProjetTut
             Storyboard.SetTarget(widthMGAnimation, this.MainGrid);
             Storyboard.SetTargetProperty(heightMGAnimation, new PropertyPath(Grid.HeightProperty));
             Storyboard.SetTarget(heightMGAnimation, this.MainGrid);
+            
+            Storyboard.SetTargetProperty(marginBGAnimation, new PropertyPath(Grid.MarginProperty));
+            Storyboard.SetTarget(marginBGAnimation, this.grdBGColor);
 
             Storyboard.SetTargetProperty(widthBAAnimation, new PropertyPath(ScatterViewItem.WidthProperty));
             Storyboard.SetTarget(widthBAAnimation, this);
@@ -332,6 +395,8 @@ namespace AppliProjetTut
             AnimStoryboard.Children.Add(widthMGAnimation);
             AnimStoryboard.Children.Add(heightMGAnimation);
 
+            AnimStoryboard.Children.Add(marginBGAnimation);
+            
             AnimStoryboard.Children.Add(widthBAAnimation);
             AnimStoryboard.Children.Add(heightBAAnimation);
 
@@ -350,6 +415,7 @@ namespace AppliProjetTut
             this.TypeScatter.Margin = new Thickness(0, 0, 75, 75);
             this.MainGrid.Width = 375;
             this.MainGrid.Height = 275;
+            this.grdBGColor.Margin = new Thickness(0, 0, 75, 75);
             this.Width = 375;
             this.Height = 275;
         }

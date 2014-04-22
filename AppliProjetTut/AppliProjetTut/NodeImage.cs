@@ -237,6 +237,9 @@ namespace AppliProjetTut
                 this.grdButtonH.Margin = new Thickness(0, base.Height - 75, base.Width - 375, 0);
                 this.grdButtonV.Margin = new Thickness(base.Width - 75, 0, 0, base.Height - 225);
 
+                this.grdBGColor.Width = this.TypeScatter.Width;
+                this.grdBGColor.Height = this.TypeScatter.Height;
+
                 previousSize = new Point(base.Width, base.Height);
             
             }

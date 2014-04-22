@@ -40,9 +40,6 @@ namespace AppliProjetTut
         // Liste de videos
         ListeVideo listeVideo;
 
-        // Gestion d'édition
-        bool isEditing;
-
         // annotation
         NodeText textAnnotation;
 
@@ -63,7 +60,7 @@ namespace AppliProjetTut
 
             listeVideo = new ListeVideo(this);
             CanScale = false;
-            isEditing = false;
+            base.isEditing = false;
             base.TypeScatter.Background = new SolidColorBrush(Colors.DarkRed);
 
             videoElement = new MediaElement();
@@ -150,7 +147,7 @@ namespace AppliProjetTut
         void OnVideoChoiceSelection(object sender, RoutedEventArgs e)
         {
 
-            if (!isEditing)
+            if (!base.isEditing)
             {
                 base.AddonGrid.Items.Add(listeVideo);
                 listeVideo.InitListView();
@@ -165,7 +162,7 @@ namespace AppliProjetTut
                 base.AddonGrid.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
                 base.AddonGrid.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
 
-                isEditing = true;
+                base.isEditing = true;
 
                 if (isOnPlay)
                 {
@@ -249,7 +246,7 @@ namespace AppliProjetTut
         public void onCloseVideosList()
         {
             base.AddonGrid.Items.Remove(listeVideo);
-            isEditing = false;
+            base.isEditing = false;
         }
         // END EVENTS
 

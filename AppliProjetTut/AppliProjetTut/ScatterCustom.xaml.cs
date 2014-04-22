@@ -24,6 +24,9 @@ namespace AppliProjetTut
     public partial class ScatterCustom : ScatterViewItem
     {
 
+        // etat de l'edition du node (si une interface est ouverte)
+        public bool isEditing = false;
+
         // parent
         ScatterCustom parent;
         // surfacewindow
@@ -40,7 +43,7 @@ namespace AppliProjetTut
         public Timer ActivityTimer;
         bool m_bIsActive;
         int nbSec;
-        int ActivityDuration = 15;
+        int ActivityDuration = 5;
         Storyboard AnimStoryboard;
 
 
@@ -98,6 +101,30 @@ namespace AppliProjetTut
 
             if (nbSec == 0 && m_bIsActive)
             {
+                // on desactive toues les interfaces actives du Node
+                isEditing = false;
+
+                switch (thisType)
+                { 
+                    case "Text":
+                        NodeText txt = (NodeText)this;
+                        try { txt.AjoutTexte("Close"); }
+                        catch { };
+                        try { txt.palette.ClosePalette(); }
+                        catch { };
+                        break;
+                    case "Image":
+                        NodeImage img = (NodeImage)this;
+                        try { img.onCloseImagesList(); }
+                        catch { };
+                        break;
+                    case "Video":
+                        NodeVideo vid = (NodeVideo)this;
+                        try { vid.onCloseVideosList(); }
+                        catch { };
+                        break;
+                }
+
                 m_bIsActive = false;
                 double durationAnimation = 0.25;
                 DoubleAnimation widthTSAnimation = new DoubleAnimation

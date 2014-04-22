@@ -93,7 +93,7 @@ namespace AppliProjetTut
 
             // ajout de Nodes
             AddNode(null, initP, "Text");
-            //AddNode(null, initP, "Image");
+            AddNode(null, initP, "Image");
             //AddNode(null, initP, "Video");
             Modification(false);
 

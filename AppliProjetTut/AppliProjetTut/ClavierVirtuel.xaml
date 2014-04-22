@@ -5,368 +5,281 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:s="http://schemas.microsoft.com/surface/2008"
              mc:Ignorable="d" 
-             d:DesignHeight="240" d:DesignWidth="720" Width="720" Height="240"
+             d:DesignHeight="200" d:DesignWidth="600" Width="600" Height="200"
              >
-    <Grid Name="KeyGrid">
+    <Grid Name="KeyGrid" Background="Gray">
         <Grid.RowDefinitions>
-            <RowDefinition Height="60" />
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="60" />
-            <RowDefinition Height="60" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="17"/>
+            <ColumnDefinition Width="16"/>
         </Grid.ColumnDefinitions>
 
         
         <!-- Page de base -->
         <!--  Première ligne de lettres  -->
-        <s:SurfaceButton Name="A" Content="a"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Z" Content="z"  Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="E" Content="e"  Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="R" Content="r"  Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="T" Content="t"  Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Y" Content="y"  Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="U" Content="u"  Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="I" Content="i"  Grid.Row="0" Grid.Column="21" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="O" Content="o"  Grid.Row="0" Grid.Column="24" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="P" Content="p"  Grid.Row="0" Grid.Column="27" Grid.ColumnSpan="3" ></s:SurfaceButton>
+        <s:SurfaceButton Name="A" Content="a"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Z" Content="z"  Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="E" Content="e"  Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="R" Content="r"  Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="T" Content="t"  Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Y" Content="y"  Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="U" Content="u"  Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="I" Content="i"  Grid.Row="0" Grid.Column="21" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="O" Content="o"  Grid.Row="0" Grid.Column="24" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="P" Content="p"  Grid.Row="0" Grid.Column="27" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
         <!--  Deuxième ligne de lettres  -->
-        <s:SurfaceButton Name="Q" Content="q" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="S" Content="s" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="D" Content="d" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="F" Content="f" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="G" Content="g" Grid.Row="1" Grid.Column="13" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="H" Content="h" Grid.Row="1" Grid.Column="16" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="J" Content="j" Grid.Row="1" Grid.Column="19" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="K" Content="k" Grid.Row="1" Grid.Column="22" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="L" Content="l" Grid.Row="1" Grid.Column="25" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="M" Content="m" Grid.Row="1" Grid.Column="28" Grid.ColumnSpan="3" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Q" Content="q" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="S" Content="s" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="D" Content="d" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="F" Content="f" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="G" Content="g" Grid.Row="1" Grid.Column="13" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="H" Content="h" Grid.Row="1" Grid.Column="16" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="J" Content="j" Grid.Row="1" Grid.Column="19" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="K" Content="k" Grid.Row="1" Grid.Column="22" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="L" Content="l" Grid.Row="1" Grid.Column="25" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="M" Content="m" Grid.Row="1" Grid.Column="28" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
         <!--  Troisième ligne de lettres  -->
-        <s:SurfaceButton Name="W" Content="w" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="X" Content="x" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="C" Content="c" Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="V" Content="v" Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="B" Content="b" Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="N" Content="n" Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="3" ></s:SurfaceButton>
+        <s:SurfaceButton Name="W" Content="w" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="X" Content="x" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="C" Content="c" Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="V" Content="v" Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="B" Content="b" Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="N" Content="n" Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
         <!-- Bouton ponctuation -->
-        <s:SurfaceButton Name="virgule" Content="," Grid.Row="2" Grid.Column="21" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Point" Content="."  Grid.Row="2" Grid.Column="24" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="quote" Content="'"  Grid.Row="2" Grid.Column="27" Grid.ColumnSpan="3" ></s:SurfaceButton>
+        <s:SurfaceButton Name="virgule" Content="," Grid.Row="2" Grid.Column="21" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Point" Content="."  Grid.Row="2" Grid.Column="24" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="quote" Content="'"  Grid.Row="2" Grid.Column="27" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
         
         <!-- Page Majuscules -->
         <!--  Première ligne de lettres  -->
-        <s:SurfaceButton Name="maj_A" Content="A"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_Z" Content="Z"  Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_E" Content="E"  Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_R" Content="R"  Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_T" Content="T"  Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_Y" Content="Y"  Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_U" Content="U"  Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_I" Content="I"  Grid.Row="0" Grid.Column="21" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_O" Content="O"  Grid.Row="0" Grid.Column="24" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_P" Content="P"  Grid.Row="0" Grid.Column="27" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_A" Content="A"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_Z" Content="Z"  Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_E" Content="E"  Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_R" Content="R"  Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_T" Content="T"  Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_Y" Content="Y"  Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_U" Content="U"  Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_I" Content="I"  Grid.Row="0" Grid.Column="21" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_O" Content="O"  Grid.Row="0" Grid.Column="24" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_P" Content="P"  Grid.Row="0" Grid.Column="27" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
 
         <!--  Deuxième ligne de lettres  -->
-        <s:SurfaceButton Name="maj_Q" Content="Q" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_S" Content="S" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_D" Content="D" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_F" Content="F" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_G" Content="G" Grid.Row="1" Grid.Column="13" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_H" Content="H" Grid.Row="1" Grid.Column="16" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_J" Content="J" Grid.Row="1" Grid.Column="19" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_K" Content="K" Grid.Row="1" Grid.Column="22" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_L" Content="L" Grid.Row="1" Grid.Column="25" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_M" Content="M" Grid.Row="1" Grid.Column="28" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_Q" Content="Q" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_S" Content="S" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_D" Content="D" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_F" Content="F" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_G" Content="G" Grid.Row="1" Grid.Column="13" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_H" Content="H" Grid.Row="1" Grid.Column="16" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_J" Content="J" Grid.Row="1" Grid.Column="19" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_K" Content="K" Grid.Row="1" Grid.Column="22" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_L" Content="L" Grid.Row="1" Grid.Column="25" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_M" Content="M" Grid.Row="1" Grid.Column="28" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
 
         <!--  Troisième ligne de lettres  -->
-        <s:SurfaceButton Name="maj_W" Content="W" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_X" Content="X" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_C" Content="C" Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_V" Content="V" Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_B" Content="B" Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_N" Content="N" Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_W" Content="W" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_X" Content="X" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_C" Content="C" Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_V" Content="V" Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_B" Content="B" Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_N" Content="N" Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
 
 
         
         <!-- Page Special Carac -->
         <!-- Pavé numérique -->
-        <s:SurfaceButton Name="Un" Content="1" Grid.Row="0" Grid.Column="22" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Deux" Content="2" Grid.Row="0" Grid.Column="25" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Trois" Content="3" Grid.Row="0" Grid.Column="28" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Quatre" Content="4" Grid.Row="1" Grid.Column="22" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Cinq" Content="5" Grid.Row="1" Grid.Column="25" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Six" Content="6" Grid.Row="1" Grid.Column="28" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Sept" Content="7" Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Huit" Content="8" Grid.Row="2" Grid.Column="25" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Neuf" Content="9" Grid.Row="2" Grid.Column="28" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Zero" Content="0" Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="6" Visibility="Hidden" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Un" Content="1" Grid.Row="0" Grid.Column="22" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Deux" Content="2" Grid.Row="0" Grid.Column="25" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Trois" Content="3" Grid.Row="0" Grid.Column="28" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Quatre" Content="4" Grid.Row="1" Grid.Column="22" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Cinq" Content="5" Grid.Row="1" Grid.Column="25" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Six" Content="6" Grid.Row="1" Grid.Column="28" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Sept" Content="7" Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Huit" Content="8" Grid.Row="2" Grid.Column="25" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Neuf" Content="9" Grid.Row="2" Grid.Column="28" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Zero" Content="0" Grid.Row="3" Grid.Column="22" Grid.ColumnSpan="6" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
         
         <!-- Fleches de changement de page -->
-        <s:SurfaceButton Name="ToLeft" Content="&#8592;" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="ToRight" Content="&#8594;" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
+        <s:SurfaceButton Name="ToLeft" Content="&#8592;" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Visibility="Hidden" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="40" Background="LightSlateGray" Foreground="White"></s:SurfaceButton>
+        <s:SurfaceButton Name="ToRight" Content="&#8594;" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Visibility="Hidden" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="40" Background="LightSlateGray" Foreground="White" ></s:SurfaceButton>
 
 
         <!-- Special Car -->
         <!-- Page 1 -->
-        <s:SurfaceButton Name="Tab" Content="Tab" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="exclamation" Content="!" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="interogation" Content="?" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Euro" Content="€" Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Dollars"     Content="$"  Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Pourcent"    Content="%"   Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="et"          Content="&amp;"   Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="par"         Content="("  Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="parbis"      Content=")"  Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="moins"       Content="-"  Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="under"       Content="_"  Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="egal"        Content="="  Grid.Row="1" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="plus"        Content="+"  Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="anti_slash"  Content="\"  Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="pointvrgl"   Content=";" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="dble_point"  Content=":" Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="dbl_quotes"  Content='&quot;'  Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="star"        Content="*"  Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="slash"       Content="/"  Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Tab" Content="Tab" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="exclamation" Content="!" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="interogation" Content="?" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Euro" Content="€" Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Dollars"     Content="$"  Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Pourcent"    Content="%"   Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="et"          Content="&amp;"   Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="par"         Content="("  Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="parbis"      Content=")"  Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="moins"       Content="-"  Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="under"       Content="_"  Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="egal"        Content="="  Grid.Row="1" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="plus"        Content="+"  Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="anti_slash"  Content="\"  Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="pointvrgl"   Content=";" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="dble_point"  Content=":" Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="dbl_quotes"  Content='&quot;'  Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="star"        Content="*"  Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="slash"       Content="/"  Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
         <!-- Page 2 -->
-        <s:SurfaceButton Name="exclamation_inv" Content="¡" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="interogation_inv" Content="¿" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Yen" Content="&#165;" Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Livre" Content="&#163;" Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="micro" Content="µ" Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="circonflexe" Content="^" Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="smaller" Content="&lt;" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="bigger" Content="&gt;" Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="crochet_ouv" Content="[" Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="crochet_fer" Content="]" Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <!--<s:SurfaceButton Name="accol_ouv" Content="&#123;" Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>-->
-        <s:SurfaceButton Name="accol_fer" Content="}" Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="smaller_equal" Content="&#8804;" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="bigger_equal" Content="&#8805;" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="arobase"     Content="@"  Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="diez"        Content="#"  Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="vague" Content="~" Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="cent" Content="&#162;" Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
+        <s:SurfaceButton Name="exclamation_inv" Content="¡" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="interogation_inv" Content="¿" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Yen" Content="&#165;" Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Livre" Content="&#163;" Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="micro" Content="µ" Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="circonflexe" Content="^" Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="smaller" Content="&lt;" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="bigger" Content="&gt;" Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="crochet_ouv" Content="[" Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="crochet_fer" Content="]" Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="accol_ouv" Content="" Grid.Row="1" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="accol_fer" Content="}" Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="smaller_equal" Content="&#8804;" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="bigger_equal" Content="&#8805;" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="arobase"     Content="@"  Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="diez"        Content="#"  Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="vague" Content="~" Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="cent" Content="&#162;" Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
         <!-- Page 2 -->
-        <s:SurfaceButton Name="exp_un" Content="&#185;" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="exp_deux" Content="&#178;" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="exp_trois" Content="&#179;" Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="un_deux" Content="&#189;" Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="un_quatre" Content="&#188;" Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="trois_quatre" Content="&#190;" Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="PI" Content="&#960;" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="alpha" Content="&#945;" Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="beta" Content="&#946;" Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="gamma" Content="&#947;" Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="teta" Content="&#952;" Grid.Row="1" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="sigma" Content="&#963;" Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="para" Content="&#182;" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="bull" Content="&#8226;" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="not"  Content="&#172;"  Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="degree"  Content="&#176;"  Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="copy" Content="&#169;" Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
-        <s:SurfaceButton Name="reg" Content="&#174;" Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" ></s:SurfaceButton>
+        <s:SurfaceButton Name="exp_un" Content="&#185;" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="exp_deux" Content="&#178;" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="exp_trois" Content="&#179;" Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="un_deux" Content="&#189;" Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="un_quatre" Content="&#188;" Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="trois_quatre" Content="&#190;" Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="PI" Content="&#960;" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="alpha" Content="&#945;" Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="beta" Content="&#946;" Grid.Row="1" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="gamma" Content="&#947;" Grid.Row="1" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="teta" Content="&#952;" Grid.Row="1" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="sigma" Content="&#963;" Grid.Row="1" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="para" Content="&#182;" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="bull" Content="&#8226;" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="not"  Content="&#172;"  Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="degree"  Content="&#176;"  Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="copy" Content="&#169;" Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="reg" Content="&#174;" Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="3" Visibility="Hidden" Background="DarkGray" ></s:SurfaceButton>
 
 
         <!-- Bouton Accent -->
         <!-- Minuscule -->
         <!--  Première ligne de lettres  -->
-        <s:SurfaceButton Name="A_A" Content="&#225;"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="A_C" Content="â"  Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="A_G" Content="à"  Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="E_T" Content="ë"  Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="E_A" Content="é"  Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="E_C" Content="ê"  Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="E_G" Content="è"  Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="U_G" Content="ù"  Grid.Row="0" Grid.Column="21" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="U_T" Content="ü"  Grid.Row="0" Grid.Column="24" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="U_C" Content="û"  Grid.Row="0" Grid.Column="27" Grid.ColumnSpan="3" ></s:SurfaceButton>
+        <s:SurfaceButton Name="A_A" Content="&#225;"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="A_C" Content="â"  Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="A_G" Content="à"  Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="E_T" Content="ë"  Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="E_A" Content="é"  Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="E_C" Content="ê"  Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="E_G" Content="è"  Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="U_G" Content="ù"  Grid.Row="0" Grid.Column="21" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="U_T" Content="ü"  Grid.Row="0" Grid.Column="24" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="U_C" Content="û"  Grid.Row="0" Grid.Column="27" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
         <!--  Deuxième ligne de lettres  -->
-        <s:SurfaceButton Name="I_T" Content="ï" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="I_C" Content="î" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="I_A" Content="&#237;" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Y_A" Content="&#253;" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Y_T" Content="ÿ" Grid.Row="1" Grid.Column="13" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="O_A" Content="&#243;" Grid.Row="1" Grid.Column="16" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="O_C" Content="&#244;" Grid.Row="1" Grid.Column="19" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="O_G" Content="&#242;" Grid.Row="1" Grid.Column="22" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="O_T" Content="&#246;" Grid.Row="1" Grid.Column="25" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="O_V" Content="&#245;" Grid.Row="1" Grid.Column="28" Grid.ColumnSpan="3" ></s:SurfaceButton>
+        <s:SurfaceButton Name="I_T" Content="ï" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="I_C" Content="î" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="I_A" Content="&#237;" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Y_A" Content="&#253;" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Y_T" Content="ÿ" Grid.Row="1" Grid.Column="13" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="O_A" Content="&#243;" Grid.Row="1" Grid.Column="16" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="O_C" Content="&#244;" Grid.Row="1" Grid.Column="19" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="O_G" Content="&#242;" Grid.Row="1" Grid.Column="22" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="O_T" Content="&#246;" Grid.Row="1" Grid.Column="25" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="O_V" Content="&#245;" Grid.Row="1" Grid.Column="28" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
         <!--  Troisième ligne de lettres  -->
-        <s:SurfaceButton Name="OE" Content="&#339;" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="AE" Content="&#230;" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="C_C" Content="ç" Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="O_S" Content="&#248;" Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="B_All" Content="&#223;" Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="N_V" Content="&#241;" Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="3" ></s:SurfaceButton>
+        <s:SurfaceButton Name="OE" Content="&#339;" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="AE" Content="&#230;" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="C_C" Content="ç" Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="O_S" Content="&#248;" Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="B_All" Content="&#223;" Grid.Row="2" Grid.Column="15" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="N_V" Content="&#241;" Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
         <!-- Majuscule -->
         <!--  Première ligne de lettres  -->
-        <s:SurfaceButton Name="maj_A_A" Content="&#193;"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_A_C" Content="&#194;"  Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_A_G" Content="&#192;"  Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_E_T" Content="&#203;"  Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_E_A" Content="&#201;"  Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_E_C" Content="&#202;"  Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_E_G" Content="&#200;"  Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_U_G" Content="&#217;"  Grid.Row="0" Grid.Column="21" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_U_T" Content="&#220;"  Grid.Row="0" Grid.Column="24" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_U_C" Content="&#219;"  Grid.Row="0" Grid.Column="27" Grid.ColumnSpan="3" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_A_A" Content="&#193;"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_A_C" Content="&#194;"  Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_A_G" Content="&#192;"  Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_E_T" Content="&#203;"  Grid.Row="0" Grid.Column="9" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_E_A" Content="&#201;"  Grid.Row="0" Grid.Column="12" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_E_C" Content="&#202;"  Grid.Row="0" Grid.Column="15" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_E_G" Content="&#200;"  Grid.Row="0" Grid.Column="18" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_U_G" Content="&#217;"  Grid.Row="0" Grid.Column="21" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_U_T" Content="&#220;"  Grid.Row="0" Grid.Column="24" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_U_C" Content="&#219;"  Grid.Row="0" Grid.Column="27" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
         <!--  Deuxième ligne de lettres  -->
-        <s:SurfaceButton Name="maj_I_T" Content="&#207;" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_I_C" Content="&#206;" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_I_A" Content="&#205;" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_Y_A" Content="&#221;" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_Y_T" Content="&#376;" Grid.Row="1" Grid.Column="13" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_O_A" Content="&#211;" Grid.Row="1" Grid.Column="16" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_O_C" Content="&#212;" Grid.Row="1" Grid.Column="19" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_O_G" Content="&#210;" Grid.Row="1" Grid.Column="22" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_O_T" Content="&#214;" Grid.Row="1" Grid.Column="25" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_O_V" Content="&#213;" Grid.Row="1" Grid.Column="28" Grid.ColumnSpan="3" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_I_T" Content="&#207;" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_I_C" Content="&#206;" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_I_A" Content="&#205;" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_Y_A" Content="&#221;" Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_Y_T" Content="&#376;" Grid.Row="1" Grid.Column="13" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_O_A" Content="&#211;" Grid.Row="1" Grid.Column="16" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_O_C" Content="&#212;" Grid.Row="1" Grid.Column="19" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_O_G" Content="&#210;" Grid.Row="1" Grid.Column="22" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_O_T" Content="&#214;" Grid.Row="1" Grid.Column="25" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_O_V" Content="&#213;" Grid.Row="1" Grid.Column="28" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
         <!--  Troisième ligne de lettres  -->
-        <s:SurfaceButton Name="maj_OE" Content="&#338;" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_AE" Content="&#198;" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_C_C" Content="&#199;" Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_O_S" Content="&#216;" Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="maj_N_V" Content="&#209;" Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="3" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_OE" Content="&#338;" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_AE" Content="&#198;" Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_C_C" Content="&#199;" Grid.Row="2" Grid.Column="9" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_O_S" Content="&#216;" Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="maj_N_V" Content="&#209;" Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
 
 
 
 
         <!-- Bouton sans caractères -->
-        <s:SurfaceButton Name="Backspace" Content="&#8656;"  Grid.Row="0" Grid.Column="30" Grid.ColumnSpan="6" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Enter" Content="&#13;"  Grid.Row="1" Grid.Column="31" Grid.ColumnSpan="5" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Space" Content=" "  Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="17" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Backspace" Content="&#8656;"  Grid.Row="0" Grid.Column="30" Grid.ColumnSpan="6" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Enter" Content="&#8629;"  Grid.Row="1" Grid.Column="31" Grid.ColumnSpan="5" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Space" Content=" "  Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="17" Background="DarkGray" ></s:SurfaceButton>
         <!-- Bouton changement de page -->
-        <s:SurfaceButton Name="Upper1" Content=" " Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Upper2" Content=" " Grid.Row="2" Grid.Column="30" Grid.ColumnSpan="6" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Accent" Content="àéûï" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="4" ></s:SurfaceButton>
-        <s:SurfaceButton Name="CarSpe" Content="@123" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Upper1" Content="&#8657;" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Upper2" Content="&#8657;" Grid.Row="2" Grid.Column="30" Grid.ColumnSpan="6" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="Accent" Content="àéûï" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="4" Background="DarkGray" ></s:SurfaceButton>
+        <s:SurfaceButton Name="CarSpe" Content="@123" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Background="DarkGray" ></s:SurfaceButton>
         <!-- Bouton fermeture -->
         <s:SurfaceButton Name="close" Content="close" Grid.Row="3" Grid.Column="29" Grid.ColumnSpan="7" Background="DarkSalmon" ></s:SurfaceButton>
-            
-
-
-
-
-
-
-        <!--<s:SurfaceButton Name="Carré" Content="²" Grid.Row="0" Grid.Column="0"/>
-        <s:SurfaceButton Name="et" Content=" &amp; "   Grid.Row="0" Grid.Column="1"></s:SurfaceButton>
-        <s:SurfaceButton Name="é" Content="é"  Grid.Row="0" Grid.Column="2"></s:SurfaceButton>
-        <s:SurfaceButton Name="dbl_quotes" Content=' &quot; '  Grid.Row="0" Grid.Column="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="quote" Content="'"  Grid.Row="0" Grid.Column="4" ></s:SurfaceButton>
-        <s:SurfaceButton Name="par" Content="("  Grid.Row="0" Grid.Column="5" ></s:SurfaceButton>
-        <s:SurfaceButton Name="par1" Content="&lt;"  Grid.Row="0" Grid.Column="6" ></s:SurfaceButton>
-        <s:SurfaceButton Name="è" Content="è"  Grid.Row="0" Grid.Column="7" ></s:SurfaceButton>
-        <s:SurfaceButton Name="under" Content="_"  Grid.Row="0" Grid.Column="8" ></s:SurfaceButton>
-        <s:SurfaceButton Name="ç" Content="ç"  Grid.Row="0" Grid.Column="9" ></s:SurfaceButton>
-        <s:SurfaceButton Name="à" Content="à"  Grid.Row="0" Grid.Column="10" ></s:SurfaceButton>
-        <s:SurfaceButton Name="parbis" Content=")"  Grid.Row="0" Grid.Column="11" ></s:SurfaceButton>
-        <s:SurfaceButton Name="par1bis" Content="&gt;"  Grid.Row="0" Grid.Column="12" ></s:SurfaceButton>
-        <s:SurfaceButton Name="arobase" Content="@"  Grid.Row="0" Grid.Column="13" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Backspace" Content="Backspace"  Grid.Row="0" Grid.Column="14" Grid.ColumnSpan="2" ></s:SurfaceButton>
-
-        <s:SurfaceButton Name="Tab" Content="Tab" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"></s:SurfaceButton>
-        <s:SurfaceButton Name="A" Content="A"   Grid.Row="1" Grid.Column="2" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Z" Content="Z"  Grid.Row="1" Grid.Column="3"></s:SurfaceButton>
-        <s:SurfaceButton Name="E" Content="E"  Grid.Row="1" Grid.Column="4" ></s:SurfaceButton>
-        <s:SurfaceButton Name="R" Content="R"  Grid.Row="1" Grid.Column="5" ></s:SurfaceButton>
-        <s:SurfaceButton Name="T" Content="T"  Grid.Row="1" Grid.Column="6" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Y" Content="Y"  Grid.Row="1" Grid.Column="7" ></s:SurfaceButton>
-        <s:SurfaceButton Name="U" Content="U"  Grid.Row="1" Grid.Column="8" ></s:SurfaceButton>
-        <s:SurfaceButton Name="I" Content="I"  Grid.Row="1" Grid.Column="9" ></s:SurfaceButton>
-        <s:SurfaceButton Name="O" Content="O"  Grid.Row="1" Grid.Column="10" ></s:SurfaceButton>
-        <s:SurfaceButton Name="P" Content="P"  Grid.Row="1" Grid.Column="11" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Circonflexe" Content="^"  Grid.Row="1" Grid.Column="12" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Dollars" Content="$"  Grid.Row="1" Grid.Column="13" ></s:SurfaceButton>
-
-        <s:SurfaceButton Name="Caps_Lock" Content="Caps Lock"   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Background="BurlyWood" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Q" Content="Q" Grid.Row="2" Grid.Column="2"  ></s:SurfaceButton>
-        <s:SurfaceButton Name="S" Content="S" Grid.Row="2" Grid.Column="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="D" Content="D" Grid.Row="2" Grid.Column="4" ></s:SurfaceButton>
-        <s:SurfaceButton Name="F" Content="F" Grid.Row="2" Grid.Column="5" ></s:SurfaceButton>
-        <s:SurfaceButton Name="G" Content="G" Grid.Row="2" Grid.Column="6" ></s:SurfaceButton>
-        <s:SurfaceButton Name="H" Content="H" Grid.Row="2" Grid.Column="7" ></s:SurfaceButton>
-        <s:SurfaceButton Name="J" Content="J" Grid.Row="2" Grid.Column="8" ></s:SurfaceButton>
-        <s:SurfaceButton Name="K" Content="K" Grid.Row="2" Grid.Column="9" ></s:SurfaceButton>
-        <s:SurfaceButton Name="L" Content="L" Grid.Row="2" Grid.Column="10" ></s:SurfaceButton>
-        <s:SurfaceButton Name="M" Content="M" Grid.Row="2" Grid.Column="11" ></s:SurfaceButton>
-        <s:SurfaceButton Name="ù" Content="ù" Grid.Row="2" Grid.Column="12" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Stars" Content="*" Grid.Row="2" Grid.Column="13"   ></s:SurfaceButton>
-        <s:SurfaceButton Name="Enter" Content="&#13;"  Grid.Row="1" Grid.Column="14" Grid.RowSpan="3" Grid.ColumnSpan="2" ></s:SurfaceButton>
-
-        <s:SurfaceButton Name="shift" Content="Shift" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  ></s:SurfaceButton>
-        <s:SurfaceButton Name="W" Content="W" Grid.Row="3" Grid.Column="2"  ></s:SurfaceButton>
-        <s:SurfaceButton Name="X" Content="X" Grid.Row="3" Grid.Column="3" ></s:SurfaceButton>
-        <s:SurfaceButton Name="C" Content="C" Grid.Row="3" Grid.Column="4" ></s:SurfaceButton>
-        <s:SurfaceButton Name="V" Content="V" Grid.Row="3" Grid.Column="5" ></s:SurfaceButton>
-        <s:SurfaceButton Name="B" Content="B" Grid.Row="3" Grid.Column="6" ></s:SurfaceButton>
-        <s:SurfaceButton Name="N" Content="N" Grid.Row="3" Grid.Column="7" ></s:SurfaceButton>
-        <s:SurfaceButton Name="virgule" Content="," Grid.Row="3" Grid.Column="8" ></s:SurfaceButton>
-        <s:SurfaceButton Name="interogation" Content="?" Grid.Row="3" Grid.Column="9" ></s:SurfaceButton>
-        <s:SurfaceButton Name="point" Content="." Grid.Row="3" Grid.Column="10" ></s:SurfaceButton>
-        <s:SurfaceButton Name="pointvrgl" Content=";" Grid.Row="3" Grid.Column="11" ></s:SurfaceButton>
-        <s:SurfaceButton Name="dble" Content=":" Grid.Row="3" Grid.Column="12" ></s:SurfaceButton>
-        <s:SurfaceButton Name="exclamation" Content="!" Grid.Row="3" Grid.Column="13"   ></s:SurfaceButton>
         
-        <s:SurfaceButton Name="close" Content="Close" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Background="LightCoral"></s:SurfaceButton>
-
-
-        <s:SurfaceButton Name="un" Content="1"   Grid.Row="3" Grid.Column="17"></s:SurfaceButton>
-        <s:SurfaceButton Name="deux" Content="2"  Grid.Row="3" Grid.Column="18"   ></s:SurfaceButton>
-        <s:SurfaceButton Name="trois" Content="3"  Grid.Row="3" Grid.Column="19"   ></s:SurfaceButton>
-        <s:SurfaceButton Name="quatre" Content="4"  Grid.Row="2" Grid.Column="17" ></s:SurfaceButton>
-        <s:SurfaceButton Name="cinq" Content="5"  Grid.Row="2" Grid.Column="18"  ></s:SurfaceButton>
-        <s:SurfaceButton Name="six" Content="6"  Grid.Row="2" Grid.Column="19"  ></s:SurfaceButton>
-        <s:SurfaceButton Name="sept" Content="7"  Grid.Row="1" Grid.Column="17" ></s:SurfaceButton>
-        <s:SurfaceButton Name="huit" Content="8"  Grid.Row="1" Grid.Column="18" ></s:SurfaceButton>
-        <s:SurfaceButton Name="neuf" Content="9"  Grid.Row="1" Grid.Column="19" ></s:SurfaceButton>
-        <s:SurfaceButton Name="plus" Content="+"  Grid.Row="1" Grid.Column="20" Grid.RowSpan="2"  ></s:SurfaceButton>
-        <s:SurfaceButton Name="moins" Content="-"  Grid.Row="0" Grid.Column="20" ></s:SurfaceButton>
-        <s:SurfaceButton Name="multiplier" Content="*"  Grid.Row="0" Grid.Column="19" ></s:SurfaceButton>
-        <s:SurfaceButton Name="diviser" Content="/"  Grid.Row="0" Grid.Column="18" ></s:SurfaceButton>
-        <s:SurfaceButton Name="égal" Content="="  Grid.Row="0" Grid.Column="17" ></s:SurfaceButton>
-        <s:SurfaceButton Name="zero" Content="0"  Grid.Row="4" Grid.Column="17" Grid.ColumnSpan="2" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Entrer" Content="&#13;"  Grid.Row="3" Grid.Column="20" Grid.RowSpan="2" ></s:SurfaceButton>
-        <s:SurfaceButton Name="Point" Content="."  Grid.Row="4" Grid.Column="19" ></s:SurfaceButton>
-
-        <s:SurfaceButton Name="Space" Content=" "  Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="10" ></s:SurfaceButton>-->
 
     </Grid>
 </s:ScatterViewItem>

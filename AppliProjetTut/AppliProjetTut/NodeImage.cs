@@ -22,10 +22,6 @@ namespace AppliProjetTut
     public partial class NodeImage : ScatterCustom
     {
 
-
-        // en edition
-        private bool isEditing = false;
-
         // parent
         ScatterCustom parent;
         // surfacewindow
@@ -138,7 +134,7 @@ namespace AppliProjetTut
         /// <param name="e"></param>
         private void OnImageChoiceSelection(object sender, RoutedEventArgs e)
         {
-            if (!isEditing)
+            if (!base.isEditing)
             {
                 base.Height = 275;
                 base.Width = 375;
@@ -152,7 +148,7 @@ namespace AppliProjetTut
                 base.AddonGrid.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
 
                 CanScale = false;
-                isEditing = true;
+                base.isEditing = true;
             }
         }
 

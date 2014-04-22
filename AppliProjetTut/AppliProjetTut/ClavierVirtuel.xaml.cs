@@ -164,7 +164,8 @@ namespace AppliProjetTut
             this.bigger.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
             this.crochet_ouv.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
             this.crochet_fer.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            //this.accol_ouv.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
+            this.accol_ouv.Content = "{";
+            this.accol_ouv.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
             this.accol_fer.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
             this.smaller_equal.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
             this.bigger_equal.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
@@ -225,33 +226,33 @@ namespace AppliProjetTut
             this.N_V.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
             //-- Accents Majuscules --//
             // ligne 1
-            this.maj_A_A.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_A_C.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_A_G.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_E_A.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_E_C.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_E_G.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_E_T.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_U_C.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_U_G.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_U_T.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
+            this.maj_A_A.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_A_C.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_A_G.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_E_A.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_E_C.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_E_G.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_E_T.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_U_C.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_U_G.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_U_T.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
             // ligne 2
-            this.maj_I_T.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_I_A.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_I_C.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_Y_A.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_Y_T.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_O_A.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_O_C.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_O_G.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_O_T.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_O_V.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
+            this.maj_I_T.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_I_A.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_I_C.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_Y_A.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_Y_T.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_O_A.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_O_C.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_O_G.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_O_T.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_O_V.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
             // ligne 3
-            this.maj_OE.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_AE.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_C_C.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_O_S.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
-            this.maj_N_V.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnLetterPreviewTouchDown);
+            this.maj_OE.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_AE.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_C_C.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_O_S.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
+            this.maj_N_V.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnMajLetterPreviewTouchDown);
 
 
 
@@ -314,11 +315,13 @@ namespace AppliProjetTut
                 isCapsLock = true;
                 isSpecialCar = false;
                 isAccent = false;
+                this.Accent.IsEnabled = true;
                 MajPage();
                 return;
             }
 
             isSpecialCar = true;
+            this.Accent.IsEnabled = false;
             SepcialCarPage1();
         }
 
@@ -423,6 +426,11 @@ namespace AppliProjetTut
                     NodeParent.AjoutTexte("backspace");
                     return;
                 }
+                else if (((SurfaceButton)sender).Name.ToString().ToLower() == "enter")
+                {
+                    NodeParent.AjoutTexte("\n");
+                    return;
+                }
                 NodeParent.AjoutTexte(((SurfaceButton)sender).Content.ToString());
             }
         }
@@ -444,7 +452,15 @@ namespace AppliProjetTut
             }
 
             // Changement Page
-            MajPage();
+            isCapsLock = !isCapsLock;
+            if (isAccent)
+            {
+                AccentPage();
+            }
+            else
+            {
+                MajPage();
+            }
             //
         }
         /// <summary>
@@ -595,7 +611,7 @@ namespace AppliProjetTut
             this.bigger.Visibility = System.Windows.Visibility.Hidden;
             this.crochet_ouv.Visibility = System.Windows.Visibility.Hidden;
             this.crochet_fer.Visibility = System.Windows.Visibility.Hidden;
-            //this.accol_ouv.Visibility = System.Windows.Visibility.Hidden;
+            this.accol_ouv.Visibility = System.Windows.Visibility.Hidden;
             this.accol_fer.Visibility = System.Windows.Visibility.Hidden;
             this.smaller_equal.Visibility = System.Windows.Visibility.Hidden;
             this.bigger_equal.Visibility = System.Windows.Visibility.Hidden;
@@ -679,6 +695,15 @@ namespace AppliProjetTut
             this.maj_O_S.Visibility = System.Windows.Visibility.Hidden;
             this.maj_N_V.Visibility = System.Windows.Visibility.Hidden;
 
+            this.Upper1.Background = new SolidColorBrush(Colors.DarkGray);
+            this.Upper2.Background = new SolidColorBrush(Colors.DarkGray);
+            this.CarSpe.Background = new SolidColorBrush(Colors.DarkGray);
+            this.Accent.Background = new SolidColorBrush(Colors.DarkGray);
+            this.Upper1.Foreground = new SolidColorBrush(Colors.Black);
+            this.Upper2.Foreground = new SolidColorBrush(Colors.Black);
+            this.CarSpe.Foreground = new SolidColorBrush(Colors.Black);
+            this.Accent.Foreground = new SolidColorBrush(Colors.Black);
+
         }
 
 
@@ -714,6 +739,11 @@ namespace AppliProjetTut
                 this.maj_V.Visibility = System.Windows.Visibility.Visible;
                 this.maj_B.Visibility = System.Windows.Visibility.Visible;
                 this.maj_N.Visibility = System.Windows.Visibility.Visible;
+
+                this.Upper1.Background = new SolidColorBrush(Colors.DarkViolet);
+                this.Upper2.Background = new SolidColorBrush(Colors.DarkViolet);
+                this.Upper1.Foreground = new SolidColorBrush(Colors.White);
+                this.Upper2.Foreground = new SolidColorBrush(Colors.White);
             }
             else
             {
@@ -811,6 +841,9 @@ namespace AppliProjetTut
             this.ToRight.Visibility = System.Windows.Visibility.Visible;
             this.ToRight.IsEnabled = true;
 
+            this.CarSpe.Background = new SolidColorBrush(Colors.DarkViolet);
+            this.CarSpe.Foreground = new SolidColorBrush(Colors.White);
+
             // on replace le point
             this.Point.SetValue(Grid.ColumnProperty, 28);
             this.Point.SetValue(Grid.RowProperty, 3);
@@ -858,7 +891,7 @@ namespace AppliProjetTut
             this.bigger.Visibility = System.Windows.Visibility.Visible;
             this.crochet_ouv.Visibility = System.Windows.Visibility.Visible;
             this.crochet_fer.Visibility = System.Windows.Visibility.Visible;
-            //this.accol_ouv.Visibility = System.Windows.Visibility.Visible;
+            this.accol_ouv.Visibility = System.Windows.Visibility.Visible;
             this.accol_fer.Visibility = System.Windows.Visibility.Visible;
             this.smaller_equal.Visibility = System.Windows.Visibility.Visible;
             this.bigger_equal.Visibility = System.Windows.Visibility.Visible;
@@ -871,6 +904,9 @@ namespace AppliProjetTut
             this.ToLeft.IsEnabled = true;
             this.ToRight.Visibility = System.Windows.Visibility.Visible;
             this.ToRight.IsEnabled = true;
+
+            this.CarSpe.Background = new SolidColorBrush(Colors.DarkViolet);
+            this.CarSpe.Foreground = new SolidColorBrush(Colors.White);
         }
 
         private void SepcialCarPage3()
@@ -914,6 +950,9 @@ namespace AppliProjetTut
             this.ToLeft.IsEnabled = true;
             this.ToRight.Visibility = System.Windows.Visibility.Visible;
             this.ToRight.IsEnabled = false;
+
+            this.CarSpe.Background = new SolidColorBrush(Colors.DarkViolet);
+            this.CarSpe.Foreground = new SolidColorBrush(Colors.White);
         }
 
         private void AccentPage()
@@ -948,6 +987,12 @@ namespace AppliProjetTut
                 this.maj_O_S.Visibility = System.Windows.Visibility.Visible;
                 this.B_All.Visibility = System.Windows.Visibility.Visible;
                 this.maj_N_V.Visibility = System.Windows.Visibility.Visible;
+
+                this.Upper1.Background = new SolidColorBrush(Colors.DarkViolet);
+                this.Upper2.Background = new SolidColorBrush(Colors.DarkViolet);
+                this.Upper1.Foreground = new SolidColorBrush(Colors.White);
+                this.Upper2.Foreground = new SolidColorBrush(Colors.White);
+
             }
             else
             {
@@ -978,6 +1023,9 @@ namespace AppliProjetTut
                 this.B_All.Visibility = System.Windows.Visibility.Visible;
                 this.N_V.Visibility = System.Windows.Visibility.Visible;
             }
+
+            this.Accent.Background = new SolidColorBrush(Colors.DarkViolet);
+            this.Accent.Foreground = new SolidColorBrush(Colors.White);
 
             this.quote.Visibility = System.Windows.Visibility.Visible;
             this.virgule.Visibility = System.Windows.Visibility.Visible;

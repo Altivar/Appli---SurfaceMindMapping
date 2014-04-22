@@ -25,7 +25,7 @@ namespace AppliProjetTut
         private NodeText parentNode;
 
         // couleur d'origine
-        private Brush firstColor = new SolidColorBrush(Colors.LightBlue);
+        private Brush firstColor = new SolidColorBrush(Colors.Black);
 
         /// <summary>
         /// Default Constructor
@@ -55,6 +55,9 @@ namespace AppliProjetTut
             this.Violet.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnColorPreviewTouchDown);
             this.Violet1.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnColorPreviewTouchDown);
             this.Violet2.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnColorPreviewTouchDown);
+            this.Blanc.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnColorPreviewTouchDown);
+            this.Gris.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnColorPreviewTouchDown);
+            this.Noir.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnColorPreviewTouchDown);
 
             this.Annuler.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnAnnulerPreviewTouchDown);
             this.Valider.PreviewTouchDown += new EventHandler<TouchEventArgs>(Valider_PreviewTouchDown);
@@ -80,6 +83,15 @@ namespace AppliProjetTut
             parentNode.SetBackGroundColor(firstColor);
             parentNode.ClosePalette();
         }
+        /// <summary>
+        /// Ferme la palette
+        /// </summary>
+        public void ClosePalette()
+        {
+            parentNode.SetBackGroundColor(firstColor);
+            parentNode.ClosePalette();
+        }
+
         /// <summary>
         /// Appelé lors de l'appui d'une touche couleur
         /// </summary>

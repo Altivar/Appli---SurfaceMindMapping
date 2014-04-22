@@ -21,10 +21,6 @@ namespace AppliProjetTut
     public partial class NodeText : ScatterCustom
     {
 
-
-        // en edition
-        private bool isEditing = false;
-
         // parent
         ScatterCustom parent;
         // surfacewindow
@@ -42,9 +38,9 @@ namespace AppliProjetTut
         public SurfaceScrollViewer SScrollViewer;
 
         // clavier virtuel
-        private ClavierVirtuel clavier;
+        public ClavierVirtuel clavier;
         // palette de couleur
-        private PaletteCouleurs palette;
+        public PaletteCouleurs palette;
 
         // couleur actuelle
         private Brush currentColor;
@@ -146,7 +142,7 @@ namespace AppliProjetTut
         /// <param name="e"></param>
         void OnColorSelection(object sender, RoutedEventArgs e)
         {
-            if (!isEditing)
+            if (!base.isEditing)
             {
                 this.AddonGrid.Items.Add(palette);
 
@@ -154,7 +150,7 @@ namespace AppliProjetTut
                 palette.CanMove = false;
                 palette.CanScale = false;
                 palette.CanRotate = false;
-                isEditing = true;
+                base.isEditing = true;
             }
         }
 
@@ -174,18 +170,22 @@ namespace AppliProjetTut
 
                 // on enlève le "curseur"
                 string test = STextBox.Text;
-                if (MaxLength == -1)
-                {
-                    test = test.Remove(test.Length - 2);
-                }
-                else
-                {
-                    test = test.Remove(test.Length - 1);
-                }
-                STextBox.Clear();
-                STextBox.AppendText(test);
 
-                isEditing = false;
+                if(test.Contains("|"))
+                {
+                    if (MaxLength == -1)
+                    {
+                        test = test.Remove(test.Length - 2);
+                    }
+                    else
+                    {
+                        test = test.Remove(test.Length - 1);
+                    }
+                    STextBox.Clear();
+                    STextBox.AppendText(test);
+                }
+
+                base.isEditing = false;
             }
             else if (str.ToLower().Equals("backspace"))
             {
@@ -287,6 +287,8 @@ namespace AppliProjetTut
         public void ClosePalette()
         {
             this.AddonGrid.Items.Remove(palette);
+            STextBox.Background = currentColor;
+            STextBox.BorderBrush = currentColor;
             isEditing = false;
         }
 
@@ -398,7 +400,7 @@ namespace AppliProjetTut
             clavier.CanMove = false;
             clavier.CanScale = false;
             clavier.CanRotate = false;
-            isEditing = true;
+            base.isEditing = true;
 
         }
 

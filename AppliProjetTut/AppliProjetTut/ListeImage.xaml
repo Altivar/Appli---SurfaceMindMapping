@@ -6,19 +6,20 @@
              xmlns:s="http://schemas.microsoft.com/surface/2008"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Name="ImagesGrid" Width="200" Height="130" >
+    <Grid Name="ImagesGrid" Width="300" Height="200" >
 
         <s:SurfaceScrollViewer Name="listview" 
-                               Width="200" 
-                               Height="100" 
-                               Margin="0,0,0,30"
+                               Width="300" 
+                               Height="150" 
+                               Margin="0,0,0,50"
                                HorizontalScrollBarVisibility="Hidden" 
-                               VerticalScrollBarVisibility="Hidden">
+                               VerticalScrollBarVisibility="Hidden"
+                               Background="LightGray" >
             <Grid Name="ButtonListGrid" />
         </s:SurfaceScrollViewer>
         
-        <s:SurfaceButton Name="Valider" Content="Valider" Width="100" Height="30" Click="Valider_Click" Margin="100,100,0,0" Background="DarkGreen"/>
-        <s:SurfaceButton Name="Annuler" Content="Annuler" Width="100" Height="30" Click="Annuler_Click" Margin="0,100,100,0" Background="DarkRed"/>
+        <s:SurfaceButton Name="Valider" Content="Valider" Width="150" Height="50" Click="Valider_Click" Margin="150,150,0,0" Background="DarkGreen" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="White"/>
+        <s:SurfaceButton Name="Annuler" Content="Annuler" Width="150" Height="50" Click="Annuler_Click" Margin="0,150,150,0" Background="DarkRed"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="White"/>
         
     </Grid>
 </s:ScatterViewItem>

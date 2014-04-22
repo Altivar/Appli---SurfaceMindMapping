@@ -32,18 +32,9 @@
                 </Button.Background>
             </s:SurfaceButton>
         </Grid>
-        
-        <!--<s:ElementMenu 
-        Name="MainMenu"
-        ActivationMode="AlwaysActive"
-        ActivationHost="{Binding ElementName=MenuGrid}" VerticalAlignment="Bottom" Margin="100,0,100,-50">
-            <s:ElementMenuItem Header="Add NodeText" Click="OnAddNodeTextSelection" />
-            <s:ElementMenuItem Header="Add NodeImage" Click="OnAddNodeImageSelection" />
-            <s:ElementMenuItem Header="Separate from Parent" Click="OnSeparateSelection" />
-        </s:ElementMenu>-->
 
 
-        <s:ScatterView Margin="150, 250, 150, 0" Name="AddonGrid" />
+        <s:ScatterView Margin="187, 300, 187, 0" Name="AddonGrid" />
         
         
     </Grid>

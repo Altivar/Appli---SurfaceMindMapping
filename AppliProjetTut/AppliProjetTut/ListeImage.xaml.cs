@@ -25,7 +25,7 @@ namespace AppliProjetTut
     public partial class ListeImages : ScatterViewItem
     {
 
-        int imgSize = 100;
+        int imgSize = 130;
 
         int imgBorder = 5;
 
@@ -112,16 +112,17 @@ namespace AppliProjetTut
             catch { };
 
             ButtonListGrid.Width = listButton.Count * imgSize;
+            ButtonListGrid.Height = imgSize;
             for (int i = 0 ; i < listButton.Count; i++)
             { 
                 SurfaceButton btn = listButton.ElementAt(i).Key.Key;
                 if (i == listButton.Count - 1)
                 {
-                    btn.Margin = new Thickness(imgSize * i + imgBorder, imgBorder, imgSize * (listButton.Count - 1 - i) + imgBorder, 100 - imgSize + imgBorder);
+                    btn.Margin = new Thickness(imgSize * i + imgBorder, imgBorder, imgSize * (listButton.Count - 1 - i) + imgBorder, imgBorder);
                 }
                 else
                 {
-                    btn.Margin = new Thickness(imgSize * i + imgBorder, imgBorder, imgSize * (listButton.Count - 1 - i), 100 - imgSize + imgBorder);
+                    btn.Margin = new Thickness(imgSize * i + imgBorder, imgBorder, imgSize * (listButton.Count - 1 - i), imgBorder);
                 }
                 
                 btn.PreviewTouchUp += new EventHandler<TouchEventArgs>(OnButtonPreviewTouchUp);

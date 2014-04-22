@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:s="http://schemas.microsoft.com/surface/2008"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="300">
+             d:DesignHeight="200" d:DesignWidth="350">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
@@ -18,8 +18,10 @@
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="50" />
             <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="25"/>
             <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
 
@@ -27,26 +29,29 @@
         <s:SurfaceButton Name="Rouge1" Grid.Row="0" Grid.Column="0" Background="Salmon" />
         <s:SurfaceButton Name="Orange1" Grid.Row="0" Grid.Column="1" Background="BurlyWood" />
         <s:SurfaceButton Name="Jaune1" Grid.Row="0" Grid.Column="2" Background="LightYellow" />
-        <s:SurfaceButton Name="Vert1" Grid.Row="0" Grid.Column="3" Background="LightGreen" />
-        <s:SurfaceButton Name="Bleu1" Grid.Row="0" Grid.Column="4" Background="SkyBlue" />
-        <s:SurfaceButton Name="Violet1" Grid.Row="0" Grid.Column="5" Background="Pink" />
+        <s:SurfaceButton Name="Vert1" Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" Background="LightGreen" />
+        <s:SurfaceButton Name="Bleu1" Grid.Row="0" Grid.Column="5" Background="SkyBlue" />
+        <s:SurfaceButton Name="Violet1" Grid.Row="0" Grid.Column="6" Background="Pink" />
+        <s:SurfaceButton Name="Blanc" Grid.Row="0" Grid.Column="7" Background="White" />
         
         <s:SurfaceButton Name="Rouge" Grid.Row="1" Grid.Column="0" Background="Red" />
         <s:SurfaceButton Name="Orange" Grid.Row="1" Grid.Column="1" Background="Orange" />
         <s:SurfaceButton Name="Jaune" Grid.Row="1" Grid.Column="2" Background="Yellow" />
-        <s:SurfaceButton Name="Vert" Grid.Row="1" Grid.Column="3" Background="Green" />
-        <s:SurfaceButton Name="Bleu" Grid.Row="1" Grid.Column="4" Background="Blue" />
-        <s:SurfaceButton Name="Violet" Grid.Row="1" Grid.Column="5" Background="Violet" />
+        <s:SurfaceButton Name="Vert" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Background="Green" />
+        <s:SurfaceButton Name="Bleu" Grid.Row="1" Grid.Column="5" Background="Blue" />
+        <s:SurfaceButton Name="Violet" Grid.Row="1" Grid.Column="6" Background="Violet" />
+        <s:SurfaceButton Name="Gris" Grid.Row="1" Grid.Column="7" Background="Gray" />
         
         <s:SurfaceButton Name="Rouge2" Grid.Row="2" Grid.Column="0" Background="DarkRed" />
         <s:SurfaceButton Name="Orange2" Grid.Row="2" Grid.Column="1" Background="DarkOrange" />
         <s:SurfaceButton Name="Jaune2" Grid.Row="2" Grid.Column="2" Background="Gold" />
-        <s:SurfaceButton Name="Vert2" Grid.Row="2" Grid.Column="3" Background="DarkGreen" />
-        <s:SurfaceButton Name="Bleu2" Grid.Row="2" Grid.Column="4" Background="DarkBlue" />
-        <s:SurfaceButton Name="Violet2" Grid.Row="2" Grid.Column="5" Background="Purple" />
+        <s:SurfaceButton Name="Vert2" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2" Background="DarkGreen" />
+        <s:SurfaceButton Name="Bleu2" Grid.Row="2" Grid.Column="5" Background="DarkBlue" />
+        <s:SurfaceButton Name="Violet2" Grid.Row="2" Grid.Column="6" Background="Purple" />
+        <s:SurfaceButton Name="Noir" Grid.Row="2" Grid.Column="7" Background="Black" />
 
-        <s:SurfaceButton Name="Annuler" Content="Annuler"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" TextElement.FontSize="25" />
-        <s:SurfaceButton Name="Valider" Content="Valider"  Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" TextElement.FontSize="25" />
+        <s:SurfaceButton Name="Annuler" Content="Annuler"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" TextElement.FontSize="25"  Background="DarkRed" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="White"/>
+        <s:SurfaceButton Name="Valider" Content="Valider"  Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="4" TextElement.FontSize="25"  Background="DarkGreen" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="White"/>
         
     </Grid>
 </s:ScatterViewItem>

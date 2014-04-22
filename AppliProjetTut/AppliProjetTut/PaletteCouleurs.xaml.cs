@@ -70,8 +70,7 @@ namespace AppliProjetTut
         /// <param name="e"></param>
         void Valider_PreviewTouchDown(object sender, TouchEventArgs e)
         {
-            firstColor = ((SurfaceButton)sender).Background;
-            parentNode.ClosePalette();
+            parentNode.ValidateChoice();
         }
         /// <summary>
         /// Appelé lorsque le choix est annulé
@@ -80,15 +79,6 @@ namespace AppliProjetTut
         /// <param name="e"></param>
         void OnAnnulerPreviewTouchDown(object sender, TouchEventArgs e)
         {
-            parentNode.SetBackGroundColor(firstColor);
-            parentNode.ClosePalette();
-        }
-        /// <summary>
-        /// Ferme la palette
-        /// </summary>
-        public void ClosePalette()
-        {
-            parentNode.SetBackGroundColor(firstColor);
             parentNode.ClosePalette();
         }
 
@@ -99,15 +89,7 @@ namespace AppliProjetTut
         /// <param name="e"></param>
         void OnColorPreviewTouchDown(object sender, TouchEventArgs e)
         {
-            parentNode.SetBackGroundColor( ((SurfaceButton)sender).Background );
-        }
-        /// <summary>
-        /// Récupère la couleur avant que la palette de couleurs ne s'ouvre
-        /// </summary>
-        /// <param name="col"></param>
-        public void SetFirstColor(Brush col)
-        {
-            firstColor = col;
+            parentNode.SetTempBackGroundColor( ((SurfaceButton)sender).Background );
         }
 
 

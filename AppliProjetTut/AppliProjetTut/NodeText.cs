@@ -42,8 +42,9 @@ namespace AppliProjetTut
         // palette de couleur
         public PaletteCouleurs palette;
 
-        // couleur actuelle
+        // couleurs actuelles
         private Brush currentColor;
+        private Brush tempColor;
 
         // boutons du menu
         public SurfaceButton btnColorChoice;
@@ -146,7 +147,6 @@ namespace AppliProjetTut
             {
                 this.AddonGrid.Items.Add(palette);
 
-                palette.SetFirstColor(currentColor);
                 palette.CanMove = false;
                 palette.CanScale = false;
                 palette.CanRotate = false;
@@ -275,11 +275,11 @@ namespace AppliProjetTut
         /// Change la couleur du Node
         /// </summary>
         /// <param name="color"></param>
-        public void SetBackGroundColor(Brush color)
+        public void SetTempBackGroundColor(Brush color)
         {
-            currentColor = color;
-            STextBox.Background = currentColor;
-            STextBox.BorderBrush = currentColor;
+            tempColor = color;
+            STextBox.Background = tempColor;
+            STextBox.BorderBrush = tempColor;
         }
         /// <summary>
         /// Ferme la palette de couleur
@@ -289,9 +289,17 @@ namespace AppliProjetTut
             this.AddonGrid.Items.Remove(palette);
             STextBox.Background = currentColor;
             STextBox.BorderBrush = currentColor;
+            tempColor = currentColor;
             isEditing = false;
         }
-
+        /// <summary>
+        /// Valide le choix de la couleur
+        /// </summary>
+        public void ValidateChoice()
+        {
+            currentColor = tempColor;
+            ClosePalette();
+        }
 
 
 
@@ -347,7 +355,7 @@ namespace AppliProjetTut
         public void SetColor(string col)
         {
             Brush color = new BrushConverter().ConvertFromString(col) as SolidColorBrush;
-            SetBackGroundColor(color);
+            SetTempBackGroundColor(color);
         }
 
 

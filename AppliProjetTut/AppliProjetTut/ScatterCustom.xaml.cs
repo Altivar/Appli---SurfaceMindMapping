@@ -43,7 +43,7 @@ namespace AppliProjetTut
         public Timer ActivityTimer;
         bool m_bIsActive;
         int nbSec;
-        int ActivityDuration = 5;
+        int ActivityDuration = 3;
         Storyboard AnimStoryboard;
 
 
@@ -110,7 +110,7 @@ namespace AppliProjetTut
                         NodeText txt = (NodeText)this;
                         try { txt.AjoutTexte("Close"); }
                         catch { };
-                        try { txt.palette.ClosePalette(); }
+                        try { txt.ClosePalette(); }
                         catch { };
                         break;
                     case "Image":

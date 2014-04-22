@@ -36,16 +36,18 @@ namespace AppliProjetTut
         string thisType;
 
         // etat de l'annotation (ouverte ou fermée)
-        bool isTextAnnotationOpened;
+        public bool isTextAnnotationOpened;
         bool isAnimated;
 
         // Gestion de l'inactivité du Node
         public Timer ActivityTimer;
         bool m_bIsActive;
         int nbSec;
-        int ActivityDuration = 3;
+        int ActivityDuration = 5;
         Storyboard AnimStoryboard;
 
+        // texte d'annotation
+        NodeText textAnnotation;
 
         /// <summary>
         /// Default Constructor
@@ -400,6 +402,8 @@ namespace AppliProjetTut
             AnimStoryboard.Children.Add(widthBAAnimation);
             AnimStoryboard.Children.Add(heightBAAnimation);
 
+            
+
             AnimStoryboard.Completed += new EventHandler(AnimStoryboardOpenCompleted);
             AnimStoryboard.Begin();
 
@@ -418,6 +422,15 @@ namespace AppliProjetTut
             this.grdBGColor.Margin = new Thickness(0, 0, 75, 75);
             this.Width = 375;
             this.Height = 275;
+
+            if (isTextAnnotationOpened)
+            {
+                this.grdButtonH.Margin = new Thickness(0, 300, 75, -100);
+            }
+            else
+            {
+                this.grdButtonH.Margin = new Thickness(0, 200, 75, 0);
+            }
         }
         /// <summary>
         /// Renvoie l'état actuel du Node
@@ -579,7 +592,7 @@ namespace AppliProjetTut
             Storyboard sb = new Storyboard();
 
             Thickness borderTextIn = new Thickness(0, 0, 75, 100);
-            Thickness borderTextOut = new Thickness(0, 275, 75, -175);
+            Thickness borderTextOut = new Thickness(0, 200, 75, -100);
 
             ThicknessAnimation AnimText = new ThicknessAnimation
             {
@@ -597,10 +610,54 @@ namespace AppliProjetTut
 
             };
 
+            Thickness borderTextButtonIn = new Thickness(0, 100, 0, 0);
+            Thickness borderTextButtonOut = new Thickness(0, 175, 0, -75);
+            ThicknessAnimation AnimButtonText = new ThicknessAnimation
+            {
+                From = (isTextAnnotationOpened) ? borderTextButtonOut : borderTextButtonIn,
+
+                To = (isTextAnnotationOpened) ? borderTextButtonIn : borderTextButtonOut,
+
+                AccelerationRatio = 0.5,
+
+                FillBehavior = FillBehavior.Stop,
+
+                DecelerationRatio = 0.5,
+
+                Duration = System.Windows.Duration.Automatic
+
+            };
+
+            Thickness borderNodeButtonIn = new Thickness(0, 200, 75, 0);
+            Thickness borderNodeButtonOut = new Thickness(0, 300, 75, -100);
+            ThicknessAnimation AnimButtonNode = new ThicknessAnimation
+            {
+                From = (isTextAnnotationOpened) ? borderNodeButtonOut : borderNodeButtonIn,
+
+                To = (isTextAnnotationOpened) ? borderNodeButtonIn : borderNodeButtonOut,
+
+                AccelerationRatio = 0.5,
+
+                FillBehavior = FillBehavior.Stop,
+
+                DecelerationRatio = 0.5,
+
+                Duration = System.Windows.Duration.Automatic
+            };
+
+
             Storyboard.SetTarget(AnimText, TextGrid);
             Storyboard.SetTargetProperty(AnimText, new PropertyPath(MarginProperty));
 
+            Storyboard.SetTarget(AnimButtonText, textAnnotation.grdButtonH);
+            Storyboard.SetTargetProperty(AnimButtonText, new PropertyPath(MarginProperty));
+
+            Storyboard.SetTarget(AnimButtonNode, this.grdButtonH);
+            Storyboard.SetTargetProperty(AnimButtonNode, new PropertyPath(MarginProperty));
+
             sb.Children.Add(AnimText);
+            sb.Children.Add(AnimButtonText);
+            sb.Children.Add(AnimButtonNode);
 
             sb.Completed += new EventHandler(sb_Completed);
             isAnimated = true;
@@ -619,17 +676,25 @@ namespace AppliProjetTut
         {
 
             Thickness borderText;
+            Thickness borderButtonText;
+            Thickness borderButtonNode;
 
             if (isTextAnnotationOpened)
             {
-                borderText = new Thickness(0, 275, 75, -175);
+                borderText = new Thickness(0, 200, 75, -100);
+                borderButtonText = new Thickness(0, 175, 0, -75);
+                borderButtonNode = new Thickness(0, 300, 75, -100);
             }
             else
             { 
                 borderText = new Thickness(0, 0, 75, 100);
+                borderButtonText = new Thickness(0, 100, 0, 0);
+                borderButtonNode = new Thickness(0, 200, 75, 0);
             }
 
             this.TextGrid.Margin = borderText;
+            textAnnotation.grdButtonH.Margin = borderButtonText;
+            this.grdButtonH.Margin = borderButtonNode;
 
             isAnimated = false;
         }
@@ -710,6 +775,38 @@ namespace AppliProjetTut
         public void SetTypeOfNode(string str)
         {
             thisType = str;
+            if (thisType != "Text")
+            {
+                // initialisation de la box d'annotaion
+                textAnnotation = new NodeText(Surface, null);
+                // reglage de la taille generale du node
+                textAnnotation.MinHeight = 175;
+                textAnnotation.MinWidth = 300;
+                textAnnotation.MaxHeight = 175;
+                textAnnotation.MaxWidth = 300;
+                //
+                textAnnotation.MainGrid.Children.Remove(textAnnotation.grdButtonV);
+                textAnnotation.MainGrid.Height = 175;
+                textAnnotation.MainGrid.Width = 300;
+                textAnnotation.MainGrid.Margin = new Thickness(0, 0, 0, 0);
+                // reglage de la dimension du texte
+                textAnnotation.TypeScatter.Width = 300;
+                textAnnotation.TypeScatter.Height = 100;
+                textAnnotation.TypeScatter.Margin = new Thickness(0, 0, 0, 75);
+                textAnnotation.STextBox.Height = 100;
+                textAnnotation.STextBox.Width = 300;
+                textAnnotation.SScrollViewer.Height = 100;
+                textAnnotation.SScrollViewer.Width = 300;
+                // positionnement de la barre des taches horizontale
+                textAnnotation.grdButtonH.Margin = new Thickness(0, 100, 0, 0);
+                textAnnotation.btnColorChoice.Margin = new Thickness(-75, 0, 75, 0);
+                textAnnotation.btnEdition.Margin = new Thickness(0, 0, 0, 0);
+
+                textAnnotation.ActivityTimer.Stop();
+
+                this.TextGrid.Children.Add(textAnnotation);
+                textAnnotation.Margin = new Thickness(0, 0, 0, 0);
+            }
         }
         /// <summary>
         /// Retourne le type du Node

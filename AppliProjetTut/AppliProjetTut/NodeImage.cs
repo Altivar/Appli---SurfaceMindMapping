@@ -39,11 +39,6 @@ namespace AppliProjetTut
         string currentPath = "NONE";
 
 
-        // annotation
-        NodeText textAnnotation;
-
-
-
         /// <summary>
         /// Defalut Constructor
         /// </summary>
@@ -72,40 +67,6 @@ namespace AppliProjetTut
             base.SizeChanged += new SizeChangedEventHandler(OnNodeImageSizeChanged);
 
             
-
-
-            // initialisation de la box d'annotaion
-            textAnnotation = new NodeText(parentSurface, null);
-            // reglage de la taille generale du node
-            textAnnotation.MinHeight = 175;
-            textAnnotation.MinWidth = 300;
-            textAnnotation.MaxHeight = 175;
-            textAnnotation.MaxWidth = 300;
-            //
-            textAnnotation.MainGrid.Children.Remove(textAnnotation.grdButtonV);
-            textAnnotation.MainGrid.Height = 175;
-            textAnnotation.MainGrid.Width = 300;
-            textAnnotation.MainGrid.Margin = new Thickness(0, 0, 0, 0);
-            // reglage de la dimension du texte
-            textAnnotation.TypeScatter.Width = 300;
-            textAnnotation.TypeScatter.Height = 100;
-            textAnnotation.TypeScatter.Margin = new Thickness(0, 0, 0, 75);
-            textAnnotation.STextBox.Height = 100;
-            textAnnotation.STextBox.Width = 300;
-            textAnnotation.SScrollViewer.Height = 100;
-            textAnnotation.SScrollViewer.Width = 300;
-            // positionnement de la barre des taches horizontale
-            textAnnotation.grdButtonH.Margin = new Thickness(0, 100, 0, 0);
-            textAnnotation.btnColorChoice.Margin = new Thickness(-75, 0, 75, 0);
-            textAnnotation.btnEdition.Margin = new Thickness(0, 0, 0, 0);
-
-            textAnnotation.ActivityTimer.Stop();
-
-            base.TextGrid.Children.Add(textAnnotation);
-            textAnnotation.Margin = new Thickness(0, 0, 0, 0);
-
-
-
 
             // modification de la barre des taches
             SurfaceButton btnImageChoice = new SurfaceButton();
@@ -234,8 +195,16 @@ namespace AppliProjetTut
                 if (currentSize.X > 300) this.TypeScatter.Width = base.Width - 75;
                 if (currentSize.Y > 200) this.TypeScatter.Height = base.Height - 75;
 
-                this.grdButtonH.Margin = new Thickness(0, base.Height - 75, base.Width - 375, 0);
+
                 this.grdButtonV.Margin = new Thickness(base.Width - 75, 0, 0, base.Height - 225);
+                if (base.isTextAnnotationOpened)
+                {
+                    base.grdButtonH.Margin = new Thickness(0, base.Height + 25, base.Width - 375, -100);
+                }
+                else
+                {
+                    base.grdButtonH.Margin = new Thickness(0, base.Height - 75, base.Width - 375, 0);
+                }
 
                 this.grdBGColor.Width = this.TypeScatter.Width;
                 this.grdBGColor.Height = this.TypeScatter.Height;

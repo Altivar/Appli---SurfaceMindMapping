@@ -40,9 +40,6 @@ namespace AppliProjetTut
         // Liste de videos
         ListeVideo listeVideo;
 
-        // annotation
-        NodeText textAnnotation;
-
         /// <summary>
         /// Default Constructor
         /// </summary>
@@ -74,37 +71,6 @@ namespace AppliProjetTut
             base.Height = 275;
             base.MaxHeight = 275;
             base.MaxWidth = 375;
-
-
-            // initialisation de la box d'annotaion
-            textAnnotation = new NodeText(parentSurface, null);
-            // reglage de la taille generale du node
-            textAnnotation.MinHeight = 175;
-            textAnnotation.MinWidth = 300;
-            textAnnotation.MaxHeight = 175;
-            textAnnotation.MaxWidth = 300;
-            //
-            textAnnotation.MainGrid.Children.Remove(textAnnotation.grdButtonV);
-            textAnnotation.MainGrid.Height = 175;
-            textAnnotation.MainGrid.Width = 300;
-            textAnnotation.MainGrid.Margin = new Thickness(0, 0, 0, 0);
-            // reglage de la dimension du texte
-            textAnnotation.TypeScatter.Width = 300;
-            textAnnotation.TypeScatter.Height = 100;
-            textAnnotation.TypeScatter.Margin = new Thickness(0, 0, 0, 75);
-            textAnnotation.STextBox.Height = 100;
-            textAnnotation.STextBox.Width = 300;
-            textAnnotation.SScrollViewer.Height = 100;
-            textAnnotation.SScrollViewer.Width = 300;
-            // positionnement de la barre des taches horizontale
-            textAnnotation.grdButtonH.Margin = new Thickness(0, 100, 0, 0);
-            textAnnotation.btnColorChoice.Margin = new Thickness(-75, 0, 75, 0);
-            textAnnotation.btnEdition.Margin = new Thickness(0, 0, 0, 0);
-
-            textAnnotation.ActivityTimer.Stop();
-
-            base.TextGrid.Children.Add(textAnnotation);
-            textAnnotation.Margin = new Thickness(0, 0, 0, 0);
 
 
             // modification de la barre des taches
@@ -193,8 +159,15 @@ namespace AppliProjetTut
                 base.TypeScatter.Height = base.Height - 75;
                 base.TypeScatter.Width = base.Width - 75;
 
-                this.grdButtonH.Margin = new Thickness(0, base.TypeScatter.Height, base.Width - this.grdButtonH.Width, 0);
                 this.grdButtonV.Margin = new Thickness(base.TypeScatter.Width, 0, 0, base.Height - this.grdButtonV.Height);
+                if (base.isTextAnnotationOpened)
+                {
+                    base.grdButtonH.Margin = new Thickness(0, base.Height + 25, base.Width - 375, -100);
+                }
+                else
+                {
+                    base.grdButtonH.Margin = new Thickness(0, base.Height - 75, base.Width - 375, 0);
+                }
 
             }
 

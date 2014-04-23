@@ -163,6 +163,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\icon_choice_videos.png" />
+    <Resource Include="Resources\icon_choice_text.png" />
+    <Resource Include="Resources\icon_choice_images.png" />
     <Resource Include="Resources\icon_unlock.png" />
     <Resource Include="Resources\icon_chain.gif" />
     <Resource Include="Resources\icon_edit.png" />

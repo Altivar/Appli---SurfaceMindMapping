@@ -7,11 +7,206 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              Background="Transparent">
-    <Grid Name="ChoiceNodeMenu" Width="150" Height="150" >
+    <Grid Name="ChoiceNodeMenu" Width="160" Height="160" >
             
-        <s:SurfaceButton Content="X" FontSize="30" Margin="50,50,50,50" Background="Red" Foreground="White" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Click="CloseMenuClick"/>
-        <s:SurfaceButton Content="Txt" FontSize="15" Margin="0, 0, 100, 100" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Click="TextButtonClick"/>
-        <s:SurfaceButton Content="Img" FontSize="15" Margin="100,0,0,100" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Click="ImageButtonClick"/>
-        <s:SurfaceButton Content="Vid" FontSize="15" Margin="50,100,50,0" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" Click="VideoButtonClick"/>
+        <Path x:Name="mCircleText"  Fill="DarkGoldenrod" Stroke="Gold" StrokeThickness="3">
+            <Path.Data>
+                <CombinedGeometry GeometryCombineMode="Intersect">
+                    <CombinedGeometry.Geometry1>
+                        <CombinedGeometry GeometryCombineMode="Exclude">
+                            <CombinedGeometry.Geometry1>
+                                <EllipseGeometry RadiusX="0" RadiusY="0" Center="80,80" x:Name="TextEllipse" />
+                            </CombinedGeometry.Geometry1>
+                            <CombinedGeometry.Geometry2>
+                                <EllipseGeometry RadiusX="30" RadiusY="30" Center="80,80" />
+                            </CombinedGeometry.Geometry2>
+                        </CombinedGeometry>
+                    </CombinedGeometry.Geometry1>
+                    <CombinedGeometry.Geometry2>
+                        <PathGeometry Figures="M 0,0 0,125 80,80 80,0">
+                        </PathGeometry>
+                    </CombinedGeometry.Geometry2>
+                </CombinedGeometry>
+            </Path.Data>
+            
+            <Path.Triggers>
+                <EventTrigger RoutedEvent="Path.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="TextEllipse" 
+                                Storyboard.TargetProperty="RadiusX"
+                                From="0" To="75" Duration="0:0:0.20" BeginTime="0:0:0.20"/>
+                            <DoubleAnimation
+                                Storyboard.TargetName="TextEllipse" 
+                                Storyboard.TargetProperty="RadiusY"
+                                From="0" To="75" Duration="0:0:0.20" BeginTime="0:0:0.20"/>
+
+                            <DoubleAnimation
+                                Storyboard.TargetName="TextEllipse" 
+                                Storyboard.TargetProperty="RadiusX"
+                                From="75" To="0" Duration="0:0:0.20" BeginTime="0:0:4.80"/>
+                            <DoubleAnimation
+                                Storyboard.TargetName="TextEllipse" 
+                                Storyboard.TargetProperty="RadiusY"
+                                From="75" To="0" Duration="0:0:0.20" BeginTime="0:0:4.80"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Path.Triggers>
+        </Path>
+
+        <Path x:Name="mCircleImage"  Fill="DarkGoldenrod" Stroke="Gold" StrokeThickness="3">
+            <Path.Data>
+                <CombinedGeometry GeometryCombineMode="Intersect">
+                    <CombinedGeometry.Geometry1>
+                        <CombinedGeometry GeometryCombineMode="Exclude">
+                            <CombinedGeometry.Geometry1>
+                                <EllipseGeometry RadiusX="0" RadiusY="0" Center="80,80" x:Name="ImageEllipse" />
+                            </CombinedGeometry.Geometry1>
+                            <CombinedGeometry.Geometry2>
+                                <EllipseGeometry RadiusX="30" RadiusY="30" Center="80,80" />
+                            </CombinedGeometry.Geometry2>
+                        </CombinedGeometry>
+                    </CombinedGeometry.Geometry1>
+                    <CombinedGeometry.Geometry2>
+                        <PathGeometry Figures="M 160,0 160,125 80,80 80,0">
+                        </PathGeometry>
+                    </CombinedGeometry.Geometry2>
+                </CombinedGeometry>
+            </Path.Data>
+
+            <Path.Triggers>
+                <EventTrigger RoutedEvent="Path.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="ImageEllipse" 
+                                Storyboard.TargetProperty="RadiusX"
+                                From="0" To="75" Duration="0:0:0.20" BeginTime="0:0:0.40"/>
+                            <DoubleAnimation
+                                Storyboard.TargetName="ImageEllipse" 
+                                Storyboard.TargetProperty="RadiusY"
+                                From="0" To="75" Duration="0:0:0.20" BeginTime="0:0:0.40"/>
+                            
+                            <DoubleAnimation
+                                Storyboard.TargetName="ImageEllipse" 
+                                Storyboard.TargetProperty="RadiusX"
+                                From="75" To="0" Duration="0:0:0.20" BeginTime="0:0:4.80"/>
+                            <DoubleAnimation
+                                Storyboard.TargetName="ImageEllipse" 
+                                Storyboard.TargetProperty="RadiusY"
+                                From="75" To="0" Duration="0:0:0.20" BeginTime="0:0:4.80"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Path.Triggers>
+        </Path>
+
+
+        <Path x:Name="mCircleVideo"  Fill="DarkGoldenrod" Stroke="Gold" StrokeThickness="3">
+            <Path.Data>
+                <CombinedGeometry GeometryCombineMode="Intersect">
+                    <CombinedGeometry.Geometry1>
+                        <CombinedGeometry GeometryCombineMode="Exclude">
+                            <CombinedGeometry.Geometry1>
+                                <EllipseGeometry RadiusX="0" RadiusY="0" Center="80,80" x:Name="VideoEllipse" />
+                            </CombinedGeometry.Geometry1>
+                            <CombinedGeometry.Geometry2>
+                                <EllipseGeometry RadiusX="30" RadiusY="30" Center="80,80" />
+                            </CombinedGeometry.Geometry2>
+                        </CombinedGeometry>
+                    </CombinedGeometry.Geometry1>
+                    <CombinedGeometry.Geometry2>
+                        <PathGeometry Figures="M 80,80 0,125 0,160 160,160 160,125 80,80">
+                        </PathGeometry>
+                    </CombinedGeometry.Geometry2>
+                </CombinedGeometry>
+            </Path.Data>
+
+            <Path.Triggers>
+                <EventTrigger RoutedEvent="Path.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="VideoEllipse" 
+                                Storyboard.TargetProperty="RadiusX"
+                                From="0" To="75" Duration="0:0:0.20" BeginTime="0:0:0.60"/>
+                            <DoubleAnimation
+                                Storyboard.TargetName="VideoEllipse" 
+                                Storyboard.TargetProperty="RadiusY"
+                                From="0" To="75" Duration="0:0:0.20" BeginTime="0:0:0.60"/>
+
+                            <DoubleAnimation
+                                Storyboard.TargetName="VideoEllipse" 
+                                Storyboard.TargetProperty="RadiusX"
+                                From="75" To="0" Duration="0:0:0.20" BeginTime="0:0:4.80"/>
+                            <DoubleAnimation
+                                Storyboard.TargetName="VideoEllipse" 
+                                Storyboard.TargetProperty="RadiusY"
+                                From="75" To="0" Duration="0:0:0.20" BeginTime="0:0:4.80"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Path.Triggers>
+        </Path>
+
+
+        <Path x:Name="mCircleCross"  Fill="Red" Stroke="DarkRed" StrokeThickness="3">
+            <Path.Data>
+                <EllipseGeometry RadiusX="0" RadiusY="0" Center="80,80" x:Name="CrossEllipse" />        
+            </Path.Data>
+
+            <Path.Triggers>
+                <EventTrigger RoutedEvent="Path.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="CrossEllipse" 
+                                Storyboard.TargetProperty="RadiusX"
+                                From="0" To="30" Duration="0:0:0.20" BeginTime="0:0:0.0"/>
+                            <DoubleAnimation
+                                Storyboard.TargetName="CrossEllipse" 
+                                Storyboard.TargetProperty="RadiusY"
+                                From="0" To="30" Duration="0:0:0.20" BeginTime="0:0:0.0"/>
+                            
+                            <DoubleAnimation
+                                Storyboard.TargetName="CrossEllipse" 
+                                Storyboard.TargetProperty="RadiusX"
+                                From="30" To="0" Duration="0:0:0.20" BeginTime="0:0:4.80"/>
+                            <DoubleAnimation
+                                Storyboard.TargetName="CrossEllipse" 
+                                Storyboard.TargetProperty="RadiusY"
+                                From="30" To="0" Duration="0:0:0.20" BeginTime="0:0:4.80"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Path.Triggers>
+        </Path>
+        
+        
+        <!-- Grille d'apparition des images -->
+        <Grid Name="ImageGrid">
+
+            <Ellipse Name="ellText" Width="0" Height="40" Margin="16,31,104,89">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="./Resources/icon_choice_text.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse Name="ellImage" Width="0" Height="40" Margin="104, 31, 16, 89">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="./Resources/icon_choice_images.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <Ellipse Name="ellVideo" Width="0" Height="40" Margin="60, 112, 60, 8">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="./Resources/icon_choice_videos.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+        </Grid>
+        
+        
+        
+        
     </Grid>
 </s:ScatterViewItem>

@@ -59,7 +59,9 @@ namespace AppliProjetTut
         int mLimiteNbrTouch = 4;
 
         // Position du Node initial
-        Point initP = new Point(800, 400);
+        Point initP1 = new Point(1200, 600);
+        Point initP2 = new Point(800, 300);
+        Point initP3 = new Point(400, 600);
 
         // timer
         Timer timeRefresh = new Timer();
@@ -92,9 +94,9 @@ namespace AppliProjetTut
                 SavesDir.Create();
 
             // ajout de Nodes
-            AddNode(null, initP, "Text");
-            AddNode(null, initP, "Image");
-            AddNode(null, initP, "Video");
+            AddNode(null, initP1, "Text");
+            AddNode(null, initP2, "Image");
+            AddNode(null, initP3, "Video");
             Modification(false);
 
             PreviewTouchMove += new EventHandler<TouchEventArgs>(OnPreviewTouchMove);
@@ -476,7 +478,7 @@ namespace AppliProjetTut
                             MainScatterView.Items.Add(ChoiceNode);
 
                             Timer menuLifeTime = new Timer();
-                            menuLifeTime.Interval = 3000;
+                            menuLifeTime.Interval = 5000;
                             menuLifeTime.Tick += new EventHandler(ChoiceMenuTimeExpired);
                             menuLifeTime.Start();
 
@@ -897,7 +899,7 @@ namespace AppliProjetTut
                             if (color != "NULL")
                                 myText.SetColor(color);
 
-                            myText.Center = initP;
+                            myText.Center = initP1;
                             this.MainScatterView.Items.Add(myText);
                             listNode.Add(myText);
                             currentNode = myText;
@@ -905,7 +907,7 @@ namespace AppliProjetTut
                         case "img":
                             currentType = "img";
                             NodeImage myImage = new NodeImage(this, null);
-                            myImage.Center = initP;
+                            myImage.Center = initP2;
                             this.MainScatterView.Items.Add(myImage);
                             listNode.Add(myImage);
                             currentNode = myImage;

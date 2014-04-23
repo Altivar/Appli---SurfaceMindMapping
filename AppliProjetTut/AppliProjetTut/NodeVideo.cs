@@ -163,11 +163,16 @@ namespace AppliProjetTut
                 if (base.isTextAnnotationOpened)
                 {
                     base.grdButtonH.Margin = new Thickness(0, base.Height + 25, base.Width - 375, -100);
+                    base.TextGrid.Margin = new Thickness(0, this.Height - 75, 75, -100);
                 }
                 else
                 {
                     base.grdButtonH.Margin = new Thickness(0, base.Height - 75, base.Width - 375, 0);
                 }
+
+                base.textAnnotation.setWidth(this.TypeScatter.Width, isTextAnnotationOpened);
+                base.TextGrid.Width = this.TypeScatter.Width;
+
 
             }
 

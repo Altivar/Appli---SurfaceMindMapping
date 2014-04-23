@@ -43,11 +43,11 @@ namespace AppliProjetTut
         public Timer ActivityTimer;
         bool m_bIsActive;
         int nbSec;
-        int ActivityDuration = 5;
+        int ActivityDuration = 15;
         Storyboard AnimStoryboard;
 
         // texte d'annotation
-        NodeText textAnnotation;
+        public NodeText textAnnotation;
 
         /// <summary>
         /// Default Constructor
@@ -591,9 +591,8 @@ namespace AppliProjetTut
 
             Storyboard sb = new Storyboard();
 
-            Thickness borderTextIn = new Thickness(0, 0, 75, 100);
-            Thickness borderTextOut = new Thickness(0, 200, 75, -100);
-
+            Thickness borderTextIn = new Thickness(0, 0, 75, this.Height-175);
+            Thickness borderTextOut = new Thickness(0, this.Height-75, 75, -100);
             ThicknessAnimation AnimText = new ThicknessAnimation
             {
                 From = (isTextAnnotationOpened) ? borderTextOut : borderTextIn,
@@ -611,7 +610,7 @@ namespace AppliProjetTut
             };
 
             Thickness borderTextButtonIn = new Thickness(0, 100, 0, 0);
-            Thickness borderTextButtonOut = new Thickness(0, 175, 0, -75);
+            Thickness borderTextButtonOut = new Thickness((this.textAnnotation.ActualWidth - 300) / 2, 175, (this.textAnnotation.ActualWidth - 300) / 2, -75);
             ThicknessAnimation AnimButtonText = new ThicknessAnimation
             {
                 From = (isTextAnnotationOpened) ? borderTextButtonOut : borderTextButtonIn,
@@ -628,8 +627,8 @@ namespace AppliProjetTut
 
             };
 
-            Thickness borderNodeButtonIn = new Thickness(0, 200, 75, 0);
-            Thickness borderNodeButtonOut = new Thickness(0, 300, 75, -100);
+            Thickness borderNodeButtonIn = new Thickness(0, this.Height - 75, this.Width - 375, 0);
+            Thickness borderNodeButtonOut = this.grdButtonH.Margin = new Thickness(0, this.Height + 25, this.Width - 375, -100);
             ThicknessAnimation AnimButtonNode = new ThicknessAnimation
             {
                 From = (isTextAnnotationOpened) ? borderNodeButtonOut : borderNodeButtonIn,
@@ -681,15 +680,15 @@ namespace AppliProjetTut
 
             if (isTextAnnotationOpened)
             {
-                borderText = new Thickness(0, 200, 75, -100);
-                borderButtonText = new Thickness(0, 175, 0, -75);
-                borderButtonNode = new Thickness(0, 300, 75, -100);
+                borderText = new Thickness(0, this.Height - 75, 75, -100);
+                borderButtonText = new Thickness((this.textAnnotation.ActualWidth - 300) / 2, 175, (this.textAnnotation.ActualWidth - 300) / 2, -75);
+                borderButtonNode = new Thickness(0, this.Height + 25, this.Width - 375, -100);
             }
             else
             { 
-                borderText = new Thickness(0, 0, 75, 100);
+                borderText = new Thickness(0, 0, 75, this.Height-175);
                 borderButtonText = new Thickness(0, 100, 0, 0);
-                borderButtonNode = new Thickness(0, 200, 75, 0);
+                borderButtonNode = new Thickness(0, this.Height - 75, this.Width - 375, 0);
             }
 
             this.TextGrid.Margin = borderText;

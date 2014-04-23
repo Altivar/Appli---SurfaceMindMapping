@@ -50,6 +50,11 @@ namespace AppliProjetTut
         public SurfaceButton btnColorChoice;
         public SurfaceButton btnEdition;
 
+
+        // largeur du texte
+        double textWidth = 300;
+
+
         /// <summary>
         /// Default Constructor
         /// </summary>
@@ -261,7 +266,7 @@ namespace AppliProjetTut
             }
             else
             {
-                STextBox.Width = 300;
+                STextBox.Width = textWidth;
             }
 
         }
@@ -304,7 +309,10 @@ namespace AppliProjetTut
 
 
 
-        //
+        /// <summary>
+        /// Lorsque l'etat du cadenas est changé
+        /// </summary>
+        /// <param name="locked"></param>
         public void isLockChanged(bool locked)
         { 
             
@@ -332,7 +340,28 @@ namespace AppliProjetTut
         }
 
 
+        //
+        // Fonction de changement de largeur
+        //
+        public void setWidth(double newWidth, bool isOpened)
+        {
+            textWidth = newWidth;
 
+            base.MaxWidth = newWidth;
+            base.Width = newWidth;
+
+            base.TypeScatter.Width = newWidth;
+            base.MainGrid.Width = newWidth;
+
+            this.SScrollViewer.Width = newWidth;
+            this.STextBox.Width = newWidth;
+
+            base.AddonGrid.Margin = new Thickness(newWidth / 2, 275, newWidth / 2, -100);
+
+            if(isOpened)
+                base.grdButtonH.Margin = new Thickness((newWidth - 300) / 2, 175, (newWidth - 300) / 2, -75);
+
+        }
 
 
 

@@ -29,6 +29,7 @@ namespace AppliProjetTut
         SurfaceWindow1 parentWindow;
 
         Storyboard sb;
+        Storyboard sbclose;
 
         /// <summary>
         /// Default Constructor
@@ -39,6 +40,14 @@ namespace AppliProjetTut
             InitializeComponent();
 
             parentWindow = parent;
+
+
+
+            this.ShowsActivationEffects = false;
+            this.BorderBrush = System.Windows.Media.Brushes.Transparent;
+
+
+
 
 
             mCircleText.PreviewTouchDown += new EventHandler<TouchEventArgs>(TextButtonClick);
@@ -53,6 +62,7 @@ namespace AppliProjetTut
             ellVideo.PreviewTouchDown += new EventHandler<TouchEventArgs>(VideoButtonClick);
 
             sb = new Storyboard();
+            sbclose = new Storyboard();
 
             DoubleAnimation textAnimOpening = new DoubleAnimation
             {
@@ -121,8 +131,20 @@ namespace AppliProjetTut
 
             sb.Begin();
 
-
         }
+
+
+
+        private void ScatterViewItem_Loaded(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome ssc;
+            ssc = this.Template.FindName("shadow", this) as Microsoft.Surface.Presentation.Generic.SurfaceShadowChrome;
+            ssc.Visibility = Visibility.Hidden;
+        }
+
+
+
+
 
         /// <summary>
         /// Ferme le menu
@@ -160,10 +182,7 @@ namespace AppliProjetTut
         }
 
 
-        private void coucou()
-        { 
-            
-        }
+        
 
 
     }

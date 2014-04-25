@@ -1312,11 +1312,11 @@ namespace AppliProjetTut
                     pt5 = pt1;
                     pt6 = pt1;
                     // placement du premier point de la pseudo-ellipse
-                    pt1.X -= listNode.ElementAt(i).ActualWidth / 2 - 61;
+                    pt1.X -= listNode.ElementAt(i).ActualWidth / 2 - 60;
                     pt1.Y -= listNode.ElementAt(i).ActualHeight / 2 - 5;
                     pt1 = listNode.ElementAt(i).PointToScreen(pt1);
                     // placement du premier point de la pseudo-ellipse
-                    pt2.X -= listNode.ElementAt(i).ActualWidth / 2 - 61;
+                    pt2.X -= listNode.ElementAt(i).ActualWidth / 2 - 60;
                     pt2.Y -= listNode.ElementAt(i).ActualHeight / 2 + 45;
                     pt2 = listNode.ElementAt(i).PointToScreen(pt2);
                     // placement du premier point de la pseudo-ellipse

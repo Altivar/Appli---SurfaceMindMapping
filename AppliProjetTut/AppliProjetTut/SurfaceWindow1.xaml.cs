@@ -52,7 +52,7 @@ namespace AppliProjetTut
         // gestion de rattache à un parent
         List<KeyValuePair<ScatterCustom, KeyValuePair<int, Line>>> listLigneRattache = new List<KeyValuePair<ScatterCustom, KeyValuePair<int, Line>>>();
         // gestion des poly de rattache à un parent
-        List<KeyValuePair<Ellipse, ScatterCustom>> listRattache = new List<KeyValuePair<Ellipse, ScatterCustom>>();
+        List<KeyValuePair<Polygon, ScatterCustom>> listRattache = new List<KeyValuePair<Polygon, ScatterCustom>>();
 
         // gestion du multi-touch
         List<KeyValuePair<int, KeyValuePair<int, Point>>> listTouch = new List<KeyValuePair<int, KeyValuePair<int, Point>>>();
@@ -1204,6 +1204,194 @@ namespace AppliProjetTut
 
 
             //
+            //  DESSIN DES LIAISONS INTER-NODES
+            //
+            for (int i = 0; i < listNode.Count; i++)
+            {
+                Line tempLine = listNode.ElementAt(i).getLineToParent();
+                if (!(tempLine.X1 == 0 && tempLine.Y1 == 0 && tempLine.X2 == 0 && tempLine.Y2 == 0))
+                {
+                    // on dessine la ligne
+                    this.LineGrid.Children.Add(tempLine);
+
+                    Polygon triangle = new Polygon();
+                    double pourcentage = Math.Sqrt(400 / ((tempLine.X1 - tempLine.X2) * (tempLine.X1 - tempLine.X2) + (tempLine.Y1 - tempLine.Y2) * (tempLine.Y1 - tempLine.Y2)));
+                    double Xplus = (tempLine.X1 + tempLine.X2) / 2 - pourcentage * (tempLine.X2 - tempLine.X1);
+                    double Yplus = (tempLine.Y1 + tempLine.Y2) / 2 - pourcentage * (tempLine.Y2 - tempLine.Y1);
+
+                    double XVect = Xplus - (tempLine.X1 + tempLine.X2) / 2;
+                    double YVect = Yplus - (tempLine.Y1 + tempLine.Y2) / 2;
+
+                    Point ptMilieu = new Point((tempLine.X1 + tempLine.X2) / 2, (tempLine.Y1 + tempLine.Y2) / 2);
+                    Point ptFleche1 = new Point(Xplus + YVect, Yplus - XVect);
+                    Point ptFleche2 = new Point(Xplus - YVect, Yplus + XVect);
+
+                    // on crée le triangle a partir des points calculés précedemment
+                    PointCollection triangleCollection = new PointCollection();
+                    triangleCollection.Add(ptMilieu);
+                    triangleCollection.Add(ptFleche1);
+                    triangleCollection.Add(ptFleche2);
+                    triangleCollection.Add(ptMilieu);
+                    triangle.Points = triangleCollection;
+                    triangle.Stroke = Brushes.PaleVioletRed;
+                    triangle.Fill = Brushes.PaleVioletRed;
+                    listPoly.Add(triangle);
+
+                    this.LineGrid.Children.Add(triangle);
+                }
+                if (listNode.ElementAt(i).isActive())
+                {
+                    
+
+                    Polygon poly = new Polygon();
+
+                    Point pt1 = listNode.ElementAt(i).PointFromScreen(listNode.ElementAt(i).ActualCenter);
+                    Point pt2 = pt1;
+                    Point pt3 = pt1;
+                    Point pt4 = pt1;
+                    Point pt5 = pt1;
+                    Point pt6 = pt1;
+                    // placement du premier point de la pseudo-ellipse
+                    pt1.X -= listNode.ElementAt(i).ActualWidth / 2 - 1;
+                    pt1.Y -= listNode.ElementAt(i).ActualHeight / 2 - 5;
+                    pt1 = listNode.ElementAt(i).PointToScreen(pt1);
+                    // placement du premier point de la pseudo-ellipse
+                    pt2.X -= listNode.ElementAt(i).ActualWidth / 2 - 1;
+                    pt2.Y -= listNode.ElementAt(i).ActualHeight / 2 + 45;
+                    pt2 = listNode.ElementAt(i).PointToScreen(pt2);
+                    // placement du premier point de la pseudo-ellipse
+                    pt3.X -= listNode.ElementAt(i).ActualWidth / 2 - 5;
+                    pt3.Y -= listNode.ElementAt(i).ActualHeight / 2 + 50;
+                    pt3 = listNode.ElementAt(i).PointToScreen(pt3);
+                    // placement du premier point de la pseudo-ellipse
+                    pt4.X -= listNode.ElementAt(i).ActualWidth / 2 - 55;
+                    pt4.Y -= listNode.ElementAt(i).ActualHeight / 2 + 50;
+                    pt4 = listNode.ElementAt(i).PointToScreen(pt4);
+                    // placement du premier point de la pseudo-ellipse
+                    pt5.X -= listNode.ElementAt(i).ActualWidth / 2 - 60;
+                    pt5.Y -= listNode.ElementAt(i).ActualHeight / 2 + 45;
+                    pt5 = listNode.ElementAt(i).PointToScreen(pt5);
+                    // placement du premier point de la pseudo-ellipse
+                    pt6.X -= listNode.ElementAt(i).ActualWidth / 2 - 60;
+                    pt6.Y -= listNode.ElementAt(i).ActualHeight / 2 - 5;
+                    pt6 = listNode.ElementAt(i).PointToScreen(pt6);
+
+                    // création de la PointCollection qui génerera la forme
+                    PointCollection polyCollection = new PointCollection();
+                    polyCollection.Add(pt1);
+                    polyCollection.Add(pt2);
+                    polyCollection.Add(pt3);
+                    polyCollection.Add(pt4);
+                    polyCollection.Add(pt5);
+                    polyCollection.Add(pt6);
+                    polyCollection.Add(pt1);
+
+                    // on ajoute les points au poly
+                    poly.Points = polyCollection;
+                    BitmapImage img1 = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_chain.png", UriKind.Relative));
+                    poly.Fill = new ImageBrush(img1);
+                    //poly.Fill = new SolidColorBrush(Colors.Green);
+                    poly.Stroke = new SolidColorBrush(Colors.White);
+                    poly.StrokeThickness = 2;
+
+                    poly.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnGreenCirclePreviewTouchDown);
+
+                    // on dessine le poly
+                    KeyValuePair<Polygon, ScatterCustom> myPair = new KeyValuePair<Polygon, ScatterCustom>(poly, listNode.ElementAt(i));
+                    listRattache.Add(myPair);
+                    this.LinkParentGrid.Children.Add(poly);
+
+
+
+                    Polygon poly2 = new Polygon();
+
+                    pt1 = listNode.ElementAt(i).PointFromScreen(listNode.ElementAt(i).ActualCenter);
+                    pt2 = pt1;
+                    pt3 = pt1;
+                    pt4 = pt1;
+                    pt5 = pt1;
+                    pt6 = pt1;
+                    // placement du premier point de la pseudo-ellipse
+                    pt1.X -= listNode.ElementAt(i).ActualWidth / 2 - 61;
+                    pt1.Y -= listNode.ElementAt(i).ActualHeight / 2 - 5;
+                    pt1 = listNode.ElementAt(i).PointToScreen(pt1);
+                    // placement du premier point de la pseudo-ellipse
+                    pt2.X -= listNode.ElementAt(i).ActualWidth / 2 - 61;
+                    pt2.Y -= listNode.ElementAt(i).ActualHeight / 2 + 45;
+                    pt2 = listNode.ElementAt(i).PointToScreen(pt2);
+                    // placement du premier point de la pseudo-ellipse
+                    pt3.X -= listNode.ElementAt(i).ActualWidth / 2 - 65;
+                    pt3.Y -= listNode.ElementAt(i).ActualHeight / 2 + 50;
+                    pt3 = listNode.ElementAt(i).PointToScreen(pt3);
+                    // placement du premier point de la pseudo-ellipse
+                    pt4.X -= listNode.ElementAt(i).ActualWidth / 2 - 115;
+                    pt4.Y -= listNode.ElementAt(i).ActualHeight / 2 + 50;
+                    pt4 = listNode.ElementAt(i).PointToScreen(pt4);
+                    // placement du premier point de la pseudo-ellipse
+                    pt5.X -= listNode.ElementAt(i).ActualWidth / 2 - 120;
+                    pt5.Y -= listNode.ElementAt(i).ActualHeight / 2 + 45;
+                    pt5 = listNode.ElementAt(i).PointToScreen(pt5);
+                    // placement du premier point de la pseudo-ellipse
+                    pt6.X -= listNode.ElementAt(i).ActualWidth / 2 - 120;
+                    pt6.Y -= listNode.ElementAt(i).ActualHeight / 2 - 5;
+                    pt6 = listNode.ElementAt(i).PointToScreen(pt6);
+
+                    // création de la PointCollection qui génerera la forme
+                    PointCollection polyCollection2 = new PointCollection();
+                    polyCollection2.Add(pt1);
+                    polyCollection2.Add(pt2);
+                    polyCollection2.Add(pt3);
+                    polyCollection2.Add(pt4);
+                    polyCollection2.Add(pt5);
+                    polyCollection2.Add(pt6);
+                    polyCollection2.Add(pt1);
+
+                    // on ajoute les points au poly
+                    poly2.Points = polyCollection2;
+                    poly2.Fill = new SolidColorBrush(Colors.LightBlue);
+                    //poly.Fill = new SolidColorBrush(Colors.Green);
+                    poly2.Stroke = new SolidColorBrush(Colors.AliceBlue);
+                    poly2.StrokeThickness = 2;
+
+                    poly2.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnBlueCirclePreviewTouchDown);
+
+                    // on dessine le poly
+                    KeyValuePair<Polygon, ScatterCustom> myPair2 = new KeyValuePair<Polygon, ScatterCustom>(poly2, listNode.ElementAt(i));
+                    listRattache.Add(myPair2);
+                    this.LinkParentGrid.Children.Add(poly2);
+
+
+                    // dessin de la ligne servant d'icone a l'onglet bleu
+                    pt1 = listNode.ElementAt(i).PointFromScreen(listNode.ElementAt(i).ActualCenter);
+                    pt2 = pt1;
+                    // placement du premier point de la pseudo-ellipse
+                    pt1.X -= listNode.ElementAt(i).ActualWidth / 2 - 70;
+                    pt1.Y -= listNode.ElementAt(i).ActualHeight / 2 + 10;
+                    pt1 = listNode.ElementAt(i).PointToScreen(pt1);
+                    // placement du premier point de la pseudo-ellipse
+                    pt2.X -= listNode.ElementAt(i).ActualWidth / 2 - 110;
+                    pt2.Y -= listNode.ElementAt(i).ActualHeight / 2 + 10;
+                    pt2 = listNode.ElementAt(i).PointToScreen(pt2);
+
+                    Line ligne = new Line();
+                    ligne.Stroke = new SolidColorBrush(Colors.AliceBlue);
+                    ligne.StrokeThickness = 5;
+                    ligne.X1 = pt1.X;
+                    ligne.X2 = pt2.X;
+                    ligne.Y1 = pt1.Y;
+                    ligne.Y2 = pt2.Y;
+
+                    this.LinkParentGrid.Children.Add(ligne);
+
+                }
+
+            }
+
+
+
+
+
+            //
             //  DESSIN DES LIGNES DE RATTACHE
             //
             this.LinkParentLineGrid.Children.RemoveRange(0, this.LinkParentLineGrid.Children.Count);
@@ -1265,70 +1453,12 @@ namespace AppliProjetTut
             }
 
 
-            //
-            //  DESSIN DES LIAISONS INTER-NODES
-            //
-            for (int i = 0; i < listNode.Count; i++)
-            {
-                Line tempLine = listNode.ElementAt(i).getLineToParent();
-                if (!(tempLine.X1 == 0 && tempLine.Y1 == 0 && tempLine.X2 == 0 && tempLine.Y2 == 0))
-                {
-                    // on dessine la ligne
-                    this.LineGrid.Children.Add(tempLine);
-
-                    Polygon triangle = new Polygon();
-                    double pourcentage = Math.Sqrt(400 / ((tempLine.X1 - tempLine.X2) * (tempLine.X1 - tempLine.X2) + (tempLine.Y1 - tempLine.Y2) * (tempLine.Y1 - tempLine.Y2)));
-                    double Xplus = (tempLine.X1 + tempLine.X2) / 2 - pourcentage * (tempLine.X2 - tempLine.X1);
-                    double Yplus = (tempLine.Y1 + tempLine.Y2) / 2 - pourcentage * (tempLine.Y2 - tempLine.Y1);
-
-                    double XVect = Xplus - (tempLine.X1 + tempLine.X2) / 2;
-                    double YVect = Yplus - (tempLine.Y1 + tempLine.Y2) / 2;
-
-                    Point ptMilieu = new Point((tempLine.X1 + tempLine.X2) / 2, (tempLine.Y1 + tempLine.Y2) / 2);
-                    Point ptFleche1 = new Point(Xplus + YVect, Yplus - XVect);
-                    Point ptFleche2 = new Point(Xplus - YVect, Yplus + XVect);
-
-                    // on crée le triangle a partir des points calculés précedemment
-                    PointCollection triangleCollection = new PointCollection();
-                    triangleCollection.Add(ptMilieu);
-                    triangleCollection.Add(ptFleche1);
-                    triangleCollection.Add(ptFleche2);
-                    triangleCollection.Add(ptMilieu);
-                    triangle.Points = triangleCollection;
-                    triangle.Stroke = Brushes.PaleVioletRed;
-                    triangle.Fill = Brushes.PaleVioletRed;
-                    listPoly.Add(triangle);
-
-                    this.LineGrid.Children.Add(triangle);
-                }
-                if (listNode.ElementAt(i).isActive())
-                {
-                    Ellipse ell = new Ellipse();
-
-                    ell.Width = 50;
-                    ell.Height = 50;
-                    BitmapImage img = new BitmapImage(new Uri(".\\Resources\\Icons\\icon_chain.gif", UriKind.Relative));
-                    ell.Fill = new ImageBrush(img);
-                    ell.StrokeThickness = 3;
-
-                    this.LinkParentGrid.Children.Add(ell);
-
-                    Point ellPoint = listNode.ElementAt(i).PointFromScreen(listNode.ElementAt(i).ActualCenter);
-                    ellPoint.X -= listNode.ElementAt(i).Width / 2 - 25;
-                    ellPoint.Y -= listNode.ElementAt(i).Height / 2 + 25;
-                    ellPoint = listNode.ElementAt(i).PointToScreen(ellPoint);
-
-                    Canvas.SetLeft(ell, ellPoint.X - 25);
-                    Canvas.SetTop(ell, ellPoint.Y - 25);
-                    ell.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnGreenCirclePreviewTouchDown);
-                    KeyValuePair<Ellipse, ScatterCustom> myPair = new KeyValuePair<Ellipse, ScatterCustom>(ell, listNode.ElementAt(i));
-                    listRattache.Add(myPair);
-                }
-
-            }
+            
 
 
         }
+
+        
         //
         //  FIN REFRESH
 
@@ -1348,7 +1478,7 @@ namespace AppliProjetTut
             ScatterCustom node = null;
             for (int i = 0; i < listRattache.Count; i++)
             {
-                if (listRattache.ElementAt(i).Key == (Ellipse)sender)
+                if (listRattache.ElementAt(i).Key == (Polygon)sender)
                 {
                     node = listRattache.ElementAt(i).Value;
                     node.SetParent(null);
@@ -1388,7 +1518,21 @@ namespace AppliProjetTut
 
         }
 
+        void OnBlueCirclePreviewTouchDown(object sender, TouchEventArgs e)
+        {
+            if (!e.TouchDevice.GetIsFingerRecognized())
+                return;
 
+            ScatterCustom node = null;
+            for (int i = 0; i < listRattache.Count; i++)
+            {
+                if (listRattache.ElementAt(i).Key == (Polygon)sender)
+                {
+                    node = listRattache.ElementAt(i).Value;
+                    node.AnimateClosing();
+                }
+            }
+        }
 
 
         //

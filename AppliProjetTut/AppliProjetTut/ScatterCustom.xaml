@@ -8,6 +8,7 @@
              Loaded="OnNodeLoaded" CanScale="False" Background="Transparent">
     <Grid Name="MainGrid" Width="375" Height="275">
         
+        
         <Grid Name="TextGrid" Width="300" Height="175" Margin="0, 0, 75, 100"/>
         
         <Grid Name="grdBGColor" Background="Gray" Width="300" Height="200" Margin="0,0,75,75"/>
@@ -32,7 +33,6 @@
                 </Button.Background>
             </s:SurfaceButton>
         </Grid>
-
 
         <s:ScatterView Margin="187, 300, 187, 0" Name="AddonGrid" />
         

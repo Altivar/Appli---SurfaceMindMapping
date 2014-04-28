@@ -125,17 +125,15 @@ namespace AppliProjetTut
             string newPath = (string)btnClicked.Content;
             if (newPath == null)
                 return;
-            nodeParent.SetVideoPath(newPath);
+
+            string currentPath = Directory.GetCurrentDirectory() + "\\Resources\\Videos\\" + newPath;
+            nodeParent.SetVideoPath(currentPath);
 
         }
 
-        //
-        //   VERIFIE SI LE FICHIER EST UNE IMAGE
-        //   true : extension d'image reconnue
-        //   false : extension autre que d'une image reconnue
         /// <summary>
-        /// Vérifie si le fichier passé en paramètre est une image
-        /// true : extension d'image reconnue
+        /// Vérifie si le fichier passé en paramètre est une video
+        /// true : extension de video reconnue
         /// false : extension non reconnue
         /// </summary>
         /// <param name="nom"></param>

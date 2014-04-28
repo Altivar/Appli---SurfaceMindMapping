@@ -234,7 +234,7 @@ namespace AppliProjetTut
             if (path == "NONE")
                 return;
 
-            string videoPath = ".\\Resources\\Videos\\" + path;
+            string videoPath = path;
             Uri uriPath = new Uri(videoPath, UriKind.Relative);
             videoElement.Source = uriPath;
 
@@ -246,6 +246,10 @@ namespace AppliProjetTut
             base.AddonGrid.Items.Remove(listeVideo);
             isEditing = false;
             
+        }
+        public string GetVideoPath()
+        {
+            return currentPath;
         }
 
         

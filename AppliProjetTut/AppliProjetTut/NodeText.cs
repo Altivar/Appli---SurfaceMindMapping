@@ -414,30 +414,53 @@ namespace AppliProjetTut
         public void TransformToFileSaver()
         {
             // on adapte la taille
-            base.Height = 0;
-            base.MainGrid.Height = 50;
+            base.Height = 125;
+            
+            base.MainGrid.Height = 125;
+
+            base.TypeScatter.Margin = new Thickness(0, 0, 0, 75);
+
+            STextBox.Height = 50;
+            STextBox.Margin = new Thickness(0, 0, 0, 150);
+            textWidth = 300;
+            STextBox.Width = 300;
+
             // on limite le nombre de ligne
             STextBox.MaxLines = 1;
             // nombre de caractères limité à 20
             MaxLength = 20;
+            
             // on modifie la couleur de base
-            base.Background = new SolidColorBrush(Colors.Black);
-            STextBox.Background = new SolidColorBrush(Colors.Black);
-            STextBox.BorderBrush = new SolidColorBrush(Colors.Black);
+            base.Background = new SolidColorBrush(Colors.White);
+            STextBox.Background = new SolidColorBrush(Colors.White);
+            STextBox.BorderBrush = new SolidColorBrush(Colors.White);
+            
+            STextBox.Foreground = new SolidColorBrush(Colors.Black);
 
             // on desactive les caracteres speciaux du clavier
-            clavier.DisableSpecialCarac();
+            clavier.CarSpe.IsEnabled = false;
+            clavier.Accent.IsEnabled = false;
+            clavier.close.IsEnabled = false;
 
-            base.AddonGrid.Margin = new Thickness(150, 100, 150, -100);
+            base.AddonGrid.Margin = new Thickness(150, 100, 150, -50);
 
             // on active le clavier
             base.AddonGrid.Items.Add(clavier);
             // on fait apparaitre le "curseur"
-            STextBox.AppendText("|");
+            STextBox.AppendText("azerty|");
             clavier.CanMove = false;
             clavier.CanScale = false;
             clavier.CanRotate = false;
             base.isEditing = true;
+
+            // on stop le timer mesurant l'inactivité
+            this.ActivityTimer.Stop();
+
+            base.grdButtonV.Width = 0;
+            base.Width = 300;
+            base.MainGrid.Width = 300;
+
+
 
         }
 

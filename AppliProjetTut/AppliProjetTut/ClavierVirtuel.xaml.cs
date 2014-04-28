@@ -1055,20 +1055,6 @@ namespace AppliProjetTut
         //
         //  DESACTIVE les caractères SPECIAUX
         //
-        public void DisableSpecialCarac()
-        {
-            /*dbl_quotes.IsEnabled = false;
-            quote.IsEnabled = false;
-            par1.IsEnabled = false;
-            par1bis.IsEnabled = false;
-            Tab.IsEnabled = false;
-            Stars.IsEnabled = false;
-            shift.IsEnabled = false;
-            interogation.IsEnabled = false;
-
-            Enter.IsEnabled = false;
-            Entrer.IsEnabled = false;*/
-        }
         public void EnableEnterKeys(bool enable)
         {
             Enter.IsEnabled = enable;

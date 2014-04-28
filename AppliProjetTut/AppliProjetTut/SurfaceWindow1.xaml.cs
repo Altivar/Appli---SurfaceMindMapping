@@ -18,6 +18,7 @@ using Microsoft.Surface.Presentation.Controls;
 using Microsoft.Surface.Presentation.Input;
 
 using System.IO;
+using System.Xml;
 
 namespace AppliProjetTut
 {
@@ -497,6 +498,7 @@ namespace AppliProjetTut
         //  GESTION du MENU PRINCIPAL  //
         //                             //
         ////                         ////
+        
         /// <summary>
         /// Appelé lorsqu'on ajoute un tag
         /// </summary>
@@ -510,16 +512,9 @@ namespace AppliProjetTut
             if (mainMenu != null)
             {
                 menuPrincipal = mainMenu;
-                menuPrincipal.SaveAsButton.PreviewTouchUp += new EventHandler<TouchEventArgs>(OnSaveAsButtonPreviewTouchUp);
-                menuPrincipal.SaveButton.PreviewTouchUp += new EventHandler<TouchEventArgs>(OnSaveButtonPreviewTouchUp);
-                menuPrincipal.OpenButton.PreviewTouchUp += new EventHandler<TouchEventArgs>(OnOpenButtonPreviewTouchUp);
+                menuPrincipal.SetSurfaceWindow(this);
             }
         }
-
-        
-
-        
-
         /// <summary>
         /// Appelé lorsqu'on enleve un tag
         /// </summary>
@@ -534,6 +529,331 @@ namespace AppliProjetTut
         }
 
         /// <summary>
+        /// Retourne le nom du fichier
+        /// </summary>
+        /// <returns></returns>
+        public string GetFileName()
+        {
+            return nomFichier;
+        }
+
+        /// <summary>
+        /// Fonction d'enregistrement des fichiers
+        /// </summary>
+        /// <param name="saveFileName"></param>
+        public void SaveUnderFileName(string saveFileName)
+        {
+            // on crée le nouveau dossier on annule tout en cas d'erreur
+            if(!CreateFolder(saveFileName))
+                return;
+
+            if (!SaveImageFiles(saveFileName))
+                return;
+
+            if (!SaveToXMLFile(saveFileName))
+                return;
+
+            nomFichier = saveFileName;
+        }
+
+        /// <summary>
+        /// Crée le dossier ou se trouvera la sauvegarde
+        /// </summary>
+        /// <param name="saveFileName"></param>
+        /// <returns></returns>
+        private bool CreateFolder(string saveFileName)
+        {
+            // on passe les sauvegarde pour chercher si le dossier existe déjà
+            DirectoryInfo dirInfo = new DirectoryInfo(".\\Saves");
+            
+            DirectoryInfo[] DirFiles = dirInfo.GetDirectories();
+            foreach (DirectoryInfo dir in DirFiles)
+            {
+                if (dir.Name == saveFileName)
+                {
+                    // demande de confirmation
+                    string title = "Attention";
+                    string message = "Ecraser le dossier de sauvegarde existant?";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult res;
+
+                    res = System.Windows.Forms.MessageBox.Show(message, title, buttons);
+
+                    if (res == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        // on supprime le dossier existant
+                        dir.Delete(true);
+                    }
+                    else
+                    {
+                        // On annule la suppression
+                        return false;
+                    }
+                }
+            }
+
+            // une fois l'ancienne suavegarde supprimée on sauve la nouvelle
+            DirectoryInfo newDir = new DirectoryInfo(".\\Saves\\" + saveFileName);
+            newDir.Create();
+
+            return true;
+
+        }
+
+
+        /// <summary>
+        /// Sauvegarde les images utilisées
+        /// </summary>
+        /// <param name="saveFileName"></param>
+        /// <returns></returns>
+        private bool SaveImageFiles(string saveFileName)
+        {
+
+            // si le repertoire des images n'est pas créé on le crée
+            DirectoryInfo dirInfo = new DirectoryInfo(".\\Saves\\" + saveFileName + "\\Images");
+            if (!dirInfo.Exists)
+                dirInfo.Create();
+
+            List<string> imagesSaved = new List<string>();
+            
+            for (int i = 0; i < listNode.Count; i++)
+            {
+
+                try
+                {
+
+                    // si le node n'est pas un image on passe l'iteration actuelle
+                    if (listNode.ElementAt(i).GetTypeOfNode() != "Image")
+                        continue;
+
+                    // si il y a une erreur avec ce node on passe l'iteration actuelle
+                    NodeImage myImage = (NodeImage)listNode.ElementAt(i);
+                    if (myImage == null)
+                        continue;
+
+                    // on recupère le nom de l'image
+                    string imgPath = myImage.GetImagePath();
+
+                    // si le node n'a pas d'image on passe
+                    if (imgPath == "NONE")
+                        continue;
+
+                    // si l'image de ce node a déjà été sauvegardée
+                    if (imagesSaved.Contains(imgPath))
+                        continue;
+                    else
+                        imagesSaved.Add(imgPath);
+
+                    // on recupere l'image elle meme
+                    BitmapImage bi = new BitmapImage();
+                    bi.BeginInit();
+                    bi.UriSource = new Uri(".\\Resources\\Images\\" + imgPath, UriKind.Relative);
+                    bi.EndInit();
+
+                    // on recupere le format de l'image
+                    string separator = ".";
+                    string imgFormat = imgPath.Split(separator.ToCharArray()).Last();
+
+                    // on defini où l'image sera stockée
+                    string imgLocation = ".\\Saves\\" + saveFileName + "\\Images\\" + imgPath;
+
+
+
+
+                    FileStream fileStr = new FileStream(imgLocation, FileMode.Create);
+
+                    // on enregistre l'image avec l'encoder adequat
+                    switch (imgFormat)
+                    {
+                        case "jpg":
+                            JpegBitmapEncoder encoderJPG = new JpegBitmapEncoder();
+                            encoderJPG.Frames.Add(BitmapFrame.Create((BitmapImage)bi));
+                            encoderJPG.Save(fileStr);
+                            break;
+                        case "png":
+                            PngBitmapEncoder encoderPNG = new PngBitmapEncoder();
+                            encoderPNG.Frames.Add(BitmapFrame.Create((BitmapImage)bi));
+                            encoderPNG.Save(fileStr);
+                            break;
+                        case "gif":
+                            GifBitmapEncoder encoderGIF = new GifBitmapEncoder();
+                            encoderGIF.Frames.Add(BitmapFrame.Create((BitmapImage)bi));
+                            encoderGIF.Save(fileStr);
+                            break;
+                        case "bmp":
+                            BmpBitmapEncoder encoderBMP = new BmpBitmapEncoder();
+                            encoderBMP.Frames.Add(BitmapFrame.Create((BitmapImage)bi));
+                            encoderBMP.Save(fileStr);
+                            break;
+                    }
+
+                }
+                catch
+                {
+                    return false;
+                }
+
+
+            }
+
+            return true;
+        }
+
+
+        /// <summary>
+        /// Crée le fichier XML de la sauvegarde
+        /// </summary>
+        /// <param name="saveFileName"></param>
+        /// <returns></returns>
+        private bool SaveToXMLFile(string saveFileName)
+        {
+            // on definit le chemin de la sauvegarde
+            string xmlFilePath = ".\\Saves\\" + saveFileName + "\\" + saveFileName + ".xml";
+
+            // on initialise la sauvegarde
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlNode docNode = xmlDoc.CreateXmlDeclaration("1.0", "UTF-8", null);
+            xmlDoc.AppendChild(docNode);
+
+
+            //
+            ///
+            //// on debute l'ecriture du document
+            XmlNode rootNode = xmlDoc.CreateElement("nodes");
+            xmlDoc.AppendChild(rootNode);
+            XmlNode elementNode;
+            XmlAttribute typeAttribute, idAttribute;
+
+
+            for(int i = 0; i < listNode.Count; i++)
+            {
+                
+                // on crée la balise specifique au node actuel
+                elementNode = xmlDoc.CreateElement("node");
+                // on lui crée un ou plusieurs attributs
+                typeAttribute = xmlDoc.CreateAttribute("type");
+                string typeOfNode = listNode.ElementAt(i).GetTypeOfNode();
+                typeAttribute.Value = typeOfNode;
+                elementNode.Attributes.Append(typeAttribute);
+
+                idAttribute = xmlDoc.CreateAttribute("id");
+                idAttribute.Value = i.ToString();
+                elementNode.Attributes.Append(idAttribute);
+                
+                // on lui ajoute des données internes
+                string idParent = GetNumOfParent(listNode.ElementAt(i)).ToString();
+                if (idParent != "-1")
+                {
+                    XmlNode parentNode = xmlDoc.CreateElement("parent");
+                    XmlAttribute idParentAttr = xmlDoc.CreateAttribute("id");
+                    idParentAttr.Value = idParent;
+                    parentNode.Attributes.Append(idParentAttr);
+                    elementNode.AppendChild(parentNode);
+                }
+                
+                // selon le type du node on ajoute les element suivants :
+                // - texte : le texte + le couleur du texte
+                // - image : la source de l'image + le texte + la couelur du texte
+                // - video : la source de la video + le texte + la couleur du texte
+                switch (typeOfNode)
+                { 
+                    case "Text":
+
+                        NodeText txt = (NodeText)listNode.ElementAt(i);
+                        if(txt == null)
+                            continue;
+                        if (txt.GetText() != "")
+                        {
+                            XmlNode textNode = xmlDoc.CreateElement("text");
+                            XmlAttribute txtAttr = xmlDoc.CreateAttribute("color");
+                            txtAttr.Value = txt.GetColor().ToString();
+                            textNode.Attributes.Append(txtAttr);
+                            textNode.InnerText = txt.GetText();
+                            elementNode.AppendChild(textNode);
+                        }
+                        break;
+                    
+                    case "Image":
+                        NodeImage img = (NodeImage)listNode.ElementAt(i);
+                        if (img == null)
+                            continue;
+                        if (img.GetImagePath() != "NONE")
+                        {
+                            XmlNode imagePathNode = xmlDoc.CreateElement("image");
+                            XmlAttribute imgAttr = xmlDoc.CreateAttribute("source");
+                            imgAttr.Value = ".\\Images\\" + img.GetImagePath();
+                            imagePathNode.Attributes.Append(imgAttr);
+                            elementNode.AppendChild(imagePathNode);
+                        }
+                        if (img.textAnnotation.GetText() != "")
+                        {
+                            XmlNode imageTextNode = xmlDoc.CreateElement("text");
+                            XmlAttribute txtAttr = xmlDoc.CreateAttribute("color");
+                            txtAttr.Value = img.textAnnotation.GetColor().ToString();
+                            imageTextNode.Attributes.Append(txtAttr);
+                            imageTextNode.InnerText = img.textAnnotation.GetText();
+                            elementNode.AppendChild(imageTextNode);
+                        }
+                        break;
+                    
+                    case "Video":
+                        NodeVideo vid = (NodeVideo)listNode.ElementAt(i);
+                        if (vid == null)
+                            continue;
+                        if (vid.GetVideoPath() != "NONE")
+                        {
+                            XmlNode imagePathNode = xmlDoc.CreateElement("video");
+                            XmlAttribute imgAttr = xmlDoc.CreateAttribute("source");
+                            imgAttr.Value = vid.GetVideoPath();
+                            imagePathNode.Attributes.Append(imgAttr);
+                            elementNode.AppendChild(imagePathNode);
+                        }
+                        if (vid.textAnnotation.GetText() != "")
+                        {
+                            XmlNode imageTextNode = xmlDoc.CreateElement("text");
+                            XmlAttribute txtAttr = xmlDoc.CreateAttribute("color");
+                            txtAttr.Value = vid.textAnnotation.GetColor().ToString();
+                            imageTextNode.Attributes.Append(txtAttr);
+                            imageTextNode.InnerText = vid.textAnnotation.GetText();
+                            elementNode.AppendChild(imageTextNode);
+                        }
+                        break;
+                }
+
+
+                // on l'ajoute au groupe de balise
+                rootNode.AppendChild(elementNode);
+
+            }
+
+            xmlDoc.Save(xmlFilePath);
+            //// on termine l'écriture du document
+            ///
+            //
+            return true;
+        }
+
+
+
+        /// <summary>
+        /// Récupère la position du parent dans la liste
+        /// </summary>
+        /// <param name="scatt"></param>
+        /// <returns></returns>
+        private int GetNumOfParent(ScatterCustom scatt)
+        {
+            for (int i = 0; i < listNode.Count; i++)
+            {
+                if (scatt.GetParent() == listNode.ElementAt(i))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        /*/// <summary>
         /// Appelé lorsque le bouton de sauvegarde du menu principal est appuyé
         /// </summary>
         /// <param name="sender"></param>
@@ -548,9 +868,6 @@ namespace AppliProjetTut
             SaveFileNameEntrance.SetParent(SaveFileNameEntrance);
             SaveFileNameEntrance.GetClavier().Enter.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnValidateFileName);
             SaveFileNameEntrance.GetClavier().close.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnClosePreviewTouchDown);
-
-            menuPrincipal.FormGrid.Children.Clear();
-            menuPrincipal.FormGrid.Children.Add(SaveFileNameEntrance);
         }
 
         /// <summary>
@@ -571,8 +888,7 @@ namespace AppliProjetTut
                 SaveFileNameEntrance.GetClavier().Enter.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnValidateFileName);
                 SaveFileNameEntrance.GetClavier().close.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnClosePreviewTouchDown);
 
-                menuPrincipal.FormGrid.Children.Clear();
-                menuPrincipal.FormGrid.Children.Add(SaveFileNameEntrance);
+               
             }
             else
             {
@@ -594,13 +910,11 @@ namespace AppliProjetTut
 
             ListeSauvegarde listSave = new ListeSauvegarde(this);
             
-            menuPrincipal.FormGrid.Children.Clear();
-            menuPrincipal.FormGrid.Children.Add(listSave);
-
-        }
+            
+        }*/
 
 
-        /// <summary>
+        /*/// <summary>
         /// Appelé lorsque le nom du fichier de suavegarde est validé
         /// </summary>
         /// <param name="sender"></param>
@@ -609,17 +923,17 @@ namespace AppliProjetTut
         {
 
             NodeText saveFileNameText;
-            string NomSauvegarde = "<>";
-            for (int i = 0; i < menuPrincipal.FormGrid.Children.Count; i++)
+            string NomSauvegarde = "<>";*/
+            /*for (int i = 0; i < menuPrincipal.FormGrid.Children.Count; i++)
             {
                 saveFileNameText = (NodeText)menuPrincipal.FormGrid.Children[i];
                 if (saveFileNameText != null)
                 {
                     NomSauvegarde = saveFileNameText.GetText();
                 }
-            }
+            }*/
 
-            if (NomSauvegarde == "<>")
+           /* if (NomSauvegarde == "<>")
             {
                 return;
             }
@@ -671,7 +985,7 @@ namespace AppliProjetTut
         /// <param name="e"></param>
         void OnClosePreviewTouchDown(object sender, TouchEventArgs e)
         {
-            menuPrincipal.FormGrid.Children.Clear();
+            //menuPrincipal.FormGrid.Children.Clear();
         }
 
         /// <summary>
@@ -741,7 +1055,7 @@ namespace AppliProjetTut
             sw.Write(sb.ToString());
             sw.Close();
 
-            menuPrincipal.FormGrid.Children.Clear();
+            //menuPrincipal.FormGrid.Children.Clear();
 
             Modification(false);
             nomFichier = path;
@@ -824,13 +1138,9 @@ namespace AppliProjetTut
         public void OpenFile(string filename)
         {
 
-            menuPrincipal.SaveAsButton.IsEnabled = false;
-            menuPrincipal.SaveButton.IsEnabled = false;
-            menuPrincipal.OpenButton.IsEnabled = false;
-
             if (filename == "<Annuler>")
             {
-                menuPrincipal.FormGrid.Children.Clear();
+                //menuPrincipal.FormGrid.Children.Clear();
                 return;
             }
 
@@ -1066,14 +1376,8 @@ namespace AppliProjetTut
             nomFichier = filename;
             isModified = false;
 
-            menuPrincipal.FormGrid.Children.Clear();
-            menuPrincipal.SaveAsButton.IsEnabled = true;
-            menuPrincipal.SaveButton.IsEnabled = true;
-            menuPrincipal.OpenButton.IsEnabled = true;
-        
-        
-        
-        }
+            
+        }*/
 
 
 

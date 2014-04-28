@@ -41,14 +41,12 @@ namespace AppliProjetTut
             SurfaceParent = parent;
 
             InitSaveList();
-
-            this.BoutonAnnuler.PreviewTouchUp += new EventHandler<TouchEventArgs>(OnFileButtonPreviewTouchUp);
         }
 
         /// <summary>
         /// Initialise les liste de Sauvegarde
         /// </summary>
-        private void InitSaveList()
+        public double InitSaveList()
         {
 
             DirectoryInfo dirInfo = new DirectoryInfo(".\\Saves\\");
@@ -64,21 +62,22 @@ namespace AppliProjetTut
 
                     SurfaceButton btnImg = new SurfaceButton();
                     btnImg.Width = 200;
-                    btnImg.Height = 30;
+                    btnImg.Height = 50;
                     btnImg.Content = nomPartition.Last();
 
                     listButton.Add(btnImg);
                 }
                 catch { };
              }
-            
 
-            ButtonListGrid.Height = listButton.Count * 30;
+
+            this.Height = listButton.Count * 50;
+            ButtonListGrid.Height = listButton.Count * 50;
             ButtonListGrid.Width = 200;
             for (int i = 0; i < listButton.Count; i++)
             {
                 SurfaceButton btn = listButton.ElementAt(i);
-                btn.Margin = new Thickness(0, i * 30, 0, (listButton.Count - (i+1)) * 30);
+                btn.Margin = new Thickness(0, i * 50, 0, (listButton.Count - (i+1)) * 50);
                 if (i % 2 == 0)
                 {
                     btn.Background = new SolidColorBrush(Colors.Gray);
@@ -91,6 +90,8 @@ namespace AppliProjetTut
                 btn.PreviewTouchUp += new EventHandler<TouchEventArgs>(OnFileButtonPreviewTouchUp);
                 ButtonListGrid.Children.Add(btn);
             }
+
+            return ButtonListGrid.Height;
         }
 
         /// <summary>
@@ -112,12 +113,12 @@ namespace AppliProjetTut
             string fileName = senderBtn.Name;
             if (fileName == "BoutonAnnuler" && fileContent == "Annuler")
             {
-                SurfaceParent.OpenFile("<Annuler>");
+                //SurfaceParent.OpenFile("<Annuler>");
                 return;
             }
                     
 
-            SurfaceParent.OpenFile(fileContent);
+            //SurfaceParent.OpenFile(fileContent);
 
         }
 

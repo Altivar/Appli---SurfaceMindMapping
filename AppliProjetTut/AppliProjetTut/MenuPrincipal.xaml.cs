@@ -88,7 +88,7 @@ namespace AppliProjetTut
             txt.clavier.Enter.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnEnterPreviewTouchDown);
             this.grdText.Children.Add(txt);
 
-            saveList = new ListeSauvegarde(surface);
+            saveList = new ListeSauvegarde(this);
             saveList.Margin = new Thickness(0, 0, 0, 0);
             this.grdListeSauvegarde.Children.Add(saveList);
 
@@ -553,11 +553,6 @@ namespace AppliProjetTut
 
 
 
-
-
-
-
-
         ////                                                       ////
         ///////////////////////////////////////////////////////////////
         ////                                                       ////
@@ -577,6 +572,21 @@ namespace AppliProjetTut
             parentSurface.SaveUnderFileName(newFileName);
         }
 
+
+
+
+
+
+
+        ////                                                       ////
+        ///////////////////////////////////////////////////////////////
+        ////                                                       ////
+        public void OnFileSelection(string fileName)
+        {
+            parentSurface.OpenFile(fileName);
+
+            CloseListeSauvegarde();
+        }
 
 
 

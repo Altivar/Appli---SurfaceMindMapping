@@ -25,7 +25,7 @@ namespace AppliProjetTut
     {
 
         // lien entre la liste et la liste des fichiers
-        SurfaceWindow1 SurfaceParent;
+        MenuPrincipal MenuParent;
 
         // liste de bouton
         List<SurfaceButton> listButton = new List<SurfaceButton>();
@@ -34,11 +34,11 @@ namespace AppliProjetTut
         /// Default Constructor
         /// </summary>
         /// <param name="parent"></param>
-        public ListeSauvegarde(SurfaceWindow1 parent)
+        public ListeSauvegarde(MenuPrincipal parent)
         {
             InitializeComponent();
 
-            SurfaceParent = parent;
+            MenuParent = parent;
 
             InitSaveList();
         }
@@ -107,18 +107,10 @@ namespace AppliProjetTut
 
             
             string fileContent = (string)senderBtn.Content;
-            if (senderBtn == null)
+            if (fileContent == null)
                 return;
             
-            string fileName = senderBtn.Name;
-            if (fileName == "BoutonAnnuler" && fileContent == "Annuler")
-            {
-                //SurfaceParent.OpenFile("<Annuler>");
-                return;
-            }
-                    
-
-            //SurfaceParent.OpenFile(fileContent);
+            MenuParent.OnFileSelection(fileContent);
 
         }
 

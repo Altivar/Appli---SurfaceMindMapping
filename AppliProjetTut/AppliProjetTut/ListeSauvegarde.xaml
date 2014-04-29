@@ -6,8 +6,8 @@
              xmlns:s="http://schemas.microsoft.com/surface/2008"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="200"
-             Height="200" Width="200">
-    <Grid Name="ImagesGrid" Width="200" Height="200" >
+             Height="200" Width="200" >
+    <Grid Name="ImagesGrid" Width="200" Height="200" Margin="0,-50,0,0">
 
         <s:SurfaceScrollViewer Name="listview" 
                                Width="200" 

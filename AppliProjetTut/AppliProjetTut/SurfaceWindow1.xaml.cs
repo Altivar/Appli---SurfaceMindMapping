@@ -493,12 +493,11 @@ namespace AppliProjetTut
         }
 
 
-        ////                         ////
-        //                             //
-        //  GESTION du MENU PRINCIPAL  //
-        //                             //
-        ////                         ////
-        
+        //////////////////////////////////                                       //////////////////////////////////
+        /////////////////                                                                         /////////////////
+        /////////////////                        GESTION du MENU PRINCIPAL                        /////////////////
+        /////////////////                                                                         /////////////////
+        //////////////////////////////////                                       //////////////////////////////////
         /// <summary>
         /// Appelé lorsqu'on ajoute un tag
         /// </summary>
@@ -762,15 +761,13 @@ namespace AppliProjetTut
                         NodeText txt = (NodeText)listNode.ElementAt(i);
                         if(txt == null)
                             continue;
-                        if (txt.GetText() != "")
-                        {
-                            XmlNode textNode = xmlDoc.CreateElement("text");
-                            XmlAttribute txtAttr = xmlDoc.CreateAttribute("color");
-                            txtAttr.Value = txt.GetColor().ToString();
-                            textNode.Attributes.Append(txtAttr);
+                        XmlNode textNode = xmlDoc.CreateElement("text");
+                        XmlAttribute txtAttr = xmlDoc.CreateAttribute("color");
+                        txtAttr.Value = txt.GetColor().ToString();
+                        textNode.Attributes.Append(txtAttr);
+                        if(txt.GetText() != "")
                             textNode.InnerText = txt.GetText();
-                            elementNode.AppendChild(textNode);
-                        }
+                        elementNode.AppendChild(textNode);
                         break;
                     
                     case "Image":
@@ -785,15 +782,15 @@ namespace AppliProjetTut
                             imagePathNode.Attributes.Append(imgAttr);
                             elementNode.AppendChild(imagePathNode);
                         }
+                        
+                        
+                        XmlNode imageTextNode = xmlDoc.CreateElement("text");
+                        XmlAttribute imgTxtAttr = xmlDoc.CreateAttribute("color");
+                        imgTxtAttr.Value = img.textAnnotation.GetColor().ToString();
+                        imageTextNode.Attributes.Append(imgTxtAttr);
                         if (img.textAnnotation.GetText() != "")
-                        {
-                            XmlNode imageTextNode = xmlDoc.CreateElement("text");
-                            XmlAttribute txtAttr = xmlDoc.CreateAttribute("color");
-                            txtAttr.Value = img.textAnnotation.GetColor().ToString();
-                            imageTextNode.Attributes.Append(txtAttr);
                             imageTextNode.InnerText = img.textAnnotation.GetText();
-                            elementNode.AppendChild(imageTextNode);
-                        }
+                        elementNode.AppendChild(imageTextNode);
                         break;
                     
                     case "Video":
@@ -808,15 +805,13 @@ namespace AppliProjetTut
                             imagePathNode.Attributes.Append(imgAttr);
                             elementNode.AppendChild(imagePathNode);
                         }
+                        XmlNode videoTextNode = xmlDoc.CreateElement("text");
+                        XmlAttribute vidTxtAttr = xmlDoc.CreateAttribute("color");
+                        vidTxtAttr.Value = vid.textAnnotation.GetColor().ToString();
+                        videoTextNode.Attributes.Append(vidTxtAttr);
                         if (vid.textAnnotation.GetText() != "")
-                        {
-                            XmlNode imageTextNode = xmlDoc.CreateElement("text");
-                            XmlAttribute txtAttr = xmlDoc.CreateAttribute("color");
-                            txtAttr.Value = vid.textAnnotation.GetColor().ToString();
-                            imageTextNode.Attributes.Append(txtAttr);
-                            imageTextNode.InnerText = vid.textAnnotation.GetText();
-                            elementNode.AppendChild(imageTextNode);
-                        }
+                            videoTextNode.InnerText = vid.textAnnotation.GetText();
+                        elementNode.AppendChild(videoTextNode);
                         break;
                 }
 
@@ -853,505 +848,140 @@ namespace AppliProjetTut
             return -1;
         }
 
-        /*/// <summary>
-        /// Appelé lorsque le bouton de sauvegarde du menu principal est appuyé
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void OnSaveAsButtonPreviewTouchUp(object sender, TouchEventArgs e)
-        {
-            if (menuPrincipal == null)
-                return;
-
-            NodeText SaveFileNameEntrance = new NodeText(this, null);
-            SaveFileNameEntrance.TransformToFileSaver();
-            SaveFileNameEntrance.SetParent(SaveFileNameEntrance);
-            SaveFileNameEntrance.GetClavier().Enter.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnValidateFileName);
-            SaveFileNameEntrance.GetClavier().close.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnClosePreviewTouchDown);
-        }
-
-        /// <summary>
-        /// Appelé lorsque le bouton de sauvegarde du menu principal est appuyé
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void OnSaveButtonPreviewTouchUp(object sender, TouchEventArgs e)
-        {
-            if (menuPrincipal == null)
-                return;
-
-            if (nomFichier == "<>")
-            {
-                NodeText SaveFileNameEntrance = new NodeText(this, null);
-                SaveFileNameEntrance.TransformToFileSaver();
-                SaveFileNameEntrance.SetParent(SaveFileNameEntrance);
-                SaveFileNameEntrance.GetClavier().Enter.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnValidateFileName);
-                SaveFileNameEntrance.GetClavier().close.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnClosePreviewTouchDown);
-
-               
-            }
-            else
-            {
-                CreateDirectory(nomFichier);
-            }
-        }
 
 
         /// <summary>
-        /// Appelé lorsque le bouton d'ouverture de fichier est appuyé
+        /// Ouvre le fichier dont le nom est passé en paramètre
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void OnOpenButtonPreviewTouchUp(object sender, TouchEventArgs e)
+        public void OpenFile(string fileName)
         {
 
-            if (menuPrincipal == null)
-                return;
-
-            ListeSauvegarde listSave = new ListeSauvegarde(this);
-            
-            
-        }*/
-
-
-        /*/// <summary>
-        /// Appelé lorsque le nom du fichier de suavegarde est validé
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void OnValidateFileName(object sender, TouchEventArgs e)
-        {
-
-            NodeText saveFileNameText;
-            string NomSauvegarde = "<>";*/
-            /*for (int i = 0; i < menuPrincipal.FormGrid.Children.Count; i++)
-            {
-                saveFileNameText = (NodeText)menuPrincipal.FormGrid.Children[i];
-                if (saveFileNameText != null)
-                {
-                    NomSauvegarde = saveFileNameText.GetText();
-                }
-            }*/
-
-           /* if (NomSauvegarde == "<>")
-            {
-                return;
-            }
-            else
-            {
-                char[] separator = { '\r' };
-                NomSauvegarde = NomSauvegarde.Split(separator).First();
-            }
-
-            DirectoryInfo dirInfo = new DirectoryInfo(".\\Saves");
-            try
-            {
-                DirectoryInfo[] DirFiles = dirInfo.GetDirectories();
-                foreach (DirectoryInfo dir in DirFiles)
-                {
-                    if (dir.Name == NomSauvegarde)
-                    {
-                        // demande de confirmation
-                        string title = "Attention";
-                        string message = "Ecraser le dossier de sauvegarde existant?";
-                        MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                        DialogResult res;
-
-                        res = System.Windows.Forms.MessageBox.Show(message, title, buttons);
-
-                        if (res == System.Windows.Forms.DialogResult.Yes)
-                        {
-                            // on supprime le dossier existant
-                            dir.Delete(true);
-                        }
-                        else
-                        {
-                            // On annule la suppression
-                            return;
-                        }
-                    }
-                }
-
-                CreateDirectory(NomSauvegarde);
-
-            }
-            catch { }
-        }
-
-        /// <summary>
-        /// Appelé lorsque le bouton "Close" du clavier de sauvegarde est appuyé
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void OnClosePreviewTouchDown(object sender, TouchEventArgs e)
-        {
-            //menuPrincipal.FormGrid.Children.Clear();
-        }
-
-        /// <summary>
-        /// Crée le dossier de la sauvegarde
-        /// </summary>
-        /// <param name="path"></param>
-        void CreateDirectory(string path)
-        {
-
-
-            DirectoryInfo newDir = new DirectoryInfo(".\\Saves\\" + path);
-            newDir.Create();
-
-            StringBuilder sb = new StringBuilder();
-
+            // on supprime les anciens nodes
             for (int i = 0; i < listNode.Count; i++)
             {
-
-                string type = listNode.ElementAt(i).GetTypeOfNode();
-                switch (type)
-                {
-                    case "Text":
-                        {
-                            NodeText myText = (NodeText)listNode.ElementAt(i);
-                            if (myText == null)
-                                break;
-                            sb.AppendLine("<node type='txt' id='" + i + "' color='" + myText.GetColor().ToString() + "'>");
-                            int numParent = GetNumOfParent(listNode.ElementAt(i));
-                            if (numParent != -1)
-                                sb.AppendLine("<parent id='" + numParent + "'/>");
-                            if(myText.GetText() != "")
-                            {
-                                sb.AppendLine("<text>");
-                                sb.AppendLine(myText.GetText());
-                                sb.AppendLine("</text>");
-                            }
-                            sb.AppendLine("</node>");
-                            break;
-                        }
-                    case "Image":
-                        {
-                            NodeImage myImage = (NodeImage)listNode.ElementAt(i);
-                            if (myImage == null)
-                                break;
-                            sb.AppendLine("<node type='img' id='" + i + "'>");
-                            int numParent = GetNumOfParent(listNode.ElementAt(i));
-                            if (numParent != -1)
-                                sb.AppendLine("<parent id='" + numParent + "'/>");
-                            if (myImage.GetImagePath() != "NONE")
-                                sb.AppendLine("<image path='" + myImage.GetImagePath() + "'/>");
-                            sb.AppendLine("</node>");
-                            try
-                            {
-                                SaveImageToFile(myImage.GetImagePath(), path);
-                            }
-                            catch { };
-                            break;
-                        }
-                }
-
-                sb.AppendLine();
-
+                this.MainScatterView.Items.Remove(listNode.ElementAt(i));
             }
-            
-            FileStream myFile = new FileStream(".\\Saves\\" + path + "\\saveFile.mms", FileMode.OpenOrCreate);
-            StreamWriter sw = new StreamWriter(myFile);
-            sw.Write(sb.ToString());
-            sw.Close();
-
-            //menuPrincipal.FormGrid.Children.Clear();
-
-            Modification(false);
-            nomFichier = path;
-
-        }
-
-        /// <summary>
-        /// Récupère la position du parent dans la liste
-        /// </summary>
-        /// <param name="scatt"></param>
-        /// <returns></returns>
-        private int GetNumOfParent(ScatterCustom scatt)
-        {
-            for (int i = 0; i < listNode.Count; i++)
-            {
-                if (scatt.GetParent() == listNode.ElementAt(i))
-                {
-                    return i;
-                }
-            }
-
-            return -1;
-        }
-
-        /// <summary>
-        /// Sauvegarde l'image passée en paramètre
-        /// </summary>
-        /// <param name="imgPath"></param>
-        /// <param name="savePath"></param>
-        private void SaveImageToFile(string imgPath, string savePath)
-        {
-            if (imgPath == "NONE")
-                return;
-
-            DirectoryInfo dirInfo = new DirectoryInfo(".\\Saves\\"+savePath+"\\Images");
-            if (!dirInfo.Exists)
-                dirInfo.Create();
-
-            BitmapImage bi = new BitmapImage();
-            bi.BeginInit();
-            bi.UriSource = new Uri(".\\Resources\\Images\\" + imgPath, UriKind.Relative);
-            bi.EndInit();
-
-            string separator = ".";
-            string imgFormat = imgPath.Split(separator.ToCharArray()).Last();
-            
-            string imgLocation = ".\\Saves\\" + savePath + "\\Images\\" + imgPath;
-            FileStream fileStr = new FileStream(imgLocation, FileMode.Create);
-
-            switch (imgFormat)
-            { 
-                case "jpg":
-                    JpegBitmapEncoder encoderJPG = new JpegBitmapEncoder();
-                    encoderJPG.Frames.Add(BitmapFrame.Create((BitmapImage)bi));
-                    encoderJPG.Save(fileStr);
-                    break;
-                case "png":
-                    PngBitmapEncoder encoderPNG = new PngBitmapEncoder();
-                    encoderPNG.Frames.Add(BitmapFrame.Create((BitmapImage)bi));
-                    encoderPNG.Save(fileStr);
-                    break;
-                case "gif":
-                    GifBitmapEncoder encoderGIF = new GifBitmapEncoder();
-                    encoderGIF.Frames.Add(BitmapFrame.Create((BitmapImage)bi));
-                    encoderGIF.Save(fileStr);
-                    break;
-                case "bmp":
-                    BmpBitmapEncoder encoderBMP = new BmpBitmapEncoder();
-                    encoderBMP.Frames.Add(BitmapFrame.Create((BitmapImage)bi));
-                    encoderBMP.Save(fileStr);
-                    break;
-            }
-
-        }
-
-        /// <summary>
-        /// Appelé lors de la selection d'un fichier a ouvrir
-        /// </summary>
-        /// <param name="filename"></param>
-        public void OpenFile(string filename)
-        {
-
-            if (filename == "<Annuler>")
-            {
-                //menuPrincipal.FormGrid.Children.Clear();
-                return;
-            }
-
             listNode.Clear();
-            MainScatterView.Items.Clear();
 
-            string line = "";
-            string filePath = ".\\Saves\\" + filename + "\\saveFile.mms";
-            StreamReader sr = new StreamReader(filePath);
+
+
+            string filePath = ".\\Saves\\" + fileName + "\\";
 
             List<KeyValuePair<KeyValuePair<int, int>, ScatterCustom>> listParent = new List<KeyValuePair<KeyValuePair<int, int>, ScatterCustom>>();
-            string currentType = "";
-            int compteur = 0;
-            bool isFirstLine = true;
-            bool isInText = false;
-            KeyValuePair<int, int> myPair = new KeyValuePair<int, int>();
-            ScatterCustom currentNode = new ScatterCustom(this, null);
+            
+            // on crée le xmldoc qui permettra la lecture
+            XmlDocument xmlDoc = new XmlDocument();
+            // on charge le fichier
+            xmlDoc.Load(filePath + fileName + ".xml");
 
-
-            //
-            // Chargement des nodes
-            //
-            while ((line = sr.ReadLine()) != null)
+            // on récupère la liste des nodes
+            XmlNodeList listElementNode = xmlDoc.SelectNodes("//nodes/node");
+            foreach (XmlNode nodeElmt in listElementNode)
             {
                 
-                if(line.Contains("<node"))
-                {
-                    compteur++;
-                    myPair = new KeyValuePair<int, int>(-1, -1);
-                    string[] typeLine = line.Split("'".ToCharArray());
-                    string type = "NULL";
-                    for (int i = 0; i < typeLine.Count()-1; i++)
-                    {
-                        if (typeLine[i].Contains("type"))
-                        {
-                            type = typeLine[i + 1];
-                            break;
-                        }
-                    }
-                    int id = -1;
-                    for (int i = 0; i < typeLine.Count() - 1; i++)
-                    {
-                        if (typeLine[i].Contains("id"))
-                        {
-                            string strId = typeLine[i + 1];
-                            id = Convert.ToInt32(strId);
-                            break;
-                        }
-                    }
-                    myPair = new KeyValuePair<int, int>(id, -1);
+                string typeOfNode = nodeElmt.Attributes["type"].Value;
 
-                    switch (type)
-                    { 
-                        case "txt":
-                            currentType = "txt";
-                            NodeText myText = new NodeText(this, null);
-                            string color = "NULL";
-                            for (int i = 0; i < typeLine.Count()-1; i++)
+                XmlNode parentNode = nodeElmt.SelectSingleNode("parent");
+                KeyValuePair<int, int> myPair;
+                if (parentNode != null)
+                {
+                    myPair = new KeyValuePair<int, int>(Convert.ToInt32(nodeElmt.Attributes["id"].Value), Convert.ToInt32(parentNode.Attributes["id"].Value));
+                    //listParentNode.Add(myPair);
+                }
+                else
+                {
+                    myPair = new KeyValuePair<int, int>(Convert.ToInt32(nodeElmt.Attributes["id"].Value), -1);
+                }
+
+                ScatterCustom newNode = new ScatterCustom(this, null);
+
+                switch (typeOfNode)
+                { 
+                    case "Text":
+                        NodeText txt = new NodeText(this, null);
+                        XmlNode textNode = nodeElmt.SelectSingleNode("text");
+                        if (textNode != null)
+                        {
+                            try
                             {
-                                if (typeLine[i].Contains("color"))
-                                {
-                                    color = typeLine[i + 1];
-                                    break;
-                                }
+                                string txtContent = textNode.InnerText;
+                                txt.LoadText(txtContent, true);
                             }
-                            if (color != "NULL")
-                                myText.SetColor(color);
-
-                            myText.Center = initP1;
-                            this.MainScatterView.Items.Add(myText);
-                            listNode.Add(myText);
-                            currentNode = myText;
-                            break;
-                        case "img":
-                            currentType = "img";
-                            NodeImage myImage = new NodeImage(this, null);
-                            myImage.Center = initP2;
-                            this.MainScatterView.Items.Add(myImage);
-                            listNode.Add(myImage);
-                            currentNode = myImage;
-                            break;
-                    }
-                    continue;
-                }
-
-
-                if (line.Contains("<parent") && line.Contains("/>"))
-                {
-                    compteur++;
-                    string[] typeLine = line.Split("'".ToCharArray());
-                    int id = -1;
-                    for (int i = 0; i < typeLine.Count() - 1; i++)
-                    {
-                        if (typeLine[i].Contains("id"))
-                        {
-                            string strId = typeLine[i + 1];
-                            id = Convert.ToInt32(strId);
-                            break;
+                            catch { }
+                            string txtColor = textNode.Attributes["color"].Value;
+                            txt.SetColor(txtColor);
                         }
-                    }
-                    myPair = new KeyValuePair<int, int>(myPair.Key, id);
-                }
-
-
-                if (line.Contains("<image") && line.Contains("/>"))
-                {
-                    NodeImage myImage = (NodeImage)currentNode;
-                    if (myImage == null)
-                        continue;
-                    string[] imageLine = line.Split("'".ToCharArray());
-                    string path = "NONE";
-                    for (int i = 0; i < imageLine.Count() - 1; i++)
-                    {
-                        if (imageLine[i].Contains("path"))
+                        newNode = txt;
+                        this.MainScatterView.Items.Add(txt);
+                        listNode.Add(txt);
+                        break;
+                    case "Image":
+                        NodeImage img = new NodeImage(this, null);
+                        XmlNode imageNode = nodeElmt.SelectSingleNode("image");
+                        if (imageNode != null)
                         {
-                            path = imageLine[i + 1];
-                            break;
+                            string imgPath = imageNode.Attributes["source"].Value.Remove(0,1);
+                            imgPath = "Saves\\" + fileName + imgPath;
+                            //
+                            BitmapImage bi = new BitmapImage();
+                            bi.BeginInit();
+                            bi.UriSource = new Uri(imgPath, UriKind.Relative);
+                            bi.EndInit();
+                            Point dim = new Point(bi.Width, bi.Height);
+                            Brush bru = new ImageBrush(bi);
+                            //
+                            Point imgDim = new Point(bi.Width, bi.Height);
+                            img.LoadImage(bru, imgDim, imgPath);    
                         }
-                    }
-                    if (path != "NONE")
-                    {
-                        BitmapImage bi = new BitmapImage();
-                        bi.BeginInit();
-                        bi.UriSource = new Uri(".\\Saves\\" + filename + "\\Images\\" + path, UriKind.Relative);
-                        bi.EndInit();
-                        Point dim = new Point(bi.Width, bi.Height);
-                        Brush bru = new ImageBrush(bi);
-                        myImage.LoadImage(bru, dim, path);
-                    }
-                    continue;
-                }
-
-                
-
-                if(line.Contains("</text>"))
-                {
-                    NodeText myText = (NodeText)currentNode;
-                    if (myText == null)
-                        continue;
-                    string[] textLine = line.Split("</texte>".ToCharArray());
-                    string text = "";
-                    try
-                    {
-                        text = textLine.First();
-                    }
-                    catch { }
-                    if (text != "")
-                    {
-                        myText.LoadText("\r", false);
-                        if (!isFirstLine)
-                            myText.LoadText(text, false);
-                        else
+                        XmlNode imgTextNode = nodeElmt.SelectSingleNode("text");
+                        if (imgTextNode != null)
                         {
-                            myText.LoadText(text, true);
-                            isFirstLine = false;
+                            try
+                            {
+                                string txtContent = imgTextNode.InnerText;
+                                img.textAnnotation.LoadText(txtContent, true);
+                            }
+                            catch { }
+                            string txtColor = imgTextNode.Attributes["color"].Value;
+                            img.textAnnotation.SetColor(txtColor);
                         }
-                    }
-                    isInText = false;
-                }
-
-                if (isInText)
-                {
-                    NodeText myText = (NodeText)currentNode;
-                    if (myText == null)
-                        continue;
-                    myText.LoadText("\r", false);
-                    if (!isFirstLine)
-                        myText.LoadText(line, false);
-                    else
-                    {
-                        myText.LoadText(line, true);
-                        isFirstLine = false;
-                    }
-                }
-
-                if (line.Contains("<text>"))
-                {
-                    NodeText myText = (NodeText)currentNode;
-                    if (myText == null)
-                        continue;
-                    string[] textLine = line.Split("<texte>".ToCharArray());
-                    string text = "";
-                    try
-                    {
-                        text = textLine.Last();
-                    }
-                    catch { }
-                    if (text != "")
-                    {
-                        myText.LoadText(text, true);
-                        isFirstLine = false;
-                    }
-                    isInText = true;
-
+                        newNode = img;
+                        this.MainScatterView.Items.Add(img);
+                        listNode.Add(img);
+                        break;
+                    case "Video":
+                        NodeVideo vid = new NodeVideo(this, null);
+                        XmlNode videoNode = nodeElmt.SelectSingleNode("video");
+                        if (videoNode != null)
+                        {
+                            string vidPath = videoNode.Attributes["source"].Value;
+                            vid.SetVideoPath(vidPath);
+                        }
+                        XmlNode vidTextNode = nodeElmt.SelectSingleNode("text");
+                        if (vidTextNode != null)
+                        {
+                            try
+                            {
+                                string txtContent = vidTextNode.InnerText;
+                                vid.textAnnotation.LoadText(txtContent, true);
+                            }
+                            catch { }
+                            string txtColor = vidTextNode.Attributes["color"].Value;
+                            vid.textAnnotation.SetColor(txtColor);
+                        }
+                        newNode = vid;
+                        this.MainScatterView.Items.Add(vid);
+                        listNode.Add(vid);
+                        break;
                 }
 
 
-                if (line.Contains("</node>"))
-                {
-                    if (currentType != "" && myPair.Key != -1)
-                    {
-                        KeyValuePair<KeyValuePair<int, int>, ScatterCustom> triple = new KeyValuePair<KeyValuePair<int, int>, ScatterCustom>(myPair, currentNode);
-                        listParent.Add(triple);
-                    }
-                    currentType = "";
-                    isFirstLine = true;
-                    isInText = false;
-                    currentNode = new ScatterCustom(this, null);
-                }
+                KeyValuePair<KeyValuePair<int, int>, ScatterCustom> myTriple = new KeyValuePair<KeyValuePair<int, int>, ScatterCustom>(myPair, newNode);
+                listParent.Add(myTriple);
+
 
             }
+
 
 
             //
@@ -1373,16 +1003,12 @@ namespace AppliProjetTut
                     listParent.ElementAt(i).Value.SetParent(null);
             }
 
-            nomFichier = filename;
-            isModified = false;
-
-            
-        }*/
+        }
 
 
 
 
-
+        
 
 
 

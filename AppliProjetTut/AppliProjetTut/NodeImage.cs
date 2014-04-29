@@ -337,10 +337,10 @@ namespace AppliProjetTut
         /// <param name="path"></param>
         public void LoadImage(Brush newPath, Point dimension, string path)
         {
-            base.MainGrid.Background = newPath;
+            base.TypeScatter.Background = newPath;
             currentSize = dimension;
-            base.MainGrid.Width = (tempSize.X > 300) ? 300 : tempSize.X;
-            base.MainGrid.Height = (tempSize.Y > 200) ? 200 : tempSize.Y;
+            base.TypeScatter.Width = (tempSize.X > 300) ? 300 : tempSize.X;
+            base.TypeScatter.Height = (tempSize.Y > 200) ? 200 : tempSize.Y;
 
             double borderHeight = (base.Height - base.MainGrid.Height) / 2;
             

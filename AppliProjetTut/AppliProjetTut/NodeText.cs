@@ -447,7 +447,7 @@ namespace AppliProjetTut
             // on active le clavier
             base.AddonGrid.Items.Add(clavier);
             // on fait apparaitre le "curseur"
-            STextBox.AppendText("azerty|");
+            STextBox.AppendText("|");
             clavier.CanMove = false;
             clavier.CanScale = false;
             clavier.CanRotate = false;

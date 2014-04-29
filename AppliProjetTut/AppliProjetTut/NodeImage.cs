@@ -346,7 +346,7 @@ namespace AppliProjetTut
             
             currentPath = path;
 
-            currentImage = base.MainGrid.Background;
+            currentImage = base.TypeScatter.Background;
             mise_a_echelle();
         }
 
@@ -360,7 +360,7 @@ namespace AppliProjetTut
         /// <returns></returns>
         public string GetImagePath()
         {
-            return currentPath;
+            return currentPath.Split("\\".ToCharArray()).Last();
         }
         /// <summary>
         /// Retourne l'image

@@ -646,6 +646,8 @@ namespace AppliProjetTut
                     else
                         imagesSaved.Add(imgPath);
 
+
+                    
                     // on recupere l'image elle meme
                     BitmapImage bi = new BitmapImage();
                     bi.BeginInit();
@@ -659,10 +661,10 @@ namespace AppliProjetTut
                     // on defini où l'image sera stockée
                     string imgLocation = ".\\Saves\\" + saveFileName + "\\Images\\" + imgPath;
 
-
-
-
                     FileStream fileStr = new FileStream(imgLocation, FileMode.Create);
+                   
+
+                    
 
                     // on enregistre l'image avec l'encoder adequat
                     switch (imgFormat)
@@ -908,7 +910,7 @@ namespace AppliProjetTut
                 for (int i = 0; i < listNodeChildren.Count; i++)
                 {
 
-                    string typeOfNode = listNode.ElementAt(i).GetTypeOfNode();
+                    string typeOfNode = listNodeChildren.ElementAt(i).GetTypeOfNode();
 
                     // on recupère le numéro du scatter
                     int num = 0;
@@ -979,6 +981,7 @@ namespace AppliProjetTut
                                 }
 
                             }
+                            SetNodeChildren(textNode, listNodeChildren.ElementAt(i), xmlDoc);
                             parentNode.AppendChild(textNode);
                             break;
 
@@ -1048,7 +1051,7 @@ namespace AppliProjetTut
 
 
                             }
-
+                            SetNodeChildren(imageNode, listNodeChildren.ElementAt(i), xmlDoc);
                             parentNode.AppendChild(imageNode);
                             break;
 
@@ -1115,7 +1118,7 @@ namespace AppliProjetTut
                                 }
 
                             }
-
+                            SetNodeChildren(videoNode, listNodeChildren.ElementAt(i), xmlDoc);
                             parentNode.AppendChild(videoNode);
                             break;
                     
@@ -1238,6 +1241,37 @@ namespace AppliProjetTut
                             //
                             Point imgDim = new Point(bi.Width, bi.Height);
                             img.LoadImage(bru, imgDim, imgPath);    
+
+                            // on enregistre l'image dans les resources de l'appli si elle n'y est pas encore
+                            string separator = ".";
+                            string imgFormat = imgPath.Split(separator.ToCharArray()).Last();
+                            string imgLocation = ".\\Resources\\Images\\" + imgPath.Split("\\".ToCharArray()).Last();
+                            FileStream fileStr = new FileStream(imgLocation, FileMode.Create);
+                            // on enregistre l'image avec l'encoder adequat
+                            switch (imgFormat)
+                            {
+                                case "jpg":
+                                    JpegBitmapEncoder encoderJPG = new JpegBitmapEncoder();
+                                    encoderJPG.Frames.Add(BitmapFrame.Create((BitmapImage)bi));
+                                    encoderJPG.Save(fileStr);
+                                    break;
+                                case "png":
+                                    PngBitmapEncoder encoderPNG = new PngBitmapEncoder();
+                                    encoderPNG.Frames.Add(BitmapFrame.Create((BitmapImage)bi));
+                                    encoderPNG.Save(fileStr);
+                                    break;
+                                case "gif":
+                                    GifBitmapEncoder encoderGIF = new GifBitmapEncoder();
+                                    encoderGIF.Frames.Add(BitmapFrame.Create((BitmapImage)bi));
+                                    encoderGIF.Save(fileStr);
+                                    break;
+                                case "bmp":
+                                    BmpBitmapEncoder encoderBMP = new BmpBitmapEncoder();
+                                    encoderBMP.Frames.Add(BitmapFrame.Create((BitmapImage)bi));
+                                    encoderBMP.Save(fileStr);
+                                    break;
+                            }
+
                         }
                         XmlNode imgTextNode = nodeElmt.SelectSingleNode("text");
                         if (imgTextNode != null)
@@ -1310,6 +1344,11 @@ namespace AppliProjetTut
                 else
                     listParent.ElementAt(i).Value.SetParent(null);
             }
+
+
+
+            nomFichier = fileName;
+
 
         }
 

@@ -552,6 +552,9 @@ namespace AppliProjetTut
             if (!SaveToXMLFile(saveFileName))
                 return;
 
+            if (!SaveToFreeMindFile(saveFileName))
+                return;
+
             nomFichier = saveFileName;
         }
 
@@ -830,6 +833,307 @@ namespace AppliProjetTut
 
 
 
+
+        /// <summary>
+        /// Sauvegarde lde la carte mentale au format de FreeMind
+        /// </summary>
+        /// <param name="fileName"></param>
+        private bool SaveToFreeMindFile(string fileName)
+        {
+            
+            // on definit le chemin de la sauvegarde
+            string xmlFilePath = ".\\Saves\\" + fileName + "\\" + fileName + ".mm";
+            
+            
+            // on recrée une liste de Nodes
+            List<ScatterCustom> listNodeToSave = listNode;
+
+            // on crée la liste des node qui sont sauvegardés
+            List<ScatterCustom> listNodeParentSaved = new List<ScatterCustom>();
+
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlNode rootNode = xmlDoc.CreateElement("map");
+            XmlAttribute mapAttr = xmlDoc.CreateAttribute("version");
+            mapAttr.Value = "1.0.1";
+            rootNode.Attributes.Append(mapAttr);
+            xmlDoc.AppendChild(rootNode);
+
+            XmlNode mainNode = xmlDoc.CreateElement("node");
+            XmlAttribute CREATEDattr = xmlDoc.CreateAttribute("CREATED");
+            CREATEDattr.Value = "1000000000001";
+            XmlAttribute IDattr = xmlDoc.CreateAttribute("ID");
+            IDattr.Value = "ID_1000000001";
+            XmlAttribute MODIFIEDattr = xmlDoc.CreateAttribute("MODIFIED");
+            MODIFIEDattr.Value = "1000000000001";
+            XmlAttribute TEXTattr = xmlDoc.CreateAttribute("TEXT");
+            TEXTattr.Value = "Surface Mind Map : " + fileName;
+            mainNode.Attributes.Append(CREATEDattr);
+            mainNode.Attributes.Append(IDattr);
+            mainNode.Attributes.Append(MODIFIEDattr);
+            mainNode.Attributes.Append(TEXTattr);
+            rootNode.AppendChild(mainNode);
+
+
+            SetNodeChildren(mainNode, null, xmlDoc);
+
+
+            xmlDoc.Save(xmlFilePath);
+            return true;
+        }
+
+        /// <summary>
+        /// Ajoute les node au parent passé en paramètre
+        /// </summary>
+        /// <param name="parentNode"></param>
+        private void SetNodeChildren(XmlNode parentNode, ScatterCustom parentScatter, XmlDocument xmlDoc)
+        { 
+            
+            bool hasChild = false;
+
+            // on crée la liste des node qui sont sauvegardés
+            List<ScatterCustom> listNodeChildren = new List<ScatterCustom>();
+
+            for (int i = 0; i < listNode.Count; i++)
+            {
+                if (listNode.ElementAt(i).GetParent() == parentScatter)
+                {
+                    hasChild = true;
+                    listNodeChildren.Add(listNode.ElementAt(i));
+                }
+            }
+
+            if (hasChild)
+            {
+
+                for (int i = 0; i < listNodeChildren.Count; i++)
+                {
+
+                    string typeOfNode = listNode.ElementAt(i).GetTypeOfNode();
+
+                    // on recupère le numéro du scatter
+                    int num = 0;
+                    for (num = 0; num < listNode.Count; num++)
+                    {
+                        if (listNode.ElementAt(num) == listNodeChildren.ElementAt(i))
+                            break;
+                    }
+
+                    // selon le type du node on ajoute les element suivants :
+                    // - texte : le texte + le couleur du texte
+                    // - image : la source de l'image + le texte + la couelur du texte
+                    // - video : la source de la video + le texte + la couleur du texte
+                    switch (typeOfNode)
+                    {
+                        case "Text":
+
+                            NodeText txt = (NodeText)listNodeChildren.ElementAt(i);
+                            if (txt == null)
+                                continue;
+                            // Nouveau node
+                            XmlNode textNode = xmlDoc.CreateElement("node");
+                            // Attribut couleur
+                            XmlAttribute txtAttr = xmlDoc.CreateAttribute("COLOR");
+                            txtAttr.Value = txt.GetColor().ToString();
+                            textNode.Attributes.Append(txtAttr);
+                            // Attribut Created
+                            XmlAttribute txtCREATEDAttr = xmlDoc.CreateAttribute("CREATED");
+                            long numTxtCREA = 1000000000010 + num;
+                            txtCREATEDAttr.Value = numTxtCREA.ToString();
+                            textNode.Attributes.Append(txtCREATEDAttr);
+                            // Attribut ID
+                            XmlAttribute txtIDAttr = xmlDoc.CreateAttribute("ID");
+                            long numTxtID = 1000000010 + num;
+                            txtIDAttr.Value = "ID_" + numTxtID.ToString();
+                            textNode.Attributes.Append(txtIDAttr);
+                            // Attribut MODIFIED
+                            XmlAttribute txtMODIFAttr = xmlDoc.CreateAttribute("MODIFIED");
+                            txtMODIFAttr.Value = numTxtCREA.ToString();
+                            textNode.Attributes.Append(txtMODIFAttr);
+
+                            //
+                            if (txt.GetText() != "")
+                            {
+                                // on crée le richcontent
+                                XmlNode richContentNode = xmlDoc.CreateElement("richcontent");
+                                XmlAttribute richcontentAttr = xmlDoc.CreateAttribute("TYPE");
+                                richcontentAttr.Value = "NODE";
+                                textNode.AppendChild(richContentNode);
+                                // on crée la balise HTML
+                                XmlNode textHtmlNode = xmlDoc.CreateElement("html");
+                                richContentNode.AppendChild(textHtmlNode);
+                                // on ajoute la balise HEAD
+                                XmlNode textHeadNode = xmlDoc.CreateElement("head");
+                                textHeadNode.InnerText = "";
+                                textHtmlNode.AppendChild(textHeadNode);
+                                // on ajoute la balise BODY
+                                XmlNode textBodyNode = xmlDoc.CreateElement("body");
+                                textHtmlNode.AppendChild(textBodyNode);
+
+                                string textContent = txt.GetText();
+                                string[] listString = textContent.Split("\n".ToCharArray());
+                                for (int j = 0; j < listString.Count(); j++)
+                                {
+                                    XmlNode paragraphNode = xmlDoc.CreateElement("p");
+                                    paragraphNode.InnerText = listString[j];
+                                    textBodyNode.AppendChild(paragraphNode);
+                                }
+
+                            }
+                            parentNode.AppendChild(textNode);
+                            break;
+
+                        case "Image":
+                            NodeImage img = (NodeImage)listNodeChildren.ElementAt(i);
+                            if (img == null)
+                                continue;
+                            
+                            // Nouveau node
+                            XmlNode imageNode = xmlDoc.CreateElement("node");
+                            // Attribut couleur
+                            XmlAttribute imgAttr = xmlDoc.CreateAttribute("COLOR");
+                            imgAttr.Value = img.textAnnotation.GetColor().ToString();
+                            imageNode.Attributes.Append(imgAttr);
+                            // Attribut Created
+                            XmlAttribute imgCREATEDAttr = xmlDoc.CreateAttribute("CREATED");
+                            long numImgCREA = 1000000000010 + num;
+                            imgCREATEDAttr.Value = numImgCREA.ToString();
+                            imageNode.Attributes.Append(imgCREATEDAttr);
+                            // Attribut ID
+                            XmlAttribute imgIDAttr = xmlDoc.CreateAttribute("ID");
+                            long numImgID = 1000000010 + num;
+                            imgIDAttr.Value = "ID_" + numImgID.ToString();
+                            imageNode.Attributes.Append(imgIDAttr);
+                            // Attribut MODIFIED
+                            XmlAttribute imgMODIFAttr = xmlDoc.CreateAttribute("MODIFIED");
+                            imgMODIFAttr.Value = numImgCREA.ToString();
+                            imageNode.Attributes.Append(imgMODIFAttr);
+                                
+                            if (img.GetImagePath() != "NONE" || img.textAnnotation.GetText() != "")
+                            {
+                                // on crée le richcontent
+                                XmlNode richContentNode = xmlDoc.CreateElement("richcontent");
+                                XmlAttribute richcontentAttr = xmlDoc.CreateAttribute("TYPE");
+                                richcontentAttr.Value = "NODE";
+                                imageNode.AppendChild(richContentNode);
+                                // on crée la balise HTML
+                                XmlNode textHtmlNode = xmlDoc.CreateElement("html");
+                                richContentNode.AppendChild(textHtmlNode);
+                                // on ajoute la balise HEAD
+                                XmlNode textHeadNode = xmlDoc.CreateElement("head");
+                                textHeadNode.InnerText = "";
+                                textHtmlNode.AppendChild(textHeadNode);
+                                // on ajoute la balise BODY
+                                XmlNode textBodyNode = xmlDoc.CreateElement("body");
+                                textHtmlNode.AppendChild(textBodyNode);
+
+                                if(img.GetImagePath() != "NONE")
+                                {
+                                    XmlNode paragraphNode = xmlDoc.CreateElement("p");
+                                    textBodyNode.AppendChild(paragraphNode);
+                                    XmlNode imgSourceNode = xmlDoc.CreateElement("img");
+                                    XmlAttribute sourceImgAttr = xmlDoc.CreateAttribute("src");
+                                    sourceImgAttr.Value = ".\\Images\\" + img.GetImagePath();
+                                    imgSourceNode.Attributes.Append(sourceImgAttr);
+                                    paragraphNode.AppendChild(imgSourceNode);
+                                }
+
+                                string textContent = img.textAnnotation.GetText();
+                                string[] listString = textContent.Split("\n".ToCharArray());
+                                for (int j = 0; j < listString.Count(); j++)
+                                {
+                                    XmlNode paragraphNode = xmlDoc.CreateElement("p");
+                                    paragraphNode.InnerText = listString[j];
+                                    textBodyNode.AppendChild(paragraphNode);
+                                }
+
+
+                            }
+
+                            parentNode.AppendChild(imageNode);
+                            break;
+
+                        case "Video":
+                            NodeVideo vid = (NodeVideo)listNodeChildren.ElementAt(i);
+                            if (vid == null)
+                                continue;
+
+
+                            // Nouveau node
+                            XmlNode videoNode = xmlDoc.CreateElement("node");
+                            // Attribut couleur
+                            XmlAttribute vidAttr = xmlDoc.CreateAttribute("COLOR");
+                            vidAttr.Value = vid.textAnnotation.GetColor().ToString();
+                            videoNode.Attributes.Append(vidAttr);
+                            // Attribut Created
+                            XmlAttribute vidCREATEDAttr = xmlDoc.CreateAttribute("CREATED");
+                            long numVidCREA = 1000000000010 + num;
+                            vidCREATEDAttr.Value = numVidCREA.ToString();
+                            videoNode.Attributes.Append(vidCREATEDAttr);
+                            // Attribut ID
+                            XmlAttribute vidIDAttr = xmlDoc.CreateAttribute("ID");
+                            long numVidID = 1000000010 + num;
+                            vidIDAttr.Value = "ID_" + numVidID.ToString();
+                            videoNode.Attributes.Append(vidIDAttr);
+                            // Attribut MODIFIED
+                            XmlAttribute vidMODIFAttr = xmlDoc.CreateAttribute("MODIFIED");
+                            vidMODIFAttr.Value = numVidCREA.ToString();
+                            videoNode.Attributes.Append(vidMODIFAttr);
+
+
+                            if (vid.GetVideoPath() != "NONE")
+                            {
+                                XmlAttribute videoSourceAttr = xmlDoc.CreateAttribute("LINK");
+                                videoSourceAttr.Value = vid.GetVideoPath();
+                                videoNode.Attributes.Append(videoSourceAttr);
+                            }
+
+                            if (vid.textAnnotation.GetText() != "")
+                            {
+                                // on crée le richcontent
+                                XmlNode richContentNode = xmlDoc.CreateElement("richcontent");
+                                XmlAttribute richcontentAttr = xmlDoc.CreateAttribute("TYPE");
+                                richcontentAttr.Value = "NODE";
+                                videoNode.AppendChild(richContentNode);
+                                // on crée la balise HTML
+                                XmlNode textHtmlNode = xmlDoc.CreateElement("html");
+                                richContentNode.AppendChild(textHtmlNode);
+                                // on ajoute la balise HEAD
+                                XmlNode textHeadNode = xmlDoc.CreateElement("head");
+                                textHeadNode.InnerText = "";
+                                textHtmlNode.AppendChild(textHeadNode);
+                                // on ajoute la balise BODY
+                                XmlNode textBodyNode = xmlDoc.CreateElement("body");
+                                textHtmlNode.AppendChild(textBodyNode);
+
+                                string textContent = vid.textAnnotation.GetText();
+                                string[] listString = textContent.Split("\n".ToCharArray());
+                                for (int j = 0; j < listString.Count(); j++)
+                                {
+                                    XmlNode paragraphNode = xmlDoc.CreateElement("p");
+                                    paragraphNode.InnerText = listString[j];
+                                    textBodyNode.AppendChild(paragraphNode);
+                                }
+
+                            }
+
+                            parentNode.AppendChild(videoNode);
+                            break;
+                    
+                    }// FIN SWITCH typeOfNode
+
+
+
+
+                }// FIN FOR
+
+            }// FIN IF hasChild
+
+            
+
+        }
+
+
+
         /// <summary>
         /// Récupère la position du parent dans la liste
         /// </summary>
@@ -915,6 +1219,8 @@ namespace AppliProjetTut
                         this.MainScatterView.Items.Add(txt);
                         listNode.Add(txt);
                         break;
+
+
                     case "Image":
                         NodeImage img = new NodeImage(this, null);
                         XmlNode imageNode = nodeElmt.SelectSingleNode("image");
@@ -949,6 +1255,8 @@ namespace AppliProjetTut
                         this.MainScatterView.Items.Add(img);
                         listNode.Add(img);
                         break;
+
+
                     case "Video":
                         NodeVideo vid = new NodeVideo(this, null);
                         XmlNode videoNode = nodeElmt.SelectSingleNode("video");

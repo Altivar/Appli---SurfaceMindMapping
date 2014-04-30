@@ -62,7 +62,7 @@ namespace AppliProjetTut
         {
             InitializeComponent();
 
-            btnSaveOpen.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnBtnSaveOpenPreviewTouchDown);
+            btnOpen.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnBtnSaveOpenPreviewTouchDown);
             btnSaveAs.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnBtnSaveAsPreviewTouchDown);
             btnSave.PreviewTouchDown += new EventHandler<TouchEventArgs>(OnBtnSavePreviewTouchDown);
         }
@@ -123,45 +123,45 @@ namespace AppliProjetTut
             ThicknessAnimation marginBtnSave = new ThicknessAnimation
             {
                 From = new Thickness(0, 0, 0, 50),
-                To = new Thickness(0, 115, 0, -65),
+                To = new Thickness(0, 125, 0, -75),
                 Duration = TimeSpan.FromSeconds(0.35)
             };
             ThicknessAnimation marginBtnSave2 = new ThicknessAnimation
             {
-                From = new Thickness(0, 115, 0, -65),
+                From = new Thickness(0, 125, 0, -75),
                 To = new Thickness(0, 100, 0, -50),
-                Duration = TimeSpan.FromSeconds(0.15),
+                Duration = TimeSpan.FromSeconds(0.25),
                 BeginTime = TimeSpan.FromSeconds(0.35)
             };
             ThicknessAnimation marginBtnSaveAs = new ThicknessAnimation
             {
                 From = new Thickness(0, 0, 0, 50),
-                To = new Thickness(0, 165, 0, -115),
+                To = new Thickness(0, 175, 0, -125),
                 Duration = TimeSpan.FromSeconds(0.35),
-                BeginTime = TimeSpan.FromSeconds(0.1)
+                BeginTime = TimeSpan.FromSeconds(0.3)
             };
             ThicknessAnimation marginBtnSaveAs2 = new ThicknessAnimation
             {
-                From = new Thickness(0, 165, 0, -115),
+                From = new Thickness(0, 175, 0, -125),
                 To = new Thickness(0, 150, 0, -100),
-                Duration = TimeSpan.FromSeconds(0.15),
-                BeginTime = TimeSpan.FromSeconds(0.45)
+                Duration = TimeSpan.FromSeconds(0.25),
+                BeginTime = TimeSpan.FromSeconds(0.65)
             };
             ThicknessAnimation marginBtnOpen = new ThicknessAnimation
             {
                 From = new Thickness(0, 0, 0, 50),
-                To = new Thickness(0, 215, 0, -165),
+                To = new Thickness(0, 225, 0, -175),
                 Duration = TimeSpan.FromSeconds(0.35),
-                BeginTime = TimeSpan.FromSeconds(0.2)
+                BeginTime = TimeSpan.FromSeconds(0.5)
             };
             ThicknessAnimation marginBtnOpen2 = new ThicknessAnimation
             {
-                From = new Thickness(0, 215, 0, -165),
+                From = new Thickness(0, 225, 0, -175),
                 To = new Thickness(0, 200, 0, -150),
-                Duration = TimeSpan.FromSeconds(0.15),
-                BeginTime = TimeSpan.FromSeconds(0.55)
+                Duration = TimeSpan.FromSeconds(0.25),
+                BeginTime = TimeSpan.FromSeconds(0.85)
             };
-            ThicknessAnimation marginBtnLanguage = new ThicknessAnimation
+            /*ThicknessAnimation marginBtnLanguage = new ThicknessAnimation
             {
                 From = new Thickness(0, 0, 0, 50),
                 To = new Thickness(0, 265, 0, -215),
@@ -174,35 +174,35 @@ namespace AppliProjetTut
                 To = new Thickness(0, 250, 0, -200),
                 Duration = TimeSpan.FromSeconds(0.15),
                 BeginTime = TimeSpan.FromSeconds(0.65)
-            };
+            };*/
 
             Storyboard.SetTargetProperty(marginBtnSave, new PropertyPath(Grid.MarginProperty));
             Storyboard.SetTarget(marginBtnSave, btnSave);
             Storyboard.SetTargetProperty(marginBtnSaveAs, new PropertyPath(Grid.MarginProperty));
             Storyboard.SetTarget(marginBtnSaveAs, btnSaveAs);
             Storyboard.SetTargetProperty(marginBtnOpen, new PropertyPath(Grid.MarginProperty));
-            Storyboard.SetTarget(marginBtnOpen, btnSaveOpen);
-            Storyboard.SetTargetProperty(marginBtnLanguage, new PropertyPath(Grid.MarginProperty));
-            Storyboard.SetTarget(marginBtnLanguage, btnLanguage);
+            Storyboard.SetTarget(marginBtnOpen, btnOpen);
+            /*Storyboard.SetTargetProperty(marginBtnLanguage, new PropertyPath(Grid.MarginProperty));
+            Storyboard.SetTarget(marginBtnLanguage, btnLanguage);*/
 
             Storyboard.SetTargetProperty(marginBtnSave2, new PropertyPath(Grid.MarginProperty));
             Storyboard.SetTarget(marginBtnSave2, btnSave);
             Storyboard.SetTargetProperty(marginBtnSaveAs2, new PropertyPath(Grid.MarginProperty));
             Storyboard.SetTarget(marginBtnSaveAs2, btnSaveAs);
             Storyboard.SetTargetProperty(marginBtnOpen2, new PropertyPath(Grid.MarginProperty));
-            Storyboard.SetTarget(marginBtnOpen2, btnSaveOpen);
-            Storyboard.SetTargetProperty(marginBtnLanguage2, new PropertyPath(Grid.MarginProperty));
-            Storyboard.SetTarget(marginBtnLanguage2, btnLanguage);
+            Storyboard.SetTarget(marginBtnOpen2, btnOpen);
+            /*Storyboard.SetTargetProperty(marginBtnLanguage2, new PropertyPath(Grid.MarginProperty));
+            Storyboard.SetTarget(marginBtnLanguage2, btnLanguage);*/
 
             sbOpening.Children.Add(marginBtnSave);
             sbOpening.Children.Add(marginBtnSaveAs);
             sbOpening.Children.Add(marginBtnOpen);
-            sbOpening.Children.Add(marginBtnLanguage);
+            //sbOpening.Children.Add(marginBtnLanguage);
 
             sbOpening.Children.Add(marginBtnSave2);
             sbOpening.Children.Add(marginBtnSaveAs2);
             sbOpening.Children.Add(marginBtnOpen2);
-            sbOpening.Children.Add(marginBtnLanguage2);
+            //sbOpening.Children.Add(marginBtnLanguage2);
 
             sbOpening.Completed += new EventHandler(MainMenuOpenedCompleted);
 
@@ -256,6 +256,10 @@ namespace AppliProjetTut
         public void OpenListeSauvegarde()
         {
 
+            btnOpen.Background = Brushes.Violet;
+
+            saveList.InitSaveList();
+
             isAnimated = true;
 
             sbListSauvOpening = new Storyboard();
@@ -294,7 +298,7 @@ namespace AppliProjetTut
 
             sbListSauvOpening2 = new Storyboard();
 
-            double hauteur = 200;
+            double hauteur = saveList.ActualHeight;
 
             ThicknessAnimation marginListeSauvegarde2 = new ThicknessAnimation
             {
@@ -342,6 +346,8 @@ namespace AppliProjetTut
         /// </summary>
         public void CloseListeSauvegarde()
         {
+
+            btnOpen.Background = Brushes.BlueViolet;
 
             isAnimated = true;
 
@@ -472,6 +478,10 @@ namespace AppliProjetTut
         }
         public void OpeningText()
         {
+
+            btnSave.Background = Brushes.Violet;
+            btnSaveAs.Background = Brushes.Violet;
+
             isAnimated = true;
 
             sbTextOpening = new Storyboard();
@@ -512,6 +522,10 @@ namespace AppliProjetTut
 
         public void ClosingText()
         {
+
+            btnSave.Background = Brushes.BlueViolet;
+            btnSaveAs.Background = Brushes.BlueViolet;
+
             isAnimated = true;
 
             sbTextClosing = new Storyboard();

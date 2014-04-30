@@ -8,11 +8,13 @@
 
         
         <Grid Name="grdListeSauvegarde" Margin="0,0,0,100" Width="100" Height="50" Background="Brown" />
-        
-        <Grid Name="btnSave" Margin="0,0,0,100" Width="100" Height="50" Background="Red" />
-        <Grid Name="btnSaveAs" Margin="0,0,0,100" Width="100" Height="50" Background="Green" />
-        <Grid Name="btnSaveOpen" Margin="0,0,0,100" Width="100" Height="50" Background="Blue" />
-        <Grid Name="btnLanguage" Margin="0,0,0,100" Width="100" Height="50" Background="White" />
+
+        <!--<s:SurfaceButton Name="btnLanguage" Margin="0,0,0,100" Width="100" Height="50" Background="DodgerBlue" />-->
+        <s:SurfaceButton Name="btnSave" Margin="0,0,0,100" Width="100" Height="50" Background="BlueViolet" Content="Sauver" Foreground="AliceBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <s:SurfaceButton Name="btnSaveAs" Margin="0,0,0,100" Width="100" Height="50" Background="BlueViolet" Content="Sauver Sous" Foreground="AliceBlue" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <s:SurfaceButton Name="btnOpen" Margin="0,0,0,100" Width="100" Height="50" Background="BlueViolet" Content="Ouvrir" Foreground="AliceBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+
 
         <Grid Name="grdText" Margin="-100, 200, -100, -225" Width="0" Height="0" Background="Pink" />
 

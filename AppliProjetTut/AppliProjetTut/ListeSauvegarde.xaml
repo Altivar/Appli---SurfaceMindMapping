@@ -5,17 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:s="http://schemas.microsoft.com/surface/2008"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="200"
-             Height="200" Width="200" >
-    <Grid Name="ImagesGrid" Width="200" Height="200" Margin="0,-50,0,0">
+             d:DesignHeight="50" d:DesignWidth="200"
+             Height="50" Width="200" MinHeight="50">
+    <Grid Name="ButtonsGrid" Width="200" Height="50" Margin="0,0,0,0" MinHeight="50">
 
-        <s:SurfaceScrollViewer Name="listview" 
+        <s:SurfaceScrollViewer Name="listButtonSV" 
                                Width="200" 
-                               Height="200" 
+                               Height="50" 
                                Margin="0,0,0,0"
                                HorizontalScrollBarVisibility="Hidden" 
-                               VerticalScrollBarVisibility="Hidden">
-            <Grid Name="ButtonListGrid" />
+                               VerticalScrollBarVisibility="Hidden" Background="DarkBlue" MinHeight="50" Opacity="0.5">
+            <Grid Name="ButtonListGrid" MinHeight="50"/>
         </s:SurfaceScrollViewer>
 
     </Grid>

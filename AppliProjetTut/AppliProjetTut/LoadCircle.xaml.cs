@@ -16,7 +16,7 @@ using Microsoft.Surface.Presentation;
 using Microsoft.Surface.Presentation.Controls;
 using Microsoft.Surface.Presentation.Input;
 
-namespace AppliProjetTut
+namespace SurfaceMindMapping
 {
     /// <summary>
     /// Logique d'interaction pour LoadCircle.xaml

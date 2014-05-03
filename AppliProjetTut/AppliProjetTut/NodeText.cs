@@ -13,7 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Surface.Presentation.Controls;
 
-namespace AppliProjetTut
+namespace SurfaceMindMapping
 {
     /// <summary>
     /// Logique d'interaction pour NodeText.xaml

@@ -16,7 +16,7 @@ using Microsoft.Surface.Presentation.Controls;
 
 using System.Windows.Forms;
 
-namespace AppliProjetTut
+namespace SurfaceMindMapping
 {
     /// <summary>
     /// Logique d'interaction pour ScatterCustom.xaml

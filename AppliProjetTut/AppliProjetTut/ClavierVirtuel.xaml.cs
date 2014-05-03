@@ -15,7 +15,7 @@ using Microsoft.Surface.Presentation.Controls;
 using Microsoft.Surface.Presentation.Input;
 using System.Windows.Forms;
 
-namespace AppliProjetTut
+namespace SurfaceMindMapping
 {
     /// <summary>
     /// Logique d'interaction pour ClavierVirtuel.xaml

@@ -18,7 +18,7 @@ using Microsoft.Surface.Presentation.Input;
 
 using System.Windows.Media.Animation;
 
-namespace AppliProjetTut
+namespace SurfaceMindMapping
 {
     /// <summary>
     /// Interaction logic for MenuPrincipal.xaml

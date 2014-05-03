@@ -16,7 +16,7 @@ using Microsoft.Surface.Presentation.Controls;
 using System.Windows.Forms;
 using System.Windows.Media.Animation;
 
-namespace AppliProjetTut
+namespace SurfaceMindMapping
 {
     /// <summary>
     /// Logique d'interaction pour MenuCreation.xaml

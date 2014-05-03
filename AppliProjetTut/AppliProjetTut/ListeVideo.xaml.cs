@@ -16,7 +16,7 @@ using Microsoft.Surface.Presentation.Controls;
 
 using System.IO;
 
-namespace AppliProjetTut
+namespace SurfaceMindMapping
 {
     /// <summary>
     /// Logique d'interaction pour ListeVideo.xaml

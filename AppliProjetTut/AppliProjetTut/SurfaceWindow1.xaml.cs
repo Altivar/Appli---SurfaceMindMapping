@@ -20,7 +20,7 @@ using Microsoft.Surface.Presentation.Input;
 using System.IO;
 using System.Xml;
 
-namespace AppliProjetTut
+namespace SurfaceMindMapping
 {
     /// <summary>
     /// Interaction logic for SurfaceWindow1.xaml
